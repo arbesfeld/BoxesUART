@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blockRegMap version="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cypress.com/xsd/cyblockregmap cyblockregmap.xsd" xmlns="http://cypress.com/xsd/cyblockregmap">
+  <block name="Rx_Top" BASE="0x0" SIZE="0x0" desc="UART" visible="true">
+    <block name="IntClock" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="BUART" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <register name="RX_Rx_Top_RX_ADDRESS1" address="0x40006429" bitWidth="8" desc="RX Address1 Register" />
+    <register name="RX_Rx_Top_RX_ADDRESS2" address="0x40006439" bitWidth="8" desc="RX Address2 Register" />
+    <register name="RX_Rx_Top_RX_DATA" address="0x40006449" bitWidth="8" desc="RX Data Register" />
+    <register name="RX_Rx_Top_RX_STATUS" address="0x4000646D" bitWidth="8" desc="RX status register">
+      <field name="Rx_Top_RX_STS_MRKSPC" from="0" to="0" access="R" resetVal="" desc="" />
+      <field name="Rx_Top_RX_STS_BREAK" from="1" to="1" access="R" resetVal="" desc="" />
+      <field name="Rx_Top_RX_STS_PAR_ERROR" from="2" to="2" access="R" resetVal="" desc="" />
+      <field name="Rx_Top_RX_STS_STOP_ERROR" from="3" to="3" access="R" resetVal="" desc="" />
+      <field name="Rx_Top_RX_STS_OVERRUN" from="4" to="4" access="R" resetVal="" desc="" />
+      <field name="Rx_Top_RX_STS_FIFO_NOTEMPTY" from="5" to="5" access="R" resetVal="" desc="" />
+      <field name="Rx_Top_RX_STS_ADDR_MATCH" from="6" to="6" access="R" resetVal="" desc="" />
+    </register>
+  </block>
+  <block name="Rx_Back_Register" BASE="0x0" SIZE="0x0" desc="" visible="true">
+    <register name="Rx_Back_Register_STATUS_REG" address="0x40006460" bitWidth="8" desc="" />
+    <register name="Rx_Back_Register_MASK_REG" address="0x40006480" bitWidth="8" desc="" />
+    <register name="Rx_Back_Register_STATUS_AUX_CTL_REG" address="0x40006490" bitWidth="8" desc="">
+      <field name="FIFO0" from="5" to="5" access="RW" resetVal="" desc="FIFO0 clear">
+        <value name="ENABLED" value="1" desc="Enable counter" />
+        <value name="DISABLED" value="0" desc="Disable counter" />
+      </field>
+      <field name="INTRENBL" from="4" to="4" access="RW" resetVal="" desc="Enables or disables the Interrupt">
+        <value name="ENABLED" value="1" desc="Interrupt enabled" />
+        <value name="DISABLED" value="0" desc="Interrupt disabled" />
+      </field>
+      <field name="FIFO1LEVEL" from="3" to="3" access="RW" resetVal="" desc="FIFO level">
+        <value name="ENABLED" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
+        <value name="DISABLED" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
+      </field>
+      <field name="FIFO0LEVEL" from="2" to="2" access="RW" resetVal="" desc="FIFO level">
+        <value name="ENABLED" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
+        <value name="DISABLED" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
+      </field>
+      <field name="FIFO1CLEAR" from="1" to="1" access="RW" resetVal="" desc="FIFO clear">
+        <value name="ENABLED" value="1" desc="Clear FIFO state" />
+        <value name="DISABLED" value="0" desc="Normal FIFO operation" />
+      </field>
+      <field name="FIFO0CLEAR" from="0" to="0" access="RW" resetVal="" desc="FIFO clear">
+        <value name="ENABLED" value="1" desc="Clear FIFO state" />
+        <value name="DISABLED" value="0" desc="Normal FIFO operation" />
+      </field>
+    </register>
+  </block>
+  <block name="or_5" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Rx_Left_Register" BASE="0x0" SIZE="0x0" desc="" visible="true">
+    <register name="Rx_Left_Register_STATUS_REG" address="0x40006566" bitWidth="8" desc="" />
+    <register name="Rx_Left_Register_MASK_REG" address="0x40006586" bitWidth="8" desc="" />
+    <register name="Rx_Left_Register_STATUS_AUX_CTL_REG" address="0x40006596" bitWidth="8" desc="">
+      <field name="FIFO0" from="5" to="5" access="RW" resetVal="" desc="FIFO0 clear">
+        <value name="ENABLED" value="1" desc="Enable counter" />
+        <value name="DISABLED" value="0" desc="Disable counter" />
+      </field>
+      <field name="INTRENBL" from="4" to="4" access="RW" resetVal="" desc="Enables or disables the Interrupt">
+        <value name="ENABLED" value="1" desc="Interrupt enabled" />
+        <value name="DISABLED" value="0" desc="Interrupt disabled" />
+      </field>
+      <field name="FIFO1LEVEL" from="3" to="3" access="RW" resetVal="" desc="FIFO level">
+        <value name="ENABLED" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
+        <value name="DISABLED" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
+      </field>
+      <field name="FIFO0LEVEL" from="2" to="2" access="RW" resetVal="" desc="FIFO level">
+        <value name="ENABLED" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
+        <value name="DISABLED" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
+      </field>
+      <field name="FIFO1CLEAR" from="1" to="1" access="RW" resetVal="" desc="FIFO clear">
+        <value name="ENABLED" value="1" desc="Clear FIFO state" />
+        <value name="DISABLED" value="0" desc="Normal FIFO operation" />
+      </field>
+      <field name="FIFO0CLEAR" from="0" to="0" access="RW" resetVal="" desc="FIFO clear">
+        <value name="ENABLED" value="1" desc="Clear FIFO state" />
+        <value name="DISABLED" value="0" desc="Normal FIFO operation" />
+      </field>
+    </register>
+  </block>
+  <block name="Clock_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Button" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="LED" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Rx_Front_Register" BASE="0x0" SIZE="0x0" desc="" visible="true">
+    <register name="Rx_Front_Register_STATUS_REG" address="0x40006462" bitWidth="8" desc="" />
+    <register name="Rx_Front_Register_MASK_REG" address="0x40006482" bitWidth="8" desc="" />
+    <register name="Rx_Front_Register_STATUS_AUX_CTL_REG" address="0x40006492" bitWidth="8" desc="">
+      <field name="FIFO0" from="5" to="5" access="RW" resetVal="" desc="FIFO0 clear">
+        <value name="ENABLED" value="1" desc="Enable counter" />
+        <value name="DISABLED" value="0" desc="Disable counter" />
+      </field>
+      <field name="INTRENBL" from="4" to="4" access="RW" resetVal="" desc="Enables or disables the Interrupt">
+        <value name="ENABLED" value="1" desc="Interrupt enabled" />
+        <value name="DISABLED" value="0" desc="Interrupt disabled" />
+      </field>
+      <field name="FIFO1LEVEL" from="3" to="3" access="RW" resetVal="" desc="FIFO level">
+        <value name="ENABLED" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
+        <value name="DISABLED" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
+      </field>
+      <field name="FIFO0LEVEL" from="2" to="2" access="RW" resetVal="" desc="FIFO level">
+        <value name="ENABLED" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
+        <value name="DISABLED" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
+      </field>
+      <field name="FIFO1CLEAR" from="1" to="1" access="RW" resetVal="" desc="FIFO clear">
+        <value name="ENABLED" value="1" desc="Clear FIFO state" />
+        <value name="DISABLED" value="0" desc="Normal FIFO operation" />
+      </field>
+      <field name="FIFO0CLEAR" from="0" to="0" access="RW" resetVal="" desc="FIFO clear">
+        <value name="ENABLED" value="1" desc="Clear FIFO state" />
+        <value name="DISABLED" value="0" desc="Normal FIFO operation" />
+      </field>
+    </register>
+  </block>
+  <block name="StartupLED" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Rx_Bottom_Pins" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="or_6" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Rx_Bottom_Register" BASE="0x0" SIZE="0x0" desc="" visible="true">
+    <register name="Rx_Bottom_Register_STATUS_REG" address="0x40006567" bitWidth="8" desc="" />
+    <register name="Rx_Bottom_Register_MASK_REG" address="0x40006587" bitWidth="8" desc="" />
+    <register name="Rx_Bottom_Register_STATUS_AUX_CTL_REG" address="0x40006597" bitWidth="8" desc="">
+      <field name="FIFO0" from="5" to="5" access="RW" resetVal="" desc="FIFO0 clear">
+        <value name="ENABLED" value="1" desc="Enable counter" />
+        <value name="DISABLED" value="0" desc="Disable counter" />
+      </field>
+      <field name="INTRENBL" from="4" to="4" access="RW" resetVal="" desc="Enables or disables the Interrupt">
+        <value name="ENABLED" value="1" desc="Interrupt enabled" />
+        <value name="DISABLED" value="0" desc="Interrupt disabled" />
+      </field>
+      <field name="FIFO1LEVEL" from="3" to="3" access="RW" resetVal="" desc="FIFO level">
+        <value name="ENABLED" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
+        <value name="DISABLED" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
+      </field>
+      <field name="FIFO0LEVEL" from="2" to="2" access="RW" resetVal="" desc="FIFO level">
+        <value name="ENABLED" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
+        <value name="DISABLED" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
+      </field>
+      <field name="FIFO1CLEAR" from="1" to="1" access="RW" resetVal="" desc="FIFO clear">
+        <value name="ENABLED" value="1" desc="Clear FIFO state" />
+        <value name="DISABLED" value="0" desc="Normal FIFO operation" />
+      </field>
+      <field name="FIFO0CLEAR" from="0" to="0" access="RW" resetVal="" desc="FIFO clear">
+        <value name="ENABLED" value="1" desc="Clear FIFO state" />
+        <value name="DISABLED" value="0" desc="Normal FIFO operation" />
+      </field>
+    </register>
+  </block>
+  <block name="isr_Rx_Bottom" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Rx_Bottom" BASE="0x0" SIZE="0x0" desc="UART" visible="true">
+    <block name="IntClock" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="BUART" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <register name="RX_Rx_Bottom_RX_ADDRESS1" address="0x40006427" bitWidth="8" desc="RX Address1 Register" />
+    <register name="RX_Rx_Bottom_RX_ADDRESS2" address="0x40006437" bitWidth="8" desc="RX Address2 Register" />
+    <register name="RX_Rx_Bottom_RX_DATA" address="0x40006447" bitWidth="8" desc="RX Data Register" />
+    <register name="RX_Rx_Bottom_RX_STATUS" address="0x40006564" bitWidth="8" desc="RX status register">
+      <field name="Rx_Bottom_RX_STS_MRKSPC" from="0" to="0" access="R" resetVal="" desc="" />
+      <field name="Rx_Bottom_RX_STS_BREAK" from="1" to="1" access="R" resetVal="" desc="" />
+      <field name="Rx_Bottom_RX_STS_PAR_ERROR" from="2" to="2" access="R" resetVal="" desc="" />
+      <field name="Rx_Bottom_RX_STS_STOP_ERROR" from="3" to="3" access="R" resetVal="" desc="" />
+      <field name="Rx_Bottom_RX_STS_OVERRUN" from="4" to="4" access="R" resetVal="" desc="" />
+      <field name="Rx_Bottom_RX_STS_FIFO_NOTEMPTY" from="5" to="5" access="R" resetVal="" desc="" />
+      <field name="Rx_Bottom_RX_STS_ADDR_MATCH" from="6" to="6" access="R" resetVal="" desc="" />
+    </register>
+  </block>
+  <block name="Rx_Top_Pins" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Rx_Right_Register" BASE="0x0" SIZE="0x0" desc="" visible="true">
+    <register name="Rx_Right_Register_STATUS_REG" address="0x40006568" bitWidth="8" desc="" />
+    <register name="Rx_Right_Register_MASK_REG" address="0x40006588" bitWidth="8" desc="" />
+    <register name="Rx_Right_Register_STATUS_AUX_CTL_REG" address="0x40006598" bitWidth="8" desc="">
+      <field name="FIFO0" from="5" to="5" access="RW" resetVal="" desc="FIFO0 clear">
+        <value name="ENABLED" value="1" desc="Enable counter" />
+        <value name="DISABLED" value="0" desc="Disable counter" />
+      </field>
+      <field name="INTRENBL" from="4" to="4" access="RW" resetVal="" desc="Enables or disables the Interrupt">
+        <value name="ENABLED" value="1" desc="Interrupt enabled" />
+        <value name="DISABLED" value="0" desc="Interrupt disabled" />
+      </field>
+      <field name="FIFO1LEVEL" from="3" to="3" access="RW" resetVal="" desc="FIFO level">
+        <value name="ENABLED" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
+        <value name="DISABLED" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
+      </field>
+      <field name="FIFO0LEVEL" from="2" to="2" access="RW" resetVal="" desc="FIFO level">
+        <value name="ENABLED" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
+        <value name="DISABLED" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
+      </field>
+      <field name="FIFO1CLEAR" from="1" to="1" access="RW" resetVal="" desc="FIFO clear">
+        <value name="ENABLED" value="1" desc="Clear FIFO state" />
+        <value name="DISABLED" value="0" desc="Normal FIFO operation" />
+      </field>
+      <field name="FIFO0CLEAR" from="0" to="0" access="RW" resetVal="" desc="FIFO clear">
+        <value name="ENABLED" value="1" desc="Clear FIFO state" />
+        <value name="DISABLED" value="0" desc="Normal FIFO operation" />
+      </field>
+    </register>
+  </block>
+  <block name="Rx_Top_Register" BASE="0x0" SIZE="0x0" desc="" visible="true">
+    <register name="Rx_Top_Register_STATUS_REG" address="0x4000656A" bitWidth="8" desc="" />
+    <register name="Rx_Top_Register_MASK_REG" address="0x4000658A" bitWidth="8" desc="" />
+    <register name="Rx_Top_Register_STATUS_AUX_CTL_REG" address="0x4000659A" bitWidth="8" desc="">
+      <field name="FIFO0" from="5" to="5" access="RW" resetVal="" desc="FIFO0 clear">
+        <value name="ENABLED" value="1" desc="Enable counter" />
+        <value name="DISABLED" value="0" desc="Disable counter" />
+      </field>
+      <field name="INTRENBL" from="4" to="4" access="RW" resetVal="" desc="Enables or disables the Interrupt">
+        <value name="ENABLED" value="1" desc="Interrupt enabled" />
+        <value name="DISABLED" value="0" desc="Interrupt disabled" />
+      </field>
+      <field name="FIFO1LEVEL" from="3" to="3" access="RW" resetVal="" desc="FIFO level">
+        <value name="ENABLED" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
+        <value name="DISABLED" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
+      </field>
+      <field name="FIFO0LEVEL" from="2" to="2" access="RW" resetVal="" desc="FIFO level">
+        <value name="ENABLED" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
+        <value name="DISABLED" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
+      </field>
+      <field name="FIFO1CLEAR" from="1" to="1" access="RW" resetVal="" desc="FIFO clear">
+        <value name="ENABLED" value="1" desc="Clear FIFO state" />
+        <value name="DISABLED" value="0" desc="Normal FIFO operation" />
+      </field>
+      <field name="FIFO0CLEAR" from="0" to="0" access="RW" resetVal="" desc="FIFO clear">
+        <value name="ENABLED" value="1" desc="Clear FIFO state" />
+        <value name="DISABLED" value="0" desc="Normal FIFO operation" />
+      </field>
+    </register>
+  </block>
+  <block name="isr_Rx_Top" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="isr_Rx_Right" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Rx_Front" BASE="0x0" SIZE="0x0" desc="UART" visible="true">
+    <block name="IntClock" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="BUART" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <register name="RX_Rx_Front_RX_ADDRESS1" address="0x40006421" bitWidth="8" desc="RX Address1 Register" />
+    <register name="RX_Rx_Front_RX_ADDRESS2" address="0x40006431" bitWidth="8" desc="RX Address2 Register" />
+    <register name="RX_Rx_Front_RX_DATA" address="0x40006441" bitWidth="8" desc="RX Data Register" />
+    <register name="RX_Rx_Front_RX_STATUS" address="0x40006465" bitWidth="8" desc="RX status register">
+      <field name="Rx_Front_RX_STS_MRKSPC" from="0" to="0" access="R" resetVal="" desc="" />
+      <field name="Rx_Front_RX_STS_BREAK" from="1" to="1" access="R" resetVal="" desc="" />
+      <field name="Rx_Front_RX_STS_PAR_ERROR" from="2" to="2" access="R" resetVal="" desc="" />
+      <field name="Rx_Front_RX_STS_STOP_ERROR" from="3" to="3" access="R" resetVal="" desc="" />
+      <field name="Rx_Front_RX_STS_OVERRUN" from="4" to="4" access="R" resetVal="" desc="" />
+      <field name="Rx_Front_RX_STS_FIFO_NOTEMPTY" from="5" to="5" access="R" resetVal="" desc="" />
+      <field name="Rx_Front_RX_STS_ADDR_MATCH" from="6" to="6" access="R" resetVal="" desc="" />
+    </register>
+  </block>
+  <block name="or_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Rx_Left" BASE="0x0" SIZE="0x0" desc="UART" visible="true">
+    <block name="IntClock" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="BUART" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <register name="RX_Rx_Left_RX_STATUS" address="0x40006466" bitWidth="8" desc="RX status register">
+      <field name="Rx_Left_RX_STS_MRKSPC" from="0" to="0" access="R" resetVal="" desc="" />
+      <field name="Rx_Left_RX_STS_BREAK" from="1" to="1" access="R" resetVal="" desc="" />
+      <field name="Rx_Left_RX_STS_PAR_ERROR" from="2" to="2" access="R" resetVal="" desc="" />
+      <field name="Rx_Left_RX_STS_STOP_ERROR" from="3" to="3" access="R" resetVal="" desc="" />
+      <field name="Rx_Left_RX_STS_OVERRUN" from="4" to="4" access="R" resetVal="" desc="" />
+      <field name="Rx_Left_RX_STS_FIFO_NOTEMPTY" from="5" to="5" access="R" resetVal="" desc="" />
+      <field name="Rx_Left_RX_STS_ADDR_MATCH" from="6" to="6" access="R" resetVal="" desc="" />
+    </register>
+    <register name="RX_Rx_Left_RX_ADDRESS1" address="0x40006525" bitWidth="8" desc="RX Address1 Register" />
+    <register name="RX_Rx_Left_RX_ADDRESS2" address="0x40006535" bitWidth="8" desc="RX Address2 Register" />
+    <register name="RX_Rx_Left_RX_DATA" address="0x40006545" bitWidth="8" desc="RX Data Register" />
+  </block>
+  <block name="or_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Rx_Left_Pins" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Rx_Right" BASE="0x0" SIZE="0x0" desc="UART" visible="true">
+    <block name="IntClock" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="BUART" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <register name="RX_Rx_Right_RX_STATUS" address="0x40006468" bitWidth="8" desc="RX status register">
+      <field name="Rx_Right_RX_STS_MRKSPC" from="0" to="0" access="R" resetVal="" desc="" />
+      <field name="Rx_Right_RX_STS_BREAK" from="1" to="1" access="R" resetVal="" desc="" />
+      <field name="Rx_Right_RX_STS_PAR_ERROR" from="2" to="2" access="R" resetVal="" desc="" />
+      <field name="Rx_Right_RX_STS_STOP_ERROR" from="3" to="3" access="R" resetVal="" desc="" />
+      <field name="Rx_Right_RX_STS_OVERRUN" from="4" to="4" access="R" resetVal="" desc="" />
+      <field name="Rx_Right_RX_STS_FIFO_NOTEMPTY" from="5" to="5" access="R" resetVal="" desc="" />
+      <field name="Rx_Right_RX_STS_ADDR_MATCH" from="6" to="6" access="R" resetVal="" desc="" />
+    </register>
+    <register name="RX_Rx_Right_RX_ADDRESS1" address="0x4000652B" bitWidth="8" desc="RX Address1 Register" />
+    <register name="RX_Rx_Right_RX_ADDRESS2" address="0x4000653B" bitWidth="8" desc="RX Address2 Register" />
+    <register name="RX_Rx_Right_RX_DATA" address="0x4000654B" bitWidth="8" desc="RX Data Register" />
+  </block>
+  <block name="Tx" BASE="0x0" SIZE="0x0" desc="UART" visible="true">
+    <block name="BUART" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="IntClock" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <register name="TX_Tx_TX_DATA" address="0x4000644C" bitWidth="8" desc="TX Data Register" />
+    <register name="TX_Tx_TX_STATUS" address="0x4000646C" bitWidth="8" desc="TX status register">
+      <field name="Tx_TX_STS_COMPLETE" from="0" to="0" access="R" resetVal="" desc="" />
+      <field name="Tx_TX_STS_FIFO_EMPTY" from="1" to="1" access="R" resetVal="" desc="" />
+      <field name="Tx_TX_STS_FIFO_FULL" from="2" to="2" access="R" resetVal="" desc="" />
+      <field name="Tx_TX_STS_FIFO_NOT_FULL" from="3" to="3" access="R" resetVal="" desc="" />
+    </register>
+  </block>
+  <block name="isr_Rx_Left" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Tx_Pin" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Rx_Front_Pins" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="LCD" BASE="0x0" SIZE="0x0" desc="" visible="true">
+    <block name="LCDPort" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  </block>
+  <block name="Rx_Right_Pins" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="or_4" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="or_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Rx_Back" BASE="0x0" SIZE="0x0" desc="UART" visible="true">
+    <block name="IntClock" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="BUART" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <register name="RX_Rx_Back_RX_ADDRESS1" address="0x40006423" bitWidth="8" desc="RX Address1 Register" />
+    <register name="RX_Rx_Back_RX_ADDRESS2" address="0x40006433" bitWidth="8" desc="RX Address2 Register" />
+    <register name="RX_Rx_Back_RX_DATA" address="0x40006443" bitWidth="8" desc="RX Data Register" />
+    <register name="RX_Rx_Back_RX_STATUS" address="0x40006464" bitWidth="8" desc="RX status register">
+      <field name="Rx_Back_RX_STS_MRKSPC" from="0" to="0" access="R" resetVal="" desc="" />
+      <field name="Rx_Back_RX_STS_BREAK" from="1" to="1" access="R" resetVal="" desc="" />
+      <field name="Rx_Back_RX_STS_PAR_ERROR" from="2" to="2" access="R" resetVal="" desc="" />
+      <field name="Rx_Back_RX_STS_STOP_ERROR" from="3" to="3" access="R" resetVal="" desc="" />
+      <field name="Rx_Back_RX_STS_OVERRUN" from="4" to="4" access="R" resetVal="" desc="" />
+      <field name="Rx_Back_RX_STS_FIFO_NOTEMPTY" from="5" to="5" access="R" resetVal="" desc="" />
+      <field name="Rx_Back_RX_STS_ADDR_MATCH" from="6" to="6" access="R" resetVal="" desc="" />
+    </register>
+  </block>
+  <block name="isr_Rx_Back" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Rx_Back_Pins" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="isr_Rx_Front" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+</blockRegMap>

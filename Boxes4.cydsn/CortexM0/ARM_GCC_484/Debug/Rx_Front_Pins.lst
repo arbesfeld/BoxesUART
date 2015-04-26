@@ -1,0 +1,1008 @@
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccJNR70x.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"Rx_Front_Pins.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.Rx_Front_Pins_Write,"ax",%progbits
+  18              		.align	2
+  19              		.global	Rx_Front_Pins_Write
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	Rx_Front_Pins_Write, %function
+  23              	Rx_Front_Pins_Write:
+  24              	.LFB0:
+  25              		.file 1 ".\\Generated_Source\\PSoC4\\Rx_Front_Pins.c"
+   1:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** * File Name: Rx_Front_Pins.c  
+   3:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** * Version 2.10
+   4:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *
+   5:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** * Description:
+   6:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *  This file contains API to enable firmware control of a Pins component.
+   7:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *
+   8:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** * Note:
+   9:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *
+  10:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** ********************************************************************************
+  11:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** * Copyright 2008-2014, Cypress Semiconductor Corporation.  All rights reserved.
+  12:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  13:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  14:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** * the software package with which this file was provided.
+  15:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *******************************************************************************/
+  16:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** 
+  17:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** #include "cytypes.h"
+  18:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** #include "Rx_Front_Pins.h"
+  19:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** 
+  20:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** #define SetP4PinDriveMode(shift, mode)  \
+  21:.\Generated_Source\PSoC4/Rx_Front_Pins.c ****     do { \
+  22:.\Generated_Source\PSoC4/Rx_Front_Pins.c ****         Rx_Front_Pins_PC =   (Rx_Front_Pins_PC & \
+  23:.\Generated_Source\PSoC4/Rx_Front_Pins.c ****                                 (uint32)(~(uint32)(Rx_Front_Pins_DRIVE_MODE_IND_MASK << (Rx_Front_P
+  24:.\Generated_Source\PSoC4/Rx_Front_Pins.c ****                                 (uint32)((uint32)(mode) << (Rx_Front_Pins_DRIVE_MODE_BITS * (shift)
+  25:.\Generated_Source\PSoC4/Rx_Front_Pins.c ****     } while (0)
+  26:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** 
+  27:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** 
+  28:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** /*******************************************************************************
+  29:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** * Function Name: Rx_Front_Pins_Write
+  30:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** ********************************************************************************
+  31:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *
+  32:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** * Summary:
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccJNR70x.s 			page 2
+
+
+  33:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *  Assign a new value to the digital port's data output register.  
+  34:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *
+  35:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** * Parameters:  
+  36:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *  prtValue:  The value to be assigned to the Digital Port. 
+  37:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *
+  38:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** * Return: 
+  39:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *  None 
+  40:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *  
+  41:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *******************************************************************************/
+  42:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** void Rx_Front_Pins_Write(uint8 value) 
+  43:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** {
+  26              		.loc 1 43 0
+  27              		.cfi_startproc
+  28 0000 80B5     		push	{r7, lr}
+  29              		.cfi_def_cfa_offset 8
+  30              		.cfi_offset 7, -8
+  31              		.cfi_offset 14, -4
+  32 0002 84B0     		sub	sp, sp, #16
+  33              		.cfi_def_cfa_offset 24
+  34 0004 00AF     		add	r7, sp, #0
+  35              		.cfi_def_cfa_register 7
+  36 0006 021C     		mov	r2, r0
+  37 0008 FB1D     		add	r3, r7, #7
+  38 000a 1A70     		strb	r2, [r3]
+  44:.\Generated_Source\PSoC4/Rx_Front_Pins.c ****     uint8 drVal = (uint8)(Rx_Front_Pins_DR & (uint8)(~Rx_Front_Pins_MASK));
+  39              		.loc 1 44 0
+  40 000c 0D4B     		ldr	r3, .L2
+  41 000e 1B68     		ldr	r3, [r3]
+  42 0010 D9B2     		uxtb	r1, r3
+  43 0012 3B1C     		mov	r3, r7
+  44 0014 0F33     		add	r3, r3, #15
+  45 0016 0F22     		mov	r2, #15
+  46 0018 0A40     		and	r2, r1
+  47 001a 1A70     		strb	r2, [r3]
+  45:.\Generated_Source\PSoC4/Rx_Front_Pins.c ****     drVal = (drVal | ((uint8)(value << Rx_Front_Pins_SHIFT) & Rx_Front_Pins_MASK));
+  48              		.loc 1 45 0
+  49 001c FB1D     		add	r3, r7, #7
+  50 001e 1B78     		ldrb	r3, [r3]
+  51 0020 1B01     		lsl	r3, r3, #4
+  52 0022 D9B2     		uxtb	r1, r3
+  53 0024 3B1C     		mov	r3, r7
+  54 0026 0F33     		add	r3, r3, #15
+  55 0028 3A1C     		mov	r2, r7
+  56 002a 0F32     		add	r2, r2, #15
+  57 002c 1278     		ldrb	r2, [r2]
+  58 002e 0A43     		orr	r2, r1
+  59 0030 1A70     		strb	r2, [r3]
+  46:.\Generated_Source\PSoC4/Rx_Front_Pins.c ****     Rx_Front_Pins_DR = (uint32)drVal;
+  60              		.loc 1 46 0
+  61 0032 044B     		ldr	r3, .L2
+  62 0034 3A1C     		mov	r2, r7
+  63 0036 0F32     		add	r2, r2, #15
+  64 0038 1278     		ldrb	r2, [r2]
+  65 003a 1A60     		str	r2, [r3]
+  47:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** }
+  66              		.loc 1 47 0
+  67 003c BD46     		mov	sp, r7
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccJNR70x.s 			page 3
+
+
+  68 003e 04B0     		add	sp, sp, #16
+  69              		@ sp needed
+  70 0040 80BD     		pop	{r7, pc}
+  71              	.L3:
+  72 0042 C046     		.align	2
+  73              	.L2:
+  74 0044 00020440 		.word	1074004480
+  75              		.cfi_endproc
+  76              	.LFE0:
+  77              		.size	Rx_Front_Pins_Write, .-Rx_Front_Pins_Write
+  78              		.section	.text.Rx_Front_Pins_SetDriveMode,"ax",%progbits
+  79              		.align	2
+  80              		.global	Rx_Front_Pins_SetDriveMode
+  81              		.code	16
+  82              		.thumb_func
+  83              		.type	Rx_Front_Pins_SetDriveMode, %function
+  84              	Rx_Front_Pins_SetDriveMode:
+  85              	.LFB1:
+  48:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** 
+  49:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** 
+  50:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** /*******************************************************************************
+  51:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** * Function Name: Rx_Front_Pins_SetDriveMode
+  52:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** ********************************************************************************
+  53:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *
+  54:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** * Summary:
+  55:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *  Change the drive mode on the pins of the port.
+  56:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** * 
+  57:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** * Parameters:  
+  58:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *  mode:  Change the pins to one of the following drive modes.
+  59:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *
+  60:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *  Rx_Front_Pins_DM_STRONG     Strong Drive 
+  61:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *  Rx_Front_Pins_DM_OD_HI      Open Drain, Drives High 
+  62:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *  Rx_Front_Pins_DM_OD_LO      Open Drain, Drives Low 
+  63:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *  Rx_Front_Pins_DM_RES_UP     Resistive Pull Up 
+  64:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *  Rx_Front_Pins_DM_RES_DWN    Resistive Pull Down 
+  65:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *  Rx_Front_Pins_DM_RES_UPDWN  Resistive Pull Up/Down 
+  66:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *  Rx_Front_Pins_DM_DIG_HIZ    High Impedance Digital 
+  67:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *  Rx_Front_Pins_DM_ALG_HIZ    High Impedance Analog 
+  68:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *
+  69:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** * Return: 
+  70:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *  None
+  71:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *
+  72:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *******************************************************************************/
+  73:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** void Rx_Front_Pins_SetDriveMode(uint8 mode) 
+  74:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** {
+  86              		.loc 1 74 0
+  87              		.cfi_startproc
+  88 0000 80B5     		push	{r7, lr}
+  89              		.cfi_def_cfa_offset 8
+  90              		.cfi_offset 7, -8
+  91              		.cfi_offset 14, -4
+  92 0002 82B0     		sub	sp, sp, #8
+  93              		.cfi_def_cfa_offset 16
+  94 0004 00AF     		add	r7, sp, #0
+  95              		.cfi_def_cfa_register 7
+  96 0006 021C     		mov	r2, r0
+  97 0008 FB1D     		add	r3, r7, #7
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccJNR70x.s 			page 4
+
+
+  98 000a 1A70     		strb	r2, [r3]
+  75:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** 	SetP4PinDriveMode(Rx_Front_Pins__0__SHIFT, mode);
+  99              		.loc 1 75 0
+ 100 000c 154B     		ldr	r3, .L5
+ 101 000e 154A     		ldr	r2, .L5
+ 102 0010 1168     		ldr	r1, [r2]
+ 103 0012 154A     		ldr	r2, .L5+4
+ 104 0014 1140     		and	r1, r2
+ 105 0016 FA1D     		add	r2, r7, #7
+ 106 0018 1278     		ldrb	r2, [r2]
+ 107 001a 1203     		lsl	r2, r2, #12
+ 108 001c 0A43     		orr	r2, r1
+ 109 001e 1A60     		str	r2, [r3]
+  76:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** 	SetP4PinDriveMode(Rx_Front_Pins__1__SHIFT, mode);
+ 110              		.loc 1 76 0
+ 111 0020 104B     		ldr	r3, .L5
+ 112 0022 104A     		ldr	r2, .L5
+ 113 0024 1168     		ldr	r1, [r2]
+ 114 0026 114A     		ldr	r2, .L5+8
+ 115 0028 1140     		and	r1, r2
+ 116 002a FA1D     		add	r2, r7, #7
+ 117 002c 1278     		ldrb	r2, [r2]
+ 118 002e D203     		lsl	r2, r2, #15
+ 119 0030 0A43     		orr	r2, r1
+ 120 0032 1A60     		str	r2, [r3]
+  77:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** 	SetP4PinDriveMode(Rx_Front_Pins__2__SHIFT, mode);
+ 121              		.loc 1 77 0
+ 122 0034 0B4B     		ldr	r3, .L5
+ 123 0036 0B4A     		ldr	r2, .L5
+ 124 0038 1168     		ldr	r1, [r2]
+ 125 003a 0D4A     		ldr	r2, .L5+12
+ 126 003c 1140     		and	r1, r2
+ 127 003e FA1D     		add	r2, r7, #7
+ 128 0040 1278     		ldrb	r2, [r2]
+ 129 0042 9204     		lsl	r2, r2, #18
+ 130 0044 0A43     		orr	r2, r1
+ 131 0046 1A60     		str	r2, [r3]
+  78:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** 	SetP4PinDriveMode(Rx_Front_Pins__3__SHIFT, mode);
+ 132              		.loc 1 78 0
+ 133 0048 064B     		ldr	r3, .L5
+ 134 004a 064A     		ldr	r2, .L5
+ 135 004c 1168     		ldr	r1, [r2]
+ 136 004e 094A     		ldr	r2, .L5+16
+ 137 0050 1140     		and	r1, r2
+ 138 0052 FA1D     		add	r2, r7, #7
+ 139 0054 1278     		ldrb	r2, [r2]
+ 140 0056 5205     		lsl	r2, r2, #21
+ 141 0058 0A43     		orr	r2, r1
+ 142 005a 1A60     		str	r2, [r3]
+  79:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** }
+ 143              		.loc 1 79 0
+ 144 005c BD46     		mov	sp, r7
+ 145 005e 02B0     		add	sp, sp, #8
+ 146              		@ sp needed
+ 147 0060 80BD     		pop	{r7, pc}
+ 148              	.L6:
+ 149 0062 C046     		.align	2
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccJNR70x.s 			page 5
+
+
+ 150              	.L5:
+ 151 0064 08020440 		.word	1074004488
+ 152 0068 FF8FFFFF 		.word	-28673
+ 153 006c FF7FFCFF 		.word	-229377
+ 154 0070 FFFFE3FF 		.word	-1835009
+ 155 0074 FFFF1FFF 		.word	-14680065
+ 156              		.cfi_endproc
+ 157              	.LFE1:
+ 158              		.size	Rx_Front_Pins_SetDriveMode, .-Rx_Front_Pins_SetDriveMode
+ 159              		.section	.text.Rx_Front_Pins_Read,"ax",%progbits
+ 160              		.align	2
+ 161              		.global	Rx_Front_Pins_Read
+ 162              		.code	16
+ 163              		.thumb_func
+ 164              		.type	Rx_Front_Pins_Read, %function
+ 165              	Rx_Front_Pins_Read:
+ 166              	.LFB2:
+  80:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** 
+  81:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** 
+  82:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** /*******************************************************************************
+  83:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** * Function Name: Rx_Front_Pins_Read
+  84:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** ********************************************************************************
+  85:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *
+  86:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** * Summary:
+  87:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *  Read the current value on the pins of the Digital Port in right justified 
+  88:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *  form.
+  89:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *
+  90:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** * Parameters:  
+  91:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *  None 
+  92:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *
+  93:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** * Return: 
+  94:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *  Returns the current value of the Digital Port as a right justified number
+  95:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *  
+  96:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** * Note:
+  97:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *  Macro Rx_Front_Pins_ReadPS calls this function. 
+  98:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *  
+  99:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *******************************************************************************/
+ 100:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** uint8 Rx_Front_Pins_Read(void) 
+ 101:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** {
+ 167              		.loc 1 101 0
+ 168              		.cfi_startproc
+ 169 0000 80B5     		push	{r7, lr}
+ 170              		.cfi_def_cfa_offset 8
+ 171              		.cfi_offset 7, -8
+ 172              		.cfi_offset 14, -4
+ 173 0002 00AF     		add	r7, sp, #0
+ 174              		.cfi_def_cfa_register 7
+ 102:.\Generated_Source\PSoC4/Rx_Front_Pins.c ****     return (uint8)((Rx_Front_Pins_PS & Rx_Front_Pins_MASK) >> Rx_Front_Pins_SHIFT);
+ 175              		.loc 1 102 0
+ 176 0004 044B     		ldr	r3, .L9
+ 177 0006 1A68     		ldr	r2, [r3]
+ 178 0008 F023     		mov	r3, #240
+ 179 000a 1340     		and	r3, r2
+ 180 000c 1B09     		lsr	r3, r3, #4
+ 181 000e DBB2     		uxtb	r3, r3
+ 103:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** }
+ 182              		.loc 1 103 0
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccJNR70x.s 			page 6
+
+
+ 183 0010 181C     		mov	r0, r3
+ 184 0012 BD46     		mov	sp, r7
+ 185              		@ sp needed
+ 186 0014 80BD     		pop	{r7, pc}
+ 187              	.L10:
+ 188 0016 C046     		.align	2
+ 189              	.L9:
+ 190 0018 04020440 		.word	1074004484
+ 191              		.cfi_endproc
+ 192              	.LFE2:
+ 193              		.size	Rx_Front_Pins_Read, .-Rx_Front_Pins_Read
+ 194              		.section	.text.Rx_Front_Pins_ReadDataReg,"ax",%progbits
+ 195              		.align	2
+ 196              		.global	Rx_Front_Pins_ReadDataReg
+ 197              		.code	16
+ 198              		.thumb_func
+ 199              		.type	Rx_Front_Pins_ReadDataReg, %function
+ 200              	Rx_Front_Pins_ReadDataReg:
+ 201              	.LFB3:
+ 104:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** 
+ 105:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** 
+ 106:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** /*******************************************************************************
+ 107:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** * Function Name: Rx_Front_Pins_ReadDataReg
+ 108:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** ********************************************************************************
+ 109:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *
+ 110:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** * Summary:
+ 111:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *  Read the current value assigned to a Digital Port's data output register
+ 112:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *
+ 113:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** * Parameters:  
+ 114:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *  None 
+ 115:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *
+ 116:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** * Return: 
+ 117:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *  Returns the current value assigned to the Digital Port's data output register
+ 118:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *  
+ 119:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** *******************************************************************************/
+ 120:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** uint8 Rx_Front_Pins_ReadDataReg(void) 
+ 121:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** {
+ 202              		.loc 1 121 0
+ 203              		.cfi_startproc
+ 204 0000 80B5     		push	{r7, lr}
+ 205              		.cfi_def_cfa_offset 8
+ 206              		.cfi_offset 7, -8
+ 207              		.cfi_offset 14, -4
+ 208 0002 00AF     		add	r7, sp, #0
+ 209              		.cfi_def_cfa_register 7
+ 122:.\Generated_Source\PSoC4/Rx_Front_Pins.c ****     return (uint8)((Rx_Front_Pins_DR & Rx_Front_Pins_MASK) >> Rx_Front_Pins_SHIFT);
+ 210              		.loc 1 122 0
+ 211 0004 044B     		ldr	r3, .L13
+ 212 0006 1A68     		ldr	r2, [r3]
+ 213 0008 F023     		mov	r3, #240
+ 214 000a 1340     		and	r3, r2
+ 215 000c 1B09     		lsr	r3, r3, #4
+ 216 000e DBB2     		uxtb	r3, r3
+ 123:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** }
+ 217              		.loc 1 123 0
+ 218 0010 181C     		mov	r0, r3
+ 219 0012 BD46     		mov	sp, r7
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccJNR70x.s 			page 7
+
+
+ 220              		@ sp needed
+ 221 0014 80BD     		pop	{r7, pc}
+ 222              	.L14:
+ 223 0016 C046     		.align	2
+ 224              	.L13:
+ 225 0018 00020440 		.word	1074004480
+ 226              		.cfi_endproc
+ 227              	.LFE3:
+ 228              		.size	Rx_Front_Pins_ReadDataReg, .-Rx_Front_Pins_ReadDataReg
+ 229              		.section	.text.Rx_Front_Pins_ClearInterrupt,"ax",%progbits
+ 230              		.align	2
+ 231              		.global	Rx_Front_Pins_ClearInterrupt
+ 232              		.code	16
+ 233              		.thumb_func
+ 234              		.type	Rx_Front_Pins_ClearInterrupt, %function
+ 235              	Rx_Front_Pins_ClearInterrupt:
+ 236              	.LFB4:
+ 124:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** 
+ 125:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** 
+ 126:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** /* If Interrupts Are Enabled for this Pins component */ 
+ 127:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** #if defined(Rx_Front_Pins_INTSTAT) 
+ 128:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** 
+ 129:.\Generated_Source\PSoC4/Rx_Front_Pins.c ****     /*******************************************************************************
+ 130:.\Generated_Source\PSoC4/Rx_Front_Pins.c ****     * Function Name: Rx_Front_Pins_ClearInterrupt
+ 131:.\Generated_Source\PSoC4/Rx_Front_Pins.c ****     ********************************************************************************
+ 132:.\Generated_Source\PSoC4/Rx_Front_Pins.c ****     *
+ 133:.\Generated_Source\PSoC4/Rx_Front_Pins.c ****     * Summary:
+ 134:.\Generated_Source\PSoC4/Rx_Front_Pins.c ****     *  Clears any active interrupts attached to port and returns the value of the 
+ 135:.\Generated_Source\PSoC4/Rx_Front_Pins.c ****     *  interrupt status register.
+ 136:.\Generated_Source\PSoC4/Rx_Front_Pins.c ****     *
+ 137:.\Generated_Source\PSoC4/Rx_Front_Pins.c ****     * Parameters:  
+ 138:.\Generated_Source\PSoC4/Rx_Front_Pins.c ****     *  None 
+ 139:.\Generated_Source\PSoC4/Rx_Front_Pins.c ****     *
+ 140:.\Generated_Source\PSoC4/Rx_Front_Pins.c ****     * Return: 
+ 141:.\Generated_Source\PSoC4/Rx_Front_Pins.c ****     *  Returns the value of the interrupt status register
+ 142:.\Generated_Source\PSoC4/Rx_Front_Pins.c ****     *  
+ 143:.\Generated_Source\PSoC4/Rx_Front_Pins.c ****     *******************************************************************************/
+ 144:.\Generated_Source\PSoC4/Rx_Front_Pins.c ****     uint8 Rx_Front_Pins_ClearInterrupt(void) 
+ 145:.\Generated_Source\PSoC4/Rx_Front_Pins.c ****     {
+ 237              		.loc 1 145 0
+ 238              		.cfi_startproc
+ 239 0000 80B5     		push	{r7, lr}
+ 240              		.cfi_def_cfa_offset 8
+ 241              		.cfi_offset 7, -8
+ 242              		.cfi_offset 14, -4
+ 243 0002 82B0     		sub	sp, sp, #8
+ 244              		.cfi_def_cfa_offset 16
+ 245 0004 00AF     		add	r7, sp, #0
+ 246              		.cfi_def_cfa_register 7
+ 146:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** 		uint8 maskedStatus = (uint8)(Rx_Front_Pins_INTSTAT & Rx_Front_Pins_MASK);
+ 247              		.loc 1 146 0
+ 248 0006 094B     		ldr	r3, .L17
+ 249 0008 1B68     		ldr	r3, [r3]
+ 250 000a DAB2     		uxtb	r2, r3
+ 251 000c FB1D     		add	r3, r7, #7
+ 252 000e 0F21     		mov	r1, #15
+ 253 0010 8A43     		bic	r2, r1
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccJNR70x.s 			page 8
+
+
+ 254 0012 1A70     		strb	r2, [r3]
+ 147:.\Generated_Source\PSoC4/Rx_Front_Pins.c **** 		Rx_Front_Pins_INTSTAT = maskedStatus;
+ 255              		.loc 1 147 0
+ 256 0014 054B     		ldr	r3, .L17
+ 257 0016 FA1D     		add	r2, r7, #7
+ 258 0018 1278     		ldrb	r2, [r2]
+ 259 001a 1A60     		str	r2, [r3]
+ 148:.\Generated_Source\PSoC4/Rx_Front_Pins.c ****         return maskedStatus >> Rx_Front_Pins_SHIFT;
+ 260              		.loc 1 148 0
+ 261 001c FB1D     		add	r3, r7, #7
+ 262 001e 1B78     		ldrb	r3, [r3]
+ 263 0020 1B09     		lsr	r3, r3, #4
+ 264 0022 DBB2     		uxtb	r3, r3
+ 149:.\Generated_Source\PSoC4/Rx_Front_Pins.c ****     }
+ 265              		.loc 1 149 0
+ 266 0024 181C     		mov	r0, r3
+ 267 0026 BD46     		mov	sp, r7
+ 268 0028 02B0     		add	sp, sp, #8
+ 269              		@ sp needed
+ 270 002a 80BD     		pop	{r7, pc}
+ 271              	.L18:
+ 272              		.align	2
+ 273              	.L17:
+ 274 002c 10020440 		.word	1074004496
+ 275              		.cfi_endproc
+ 276              	.LFE4:
+ 277              		.size	Rx_Front_Pins_ClearInterrupt, .-Rx_Front_Pins_ClearInterrupt
+ 278              		.text
+ 279              	.Letext0:
+ 280              		.file 2 ".\\Generated_Source\\PSoC4\\cytypes.h"
+ 281              		.section	.debug_info,"",%progbits
+ 282              	.Ldebug_info0:
+ 283 0000 48010000 		.4byte	0x148
+ 284 0004 0400     		.2byte	0x4
+ 285 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 286 000a 04       		.byte	0x4
+ 287 000b 01       		.uleb128 0x1
+ 288 000c 0B010000 		.4byte	.LASF24
+ 289 0010 01       		.byte	0x1
+ 290 0011 E2000000 		.4byte	.LASF25
+ 291 0015 E5010000 		.4byte	.LASF26
+ 292 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 293 001d 00000000 		.4byte	0
+ 294 0021 00000000 		.4byte	.Ldebug_line0
+ 295 0025 02       		.uleb128 0x2
+ 296 0026 01       		.byte	0x1
+ 297 0027 06       		.byte	0x6
+ 298 0028 D9010000 		.4byte	.LASF0
+ 299 002c 02       		.uleb128 0x2
+ 300 002d 01       		.byte	0x1
+ 301 002e 08       		.byte	0x8
+ 302 002f 8E000000 		.4byte	.LASF1
+ 303 0033 02       		.uleb128 0x2
+ 304 0034 02       		.byte	0x2
+ 305 0035 05       		.byte	0x5
+ 306 0036 C0010000 		.4byte	.LASF2
+ 307 003a 02       		.uleb128 0x2
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccJNR70x.s 			page 9
+
+
+ 308 003b 02       		.byte	0x2
+ 309 003c 07       		.byte	0x7
+ 310 003d B4000000 		.4byte	.LASF3
+ 311 0041 02       		.uleb128 0x2
+ 312 0042 04       		.byte	0x4
+ 313 0043 05       		.byte	0x5
+ 314 0044 D0010000 		.4byte	.LASF4
+ 315 0048 02       		.uleb128 0x2
+ 316 0049 04       		.byte	0x4
+ 317 004a 07       		.byte	0x7
+ 318 004b A2000000 		.4byte	.LASF5
+ 319 004f 02       		.uleb128 0x2
+ 320 0050 08       		.byte	0x8
+ 321 0051 05       		.byte	0x5
+ 322 0052 8C010000 		.4byte	.LASF6
+ 323 0056 02       		.uleb128 0x2
+ 324 0057 08       		.byte	0x8
+ 325 0058 07       		.byte	0x7
+ 326 0059 77000000 		.4byte	.LASF7
+ 327 005d 03       		.uleb128 0x3
+ 328 005e 04       		.byte	0x4
+ 329 005f 05       		.byte	0x5
+ 330 0060 696E7400 		.ascii	"int\000"
+ 331 0064 02       		.uleb128 0x2
+ 332 0065 04       		.byte	0x4
+ 333 0066 07       		.byte	0x7
+ 334 0067 D5000000 		.4byte	.LASF8
+ 335 006b 04       		.uleb128 0x4
+ 336 006c CA010000 		.4byte	.LASF9
+ 337 0070 02       		.byte	0x2
+ 338 0071 A1       		.byte	0xa1
+ 339 0072 2C000000 		.4byte	0x2c
+ 340 0076 04       		.uleb128 0x4
+ 341 0077 CE000000 		.4byte	.LASF10
+ 342 007b 02       		.byte	0x2
+ 343 007c A3       		.byte	0xa3
+ 344 007d 48000000 		.4byte	0x48
+ 345 0081 02       		.uleb128 0x2
+ 346 0082 04       		.byte	0x4
+ 347 0083 04       		.byte	0x4
+ 348 0084 71000000 		.4byte	.LASF11
+ 349 0088 02       		.uleb128 0x2
+ 350 0089 08       		.byte	0x8
+ 351 008a 04       		.byte	0x4
+ 352 008b C7000000 		.4byte	.LASF12
+ 353 008f 02       		.uleb128 0x2
+ 354 0090 01       		.byte	0x1
+ 355 0091 08       		.byte	0x8
+ 356 0092 A7010000 		.4byte	.LASF13
+ 357 0096 05       		.uleb128 0x5
+ 358 0097 00000000 		.4byte	.LASF14
+ 359 009b 02       		.byte	0x2
+ 360 009c 4D01     		.2byte	0x14d
+ 361 009e A2000000 		.4byte	0xa2
+ 362 00a2 06       		.uleb128 0x6
+ 363 00a3 76000000 		.4byte	0x76
+ 364 00a7 07       		.uleb128 0x7
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccJNR70x.s 			page 10
+
+
+ 365 00a8 AC010000 		.4byte	.LASF15
+ 366 00ac 01       		.byte	0x1
+ 367 00ad 2A       		.byte	0x2a
+ 368 00ae 00000000 		.4byte	.LFB0
+ 369 00b2 48000000 		.4byte	.LFE0-.LFB0
+ 370 00b6 01       		.uleb128 0x1
+ 371 00b7 9C       		.byte	0x9c
+ 372 00b8 D9000000 		.4byte	0xd9
+ 373 00bc 08       		.uleb128 0x8
+ 374 00bd 06000000 		.4byte	.LASF17
+ 375 00c1 01       		.byte	0x1
+ 376 00c2 2A       		.byte	0x2a
+ 377 00c3 6B000000 		.4byte	0x6b
+ 378 00c7 02       		.uleb128 0x2
+ 379 00c8 91       		.byte	0x91
+ 380 00c9 6F       		.sleb128 -17
+ 381 00ca 09       		.uleb128 0x9
+ 382 00cb 9C000000 		.4byte	.LASF22
+ 383 00cf 01       		.byte	0x1
+ 384 00d0 2C       		.byte	0x2c
+ 385 00d1 6B000000 		.4byte	0x6b
+ 386 00d5 02       		.uleb128 0x2
+ 387 00d6 91       		.byte	0x91
+ 388 00d7 77       		.sleb128 -9
+ 389 00d8 00       		.byte	0
+ 390 00d9 07       		.uleb128 0x7
+ 391 00da 0C000000 		.4byte	.LASF16
+ 392 00de 01       		.byte	0x1
+ 393 00df 49       		.byte	0x49
+ 394 00e0 00000000 		.4byte	.LFB1
+ 395 00e4 78000000 		.4byte	.LFE1-.LFB1
+ 396 00e8 01       		.uleb128 0x1
+ 397 00e9 9C       		.byte	0x9c
+ 398 00ea FD000000 		.4byte	0xfd
+ 399 00ee 08       		.uleb128 0x8
+ 400 00ef 87010000 		.4byte	.LASF18
+ 401 00f3 01       		.byte	0x1
+ 402 00f4 49       		.byte	0x49
+ 403 00f5 6B000000 		.4byte	0x6b
+ 404 00f9 02       		.uleb128 0x2
+ 405 00fa 91       		.byte	0x91
+ 406 00fb 77       		.sleb128 -9
+ 407 00fc 00       		.byte	0
+ 408 00fd 0A       		.uleb128 0xa
+ 409 00fe 27000000 		.4byte	.LASF19
+ 410 0102 01       		.byte	0x1
+ 411 0103 64       		.byte	0x64
+ 412 0104 6B000000 		.4byte	0x6b
+ 413 0108 00000000 		.4byte	.LFB2
+ 414 010c 1C000000 		.4byte	.LFE2-.LFB2
+ 415 0110 01       		.uleb128 0x1
+ 416 0111 9C       		.byte	0x9c
+ 417 0112 0A       		.uleb128 0xa
+ 418 0113 57000000 		.4byte	.LASF20
+ 419 0117 01       		.byte	0x1
+ 420 0118 78       		.byte	0x78
+ 421 0119 6B000000 		.4byte	0x6b
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccJNR70x.s 			page 11
+
+
+ 422 011d 00000000 		.4byte	.LFB3
+ 423 0121 1C000000 		.4byte	.LFE3-.LFB3
+ 424 0125 01       		.uleb128 0x1
+ 425 0126 9C       		.byte	0x9c
+ 426 0127 0B       		.uleb128 0xb
+ 427 0128 3A000000 		.4byte	.LASF21
+ 428 012c 01       		.byte	0x1
+ 429 012d 90       		.byte	0x90
+ 430 012e 6B000000 		.4byte	0x6b
+ 431 0132 00000000 		.4byte	.LFB4
+ 432 0136 30000000 		.4byte	.LFE4-.LFB4
+ 433 013a 01       		.uleb128 0x1
+ 434 013b 9C       		.byte	0x9c
+ 435 013c 09       		.uleb128 0x9
+ 436 013d 9A010000 		.4byte	.LASF23
+ 437 0141 01       		.byte	0x1
+ 438 0142 92       		.byte	0x92
+ 439 0143 6B000000 		.4byte	0x6b
+ 440 0147 02       		.uleb128 0x2
+ 441 0148 91       		.byte	0x91
+ 442 0149 77       		.sleb128 -9
+ 443 014a 00       		.byte	0
+ 444 014b 00       		.byte	0
+ 445              		.section	.debug_abbrev,"",%progbits
+ 446              	.Ldebug_abbrev0:
+ 447 0000 01       		.uleb128 0x1
+ 448 0001 11       		.uleb128 0x11
+ 449 0002 01       		.byte	0x1
+ 450 0003 25       		.uleb128 0x25
+ 451 0004 0E       		.uleb128 0xe
+ 452 0005 13       		.uleb128 0x13
+ 453 0006 0B       		.uleb128 0xb
+ 454 0007 03       		.uleb128 0x3
+ 455 0008 0E       		.uleb128 0xe
+ 456 0009 1B       		.uleb128 0x1b
+ 457 000a 0E       		.uleb128 0xe
+ 458 000b 55       		.uleb128 0x55
+ 459 000c 17       		.uleb128 0x17
+ 460 000d 11       		.uleb128 0x11
+ 461 000e 01       		.uleb128 0x1
+ 462 000f 10       		.uleb128 0x10
+ 463 0010 17       		.uleb128 0x17
+ 464 0011 00       		.byte	0
+ 465 0012 00       		.byte	0
+ 466 0013 02       		.uleb128 0x2
+ 467 0014 24       		.uleb128 0x24
+ 468 0015 00       		.byte	0
+ 469 0016 0B       		.uleb128 0xb
+ 470 0017 0B       		.uleb128 0xb
+ 471 0018 3E       		.uleb128 0x3e
+ 472 0019 0B       		.uleb128 0xb
+ 473 001a 03       		.uleb128 0x3
+ 474 001b 0E       		.uleb128 0xe
+ 475 001c 00       		.byte	0
+ 476 001d 00       		.byte	0
+ 477 001e 03       		.uleb128 0x3
+ 478 001f 24       		.uleb128 0x24
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccJNR70x.s 			page 12
+
+
+ 479 0020 00       		.byte	0
+ 480 0021 0B       		.uleb128 0xb
+ 481 0022 0B       		.uleb128 0xb
+ 482 0023 3E       		.uleb128 0x3e
+ 483 0024 0B       		.uleb128 0xb
+ 484 0025 03       		.uleb128 0x3
+ 485 0026 08       		.uleb128 0x8
+ 486 0027 00       		.byte	0
+ 487 0028 00       		.byte	0
+ 488 0029 04       		.uleb128 0x4
+ 489 002a 16       		.uleb128 0x16
+ 490 002b 00       		.byte	0
+ 491 002c 03       		.uleb128 0x3
+ 492 002d 0E       		.uleb128 0xe
+ 493 002e 3A       		.uleb128 0x3a
+ 494 002f 0B       		.uleb128 0xb
+ 495 0030 3B       		.uleb128 0x3b
+ 496 0031 0B       		.uleb128 0xb
+ 497 0032 49       		.uleb128 0x49
+ 498 0033 13       		.uleb128 0x13
+ 499 0034 00       		.byte	0
+ 500 0035 00       		.byte	0
+ 501 0036 05       		.uleb128 0x5
+ 502 0037 16       		.uleb128 0x16
+ 503 0038 00       		.byte	0
+ 504 0039 03       		.uleb128 0x3
+ 505 003a 0E       		.uleb128 0xe
+ 506 003b 3A       		.uleb128 0x3a
+ 507 003c 0B       		.uleb128 0xb
+ 508 003d 3B       		.uleb128 0x3b
+ 509 003e 05       		.uleb128 0x5
+ 510 003f 49       		.uleb128 0x49
+ 511 0040 13       		.uleb128 0x13
+ 512 0041 00       		.byte	0
+ 513 0042 00       		.byte	0
+ 514 0043 06       		.uleb128 0x6
+ 515 0044 35       		.uleb128 0x35
+ 516 0045 00       		.byte	0
+ 517 0046 49       		.uleb128 0x49
+ 518 0047 13       		.uleb128 0x13
+ 519 0048 00       		.byte	0
+ 520 0049 00       		.byte	0
+ 521 004a 07       		.uleb128 0x7
+ 522 004b 2E       		.uleb128 0x2e
+ 523 004c 01       		.byte	0x1
+ 524 004d 3F       		.uleb128 0x3f
+ 525 004e 19       		.uleb128 0x19
+ 526 004f 03       		.uleb128 0x3
+ 527 0050 0E       		.uleb128 0xe
+ 528 0051 3A       		.uleb128 0x3a
+ 529 0052 0B       		.uleb128 0xb
+ 530 0053 3B       		.uleb128 0x3b
+ 531 0054 0B       		.uleb128 0xb
+ 532 0055 27       		.uleb128 0x27
+ 533 0056 19       		.uleb128 0x19
+ 534 0057 11       		.uleb128 0x11
+ 535 0058 01       		.uleb128 0x1
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccJNR70x.s 			page 13
+
+
+ 536 0059 12       		.uleb128 0x12
+ 537 005a 06       		.uleb128 0x6
+ 538 005b 40       		.uleb128 0x40
+ 539 005c 18       		.uleb128 0x18
+ 540 005d 9742     		.uleb128 0x2117
+ 541 005f 19       		.uleb128 0x19
+ 542 0060 01       		.uleb128 0x1
+ 543 0061 13       		.uleb128 0x13
+ 544 0062 00       		.byte	0
+ 545 0063 00       		.byte	0
+ 546 0064 08       		.uleb128 0x8
+ 547 0065 05       		.uleb128 0x5
+ 548 0066 00       		.byte	0
+ 549 0067 03       		.uleb128 0x3
+ 550 0068 0E       		.uleb128 0xe
+ 551 0069 3A       		.uleb128 0x3a
+ 552 006a 0B       		.uleb128 0xb
+ 553 006b 3B       		.uleb128 0x3b
+ 554 006c 0B       		.uleb128 0xb
+ 555 006d 49       		.uleb128 0x49
+ 556 006e 13       		.uleb128 0x13
+ 557 006f 02       		.uleb128 0x2
+ 558 0070 18       		.uleb128 0x18
+ 559 0071 00       		.byte	0
+ 560 0072 00       		.byte	0
+ 561 0073 09       		.uleb128 0x9
+ 562 0074 34       		.uleb128 0x34
+ 563 0075 00       		.byte	0
+ 564 0076 03       		.uleb128 0x3
+ 565 0077 0E       		.uleb128 0xe
+ 566 0078 3A       		.uleb128 0x3a
+ 567 0079 0B       		.uleb128 0xb
+ 568 007a 3B       		.uleb128 0x3b
+ 569 007b 0B       		.uleb128 0xb
+ 570 007c 49       		.uleb128 0x49
+ 571 007d 13       		.uleb128 0x13
+ 572 007e 02       		.uleb128 0x2
+ 573 007f 18       		.uleb128 0x18
+ 574 0080 00       		.byte	0
+ 575 0081 00       		.byte	0
+ 576 0082 0A       		.uleb128 0xa
+ 577 0083 2E       		.uleb128 0x2e
+ 578 0084 00       		.byte	0
+ 579 0085 3F       		.uleb128 0x3f
+ 580 0086 19       		.uleb128 0x19
+ 581 0087 03       		.uleb128 0x3
+ 582 0088 0E       		.uleb128 0xe
+ 583 0089 3A       		.uleb128 0x3a
+ 584 008a 0B       		.uleb128 0xb
+ 585 008b 3B       		.uleb128 0x3b
+ 586 008c 0B       		.uleb128 0xb
+ 587 008d 27       		.uleb128 0x27
+ 588 008e 19       		.uleb128 0x19
+ 589 008f 49       		.uleb128 0x49
+ 590 0090 13       		.uleb128 0x13
+ 591 0091 11       		.uleb128 0x11
+ 592 0092 01       		.uleb128 0x1
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccJNR70x.s 			page 14
+
+
+ 593 0093 12       		.uleb128 0x12
+ 594 0094 06       		.uleb128 0x6
+ 595 0095 40       		.uleb128 0x40
+ 596 0096 18       		.uleb128 0x18
+ 597 0097 9742     		.uleb128 0x2117
+ 598 0099 19       		.uleb128 0x19
+ 599 009a 00       		.byte	0
+ 600 009b 00       		.byte	0
+ 601 009c 0B       		.uleb128 0xb
+ 602 009d 2E       		.uleb128 0x2e
+ 603 009e 01       		.byte	0x1
+ 604 009f 3F       		.uleb128 0x3f
+ 605 00a0 19       		.uleb128 0x19
+ 606 00a1 03       		.uleb128 0x3
+ 607 00a2 0E       		.uleb128 0xe
+ 608 00a3 3A       		.uleb128 0x3a
+ 609 00a4 0B       		.uleb128 0xb
+ 610 00a5 3B       		.uleb128 0x3b
+ 611 00a6 0B       		.uleb128 0xb
+ 612 00a7 27       		.uleb128 0x27
+ 613 00a8 19       		.uleb128 0x19
+ 614 00a9 49       		.uleb128 0x49
+ 615 00aa 13       		.uleb128 0x13
+ 616 00ab 11       		.uleb128 0x11
+ 617 00ac 01       		.uleb128 0x1
+ 618 00ad 12       		.uleb128 0x12
+ 619 00ae 06       		.uleb128 0x6
+ 620 00af 40       		.uleb128 0x40
+ 621 00b0 18       		.uleb128 0x18
+ 622 00b1 9742     		.uleb128 0x2117
+ 623 00b3 19       		.uleb128 0x19
+ 624 00b4 00       		.byte	0
+ 625 00b5 00       		.byte	0
+ 626 00b6 00       		.byte	0
+ 627              		.section	.debug_aranges,"",%progbits
+ 628 0000 3C000000 		.4byte	0x3c
+ 629 0004 0200     		.2byte	0x2
+ 630 0006 00000000 		.4byte	.Ldebug_info0
+ 631 000a 04       		.byte	0x4
+ 632 000b 00       		.byte	0
+ 633 000c 0000     		.2byte	0
+ 634 000e 0000     		.2byte	0
+ 635 0010 00000000 		.4byte	.LFB0
+ 636 0014 48000000 		.4byte	.LFE0-.LFB0
+ 637 0018 00000000 		.4byte	.LFB1
+ 638 001c 78000000 		.4byte	.LFE1-.LFB1
+ 639 0020 00000000 		.4byte	.LFB2
+ 640 0024 1C000000 		.4byte	.LFE2-.LFB2
+ 641 0028 00000000 		.4byte	.LFB3
+ 642 002c 1C000000 		.4byte	.LFE3-.LFB3
+ 643 0030 00000000 		.4byte	.LFB4
+ 644 0034 30000000 		.4byte	.LFE4-.LFB4
+ 645 0038 00000000 		.4byte	0
+ 646 003c 00000000 		.4byte	0
+ 647              		.section	.debug_ranges,"",%progbits
+ 648              	.Ldebug_ranges0:
+ 649 0000 00000000 		.4byte	.LFB0
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccJNR70x.s 			page 15
+
+
+ 650 0004 48000000 		.4byte	.LFE0
+ 651 0008 00000000 		.4byte	.LFB1
+ 652 000c 78000000 		.4byte	.LFE1
+ 653 0010 00000000 		.4byte	.LFB2
+ 654 0014 1C000000 		.4byte	.LFE2
+ 655 0018 00000000 		.4byte	.LFB3
+ 656 001c 1C000000 		.4byte	.LFE3
+ 657 0020 00000000 		.4byte	.LFB4
+ 658 0024 30000000 		.4byte	.LFE4
+ 659 0028 00000000 		.4byte	0
+ 660 002c 00000000 		.4byte	0
+ 661              		.section	.debug_line,"",%progbits
+ 662              	.Ldebug_line0:
+ 663 0000 B2000000 		.section	.debug_str,"MS",%progbits,1
+ 663      02004C00 
+ 663      00000201 
+ 663      FB0E0D00 
+ 663      01010101 
+ 664              	.LASF14:
+ 665 0000 72656733 		.ascii	"reg32\000"
+ 665      3200
+ 666              	.LASF17:
+ 667 0006 76616C75 		.ascii	"value\000"
+ 667      6500
+ 668              	.LASF16:
+ 669 000c 52785F46 		.ascii	"Rx_Front_Pins_SetDriveMode\000"
+ 669      726F6E74 
+ 669      5F50696E 
+ 669      735F5365 
+ 669      74447269 
+ 670              	.LASF19:
+ 671 0027 52785F46 		.ascii	"Rx_Front_Pins_Read\000"
+ 671      726F6E74 
+ 671      5F50696E 
+ 671      735F5265 
+ 671      616400
+ 672              	.LASF21:
+ 673 003a 52785F46 		.ascii	"Rx_Front_Pins_ClearInterrupt\000"
+ 673      726F6E74 
+ 673      5F50696E 
+ 673      735F436C 
+ 673      65617249 
+ 674              	.LASF20:
+ 675 0057 52785F46 		.ascii	"Rx_Front_Pins_ReadDataReg\000"
+ 675      726F6E74 
+ 675      5F50696E 
+ 675      735F5265 
+ 675      61644461 
+ 676              	.LASF11:
+ 677 0071 666C6F61 		.ascii	"float\000"
+ 677      7400
+ 678              	.LASF7:
+ 679 0077 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 679      206C6F6E 
+ 679      6720756E 
+ 679      7369676E 
+ 679      65642069 
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccJNR70x.s 			page 16
+
+
+ 680              	.LASF1:
+ 681 008e 756E7369 		.ascii	"unsigned char\000"
+ 681      676E6564 
+ 681      20636861 
+ 681      7200
+ 682              	.LASF22:
+ 683 009c 64725661 		.ascii	"drVal\000"
+ 683      6C00
+ 684              	.LASF5:
+ 685 00a2 6C6F6E67 		.ascii	"long unsigned int\000"
+ 685      20756E73 
+ 685      69676E65 
+ 685      6420696E 
+ 685      7400
+ 686              	.LASF3:
+ 687 00b4 73686F72 		.ascii	"short unsigned int\000"
+ 687      7420756E 
+ 687      7369676E 
+ 687      65642069 
+ 687      6E7400
+ 688              	.LASF12:
+ 689 00c7 646F7562 		.ascii	"double\000"
+ 689      6C6500
+ 690              	.LASF10:
+ 691 00ce 75696E74 		.ascii	"uint32\000"
+ 691      333200
+ 692              	.LASF8:
+ 693 00d5 756E7369 		.ascii	"unsigned int\000"
+ 693      676E6564 
+ 693      20696E74 
+ 693      00
+ 694              	.LASF25:
+ 695 00e2 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\Rx_Front_Pins.c\000"
+ 695      6E657261 
+ 695      7465645F 
+ 695      536F7572 
+ 695      63655C50 
+ 696              	.LASF24:
+ 697 010b 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 697      4320342E 
+ 697      382E3420 
+ 697      32303134 
+ 697      30353236 
+ 698 013e 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 698      20726576 
+ 698      6973696F 
+ 698      6E203231 
+ 698      31333538 
+ 699 0171 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 699      66756E63 
+ 699      74696F6E 
+ 699      2D736563 
+ 699      74696F6E 
+ 700              	.LASF18:
+ 701 0187 6D6F6465 		.ascii	"mode\000"
+ 701      00
+ 702              	.LASF6:
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccJNR70x.s 			page 17
+
+
+ 703 018c 6C6F6E67 		.ascii	"long long int\000"
+ 703      206C6F6E 
+ 703      6720696E 
+ 703      7400
+ 704              	.LASF23:
+ 705 019a 6D61736B 		.ascii	"maskedStatus\000"
+ 705      65645374 
+ 705      61747573 
+ 705      00
+ 706              	.LASF13:
+ 707 01a7 63686172 		.ascii	"char\000"
+ 707      00
+ 708              	.LASF15:
+ 709 01ac 52785F46 		.ascii	"Rx_Front_Pins_Write\000"
+ 709      726F6E74 
+ 709      5F50696E 
+ 709      735F5772 
+ 709      69746500 
+ 710              	.LASF2:
+ 711 01c0 73686F72 		.ascii	"short int\000"
+ 711      7420696E 
+ 711      7400
+ 712              	.LASF9:
+ 713 01ca 75696E74 		.ascii	"uint8\000"
+ 713      3800
+ 714              	.LASF4:
+ 715 01d0 6C6F6E67 		.ascii	"long int\000"
+ 715      20696E74 
+ 715      00
+ 716              	.LASF0:
+ 717 01d9 7369676E 		.ascii	"signed char\000"
+ 717      65642063 
+ 717      68617200 
+ 718              	.LASF26:
+ 719 01e5 433A5C55 		.ascii	"C:\\Users\\Matthew Arbesfeld\\Documents\\PSoC Creat"
+ 719      73657273 
+ 719      5C4D6174 
+ 719      74686577 
+ 719      20417262 
+ 720 0214 6F725C42 		.ascii	"or\\BoxesUART\\Boxes4.cydsn\000"
+ 720      6F786573 
+ 720      55415254 
+ 720      5C426F78 
+ 720      6573342E 
+ 721              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

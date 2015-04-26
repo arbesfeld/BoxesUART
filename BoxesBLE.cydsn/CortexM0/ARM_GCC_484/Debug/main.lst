@@ -1,0 +1,632 @@
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccHMayWl.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.isr_UART_1_Int,"ax",%progbits
+  18              		.align	2
+  19              		.global	isr_UART_1_Int
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	isr_UART_1_Int, %function
+  23              	isr_UART_1_Int:
+  24              	.LFB35:
+  25              		.file 1 ".\\main.c"
+   1:.\main.c      **** /* ========================================
+   2:.\main.c      ****  *
+   3:.\main.c      ****  * Copyright YOUR COMPANY, THE YEAR
+   4:.\main.c      ****  * All Rights Reserved
+   5:.\main.c      ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\main.c      ****  *
+   7:.\main.c      ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\main.c      ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\main.c      ****  *
+  10:.\main.c      ****  * ========================================
+  11:.\main.c      **** */
+  12:.\main.c      **** #include <project.h>
+  13:.\main.c      **** 
+  14:.\main.c      **** 
+  15:.\main.c      **** CY_ISR_PROTO(isr_UART_1_Int);
+  16:.\main.c      **** CY_ISR(isr_UART_1_Int) {
+  26              		.loc 1 16 0
+  27              		.cfi_startproc
+  28 0000 90B5     		push	{r4, r7, lr}
+  29              		.cfi_def_cfa_offset 12
+  30              		.cfi_offset 4, -12
+  31              		.cfi_offset 7, -8
+  32              		.cfi_offset 14, -4
+  33 0002 83B0     		sub	sp, sp, #12
+  34              		.cfi_def_cfa_offset 24
+  35 0004 00AF     		add	r7, sp, #0
+  36              		.cfi_def_cfa_register 7
+  17:.\main.c      ****     while(UART_1_GetRxBufferSize()) {
+  37              		.loc 1 17 0
+  38 0006 0FE0     		b	.L2
+  39              	.L4:
+  40              	.LBB2:
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccHMayWl.s 			page 2
+
+
+  18:.\main.c      ****         char myChar = UART_1_GetChar();
+  41              		.loc 1 18 0
+  42 0008 FC1D     		add	r4, r7, #7
+  43 000a FFF7FEFF 		bl	UART_1_GetChar
+  44 000e 031C     		mov	r3, r0
+  45 0010 2370     		strb	r3, [r4]
+  19:.\main.c      ****         if (myChar == '1') {
+  46              		.loc 1 19 0
+  47 0012 FB1D     		add	r3, r7, #7
+  48 0014 1B78     		ldrb	r3, [r3]
+  49 0016 312B     		cmp	r3, #49
+  50 0018 03D1     		bne	.L3
+  20:.\main.c      ****             LED_Write(1);   
+  51              		.loc 1 20 0
+  52 001a 0120     		mov	r0, #1
+  53 001c FFF7FEFF 		bl	LED_Write
+  54 0020 02E0     		b	.L2
+  55              	.L3:
+  21:.\main.c      ****         } else {
+  22:.\main.c      ****             LED_Write(0);
+  56              		.loc 1 22 0
+  57 0022 0020     		mov	r0, #0
+  58 0024 FFF7FEFF 		bl	LED_Write
+  59              	.L2:
+  60              	.LBE2:
+  17:.\main.c      ****     while(UART_1_GetRxBufferSize()) {
+  61              		.loc 1 17 0 discriminator 1
+  62 0028 FFF7FEFF 		bl	UART_1_GetRxBufferSize
+  63 002c 031C     		mov	r3, r0
+  64 002e 002B     		cmp	r3, #0
+  65 0030 EAD1     		bne	.L4
+  23:.\main.c      ****         }
+  24:.\main.c      ****     }
+  25:.\main.c      **** }
+  66              		.loc 1 25 0
+  67 0032 BD46     		mov	sp, r7
+  68 0034 03B0     		add	sp, sp, #12
+  69              		@ sp needed
+  70 0036 90BD     		pop	{r4, r7, pc}
+  71              		.cfi_endproc
+  72              	.LFE35:
+  73              		.size	isr_UART_1_Int, .-isr_UART_1_Int
+  74              		.section	.text.main,"ax",%progbits
+  75              		.align	2
+  76              		.global	main
+  77              		.code	16
+  78              		.thumb_func
+  79              		.type	main, %function
+  80              	main:
+  81              	.LFB36:
+  26:.\main.c      **** 
+  27:.\main.c      **** int main()
+  28:.\main.c      **** {
+  82              		.loc 1 28 0
+  83              		.cfi_startproc
+  84 0000 90B5     		push	{r4, r7, lr}
+  85              		.cfi_def_cfa_offset 12
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccHMayWl.s 			page 3
+
+
+  86              		.cfi_offset 4, -12
+  87              		.cfi_offset 7, -8
+  88              		.cfi_offset 14, -4
+  89 0002 83B0     		sub	sp, sp, #12
+  90              		.cfi_def_cfa_offset 24
+  91 0004 00AF     		add	r7, sp, #0
+  92              		.cfi_def_cfa_register 7
+  29:.\main.c      ****     CyGlobalIntEnable;
+  93              		.loc 1 29 0
+  94              	@ 29 ".\main.c" 1
+  95 0006 62B6     		CPSIE   i
+  96              	@ 0 "" 2
+  30:.\main.c      ****     uint8 recByte;
+  31:.\main.c      ****     uint8 tmpStat;
+  32:.\main.c      ****     UART_1_Start();
+  97              		.loc 1 32 0
+  98              		.code	16
+  99 0008 FFF7FEFF 		bl	UART_1_Start
+  33:.\main.c      ****     
+  34:.\main.c      ****     /* Alternatively, check TX_STS_COMPLETE status bit */
+  35:.\main.c      ****     UART_1_LoadRxConfig();
+ 100              		.loc 1 35 0
+ 101 000c FFF7FEFF 		bl	UART_1_LoadRxConfig
+ 102              	.L8:
+  36:.\main.c      ****     
+  37:.\main.c      ****     while (1) {
+  38:.\main.c      ****         recByte = UART_1_GetChar();
+ 103              		.loc 1 38 0
+ 104 0010 FC1D     		add	r4, r7, #7
+ 105 0012 FFF7FEFF 		bl	UART_1_GetChar
+ 106 0016 031C     		mov	r3, r0
+ 107 0018 2370     		strb	r3, [r4]
+  39:.\main.c      ****         if (recByte > 0) {
+ 108              		.loc 1 39 0
+ 109 001a FB1D     		add	r3, r7, #7
+ 110 001c 1B78     		ldrb	r3, [r3]
+ 111 001e 002B     		cmp	r3, #0
+ 112 0020 0FD0     		beq	.L6
+  40:.\main.c      ****             if (recByte == '1') {
+ 113              		.loc 1 40 0
+ 114 0022 FB1D     		add	r3, r7, #7
+ 115 0024 1B78     		ldrb	r3, [r3]
+ 116 0026 312B     		cmp	r3, #49
+ 117 0028 03D1     		bne	.L7
+  41:.\main.c      ****                 LED_Write(1);   
+ 118              		.loc 1 41 0
+ 119 002a 0120     		mov	r0, #1
+ 120 002c FFF7FEFF 		bl	LED_Write
+ 121 0030 07E0     		b	.L6
+ 122              	.L7:
+  42:.\main.c      ****             } else if (recByte == '2') {
+ 123              		.loc 1 42 0
+ 124 0032 FB1D     		add	r3, r7, #7
+ 125 0034 1B78     		ldrb	r3, [r3]
+ 126 0036 322B     		cmp	r3, #50
+ 127 0038 03D1     		bne	.L6
+  43:.\main.c      ****                 LED_Write(0);
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccHMayWl.s 			page 4
+
+
+ 128              		.loc 1 43 0
+ 129 003a 0020     		mov	r0, #0
+ 130 003c FFF7FEFF 		bl	LED_Write
+  44:.\main.c      ****             }
+  45:.\main.c      ****             
+  46:.\main.c      ****             /*
+  47:.\main.c      ****             UART_1_LoadTxConfig();
+  48:.\main.c      ****             UART_1_PutChar(recByte);
+  49:.\main.c      ****             do {
+  50:.\main.c      ****                 tmpStat = UART_1_ReadTxStatus();
+  51:.\main.c      ****             } while (~tmpStat & UART_1_TX_STS_COMPLETE); 
+  52:.\main.c      ****             */
+  53:.\main.c      ****             
+  54:.\main.c      ****             //UART_1_LoadRxConfig();
+  55:.\main.c      ****         }
+  56:.\main.c      ****     }
+ 131              		.loc 1 56 0
+ 132 0040 E6E7     		b	.L8
+ 133              	.L6:
+ 134 0042 E5E7     		b	.L8
+ 135              		.cfi_endproc
+ 136              	.LFE36:
+ 137              		.size	main, .-main
+ 138              		.text
+ 139              	.Letext0:
+ 140              		.file 2 ".\\Generated_Source\\PSoC4/cytypes.h"
+ 141              		.section	.debug_info,"",%progbits
+ 142              	.Ldebug_info0:
+ 143 0000 EC000000 		.4byte	0xec
+ 144 0004 0400     		.2byte	0x4
+ 145 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 146 000a 04       		.byte	0x4
+ 147 000b 01       		.uleb128 0x1
+ 148 000c 5E000000 		.4byte	.LASF15
+ 149 0010 01       		.byte	0x1
+ 150 0011 8E010000 		.4byte	.LASF16
+ 151 0015 17010000 		.4byte	.LASF17
+ 152 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 153 001d 00000000 		.4byte	0
+ 154 0021 00000000 		.4byte	.Ldebug_line0
+ 155 0025 02       		.uleb128 0x2
+ 156 0026 01       		.byte	0x1
+ 157 0027 06       		.byte	0x6
+ 158 0028 7C010000 		.4byte	.LASF0
+ 159 002c 02       		.uleb128 0x2
+ 160 002d 01       		.byte	0x1
+ 161 002e 08       		.byte	0x8
+ 162 002f F1000000 		.4byte	.LASF1
+ 163 0033 02       		.uleb128 0x2
+ 164 0034 02       		.byte	0x2
+ 165 0035 05       		.byte	0x5
+ 166 0036 0D010000 		.4byte	.LASF2
+ 167 003a 02       		.uleb128 0x2
+ 168 003b 02       		.byte	0x2
+ 169 003c 07       		.byte	0x7
+ 170 003d 69010000 		.4byte	.LASF3
+ 171 0041 02       		.uleb128 0x2
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccHMayWl.s 			page 5
+
+
+ 172 0042 04       		.byte	0x4
+ 173 0043 05       		.byte	0x5
+ 174 0044 04010000 		.4byte	.LASF4
+ 175 0048 02       		.uleb128 0x2
+ 176 0049 04       		.byte	0x4
+ 177 004a 07       		.byte	0x7
+ 178 004b 35000000 		.4byte	.LASF5
+ 179 004f 02       		.uleb128 0x2
+ 180 0050 08       		.byte	0x8
+ 181 0051 05       		.byte	0x5
+ 182 0052 00000000 		.4byte	.LASF6
+ 183 0056 02       		.uleb128 0x2
+ 184 0057 08       		.byte	0x8
+ 185 0058 07       		.byte	0x7
+ 186 0059 47000000 		.4byte	.LASF7
+ 187 005d 03       		.uleb128 0x3
+ 188 005e 04       		.byte	0x4
+ 189 005f 05       		.byte	0x5
+ 190 0060 696E7400 		.ascii	"int\000"
+ 191 0064 02       		.uleb128 0x2
+ 192 0065 04       		.byte	0x4
+ 193 0066 07       		.byte	0x7
+ 194 0067 0E000000 		.4byte	.LASF8
+ 195 006b 04       		.uleb128 0x4
+ 196 006c 2F000000 		.4byte	.LASF18
+ 197 0070 02       		.byte	0x2
+ 198 0071 A1       		.byte	0xa1
+ 199 0072 2C000000 		.4byte	0x2c
+ 200 0076 02       		.uleb128 0x2
+ 201 0077 04       		.byte	0x4
+ 202 0078 04       		.byte	0x4
+ 203 0079 88010000 		.4byte	.LASF9
+ 204 007d 02       		.uleb128 0x2
+ 205 007e 08       		.byte	0x8
+ 206 007f 04       		.byte	0x4
+ 207 0080 62010000 		.4byte	.LASF10
+ 208 0084 02       		.uleb128 0x2
+ 209 0085 01       		.byte	0x1
+ 210 0086 08       		.byte	0x8
+ 211 0087 FF000000 		.4byte	.LASF11
+ 212 008b 02       		.uleb128 0x2
+ 213 008c 04       		.byte	0x4
+ 214 008d 07       		.byte	0x7
+ 215 008e 97010000 		.4byte	.LASF12
+ 216 0092 05       		.uleb128 0x5
+ 217 0093 E2000000 		.4byte	.LASF19
+ 218 0097 01       		.byte	0x1
+ 219 0098 10       		.byte	0x10
+ 220 0099 00000000 		.4byte	.LFB35
+ 221 009d 38000000 		.4byte	.LFE35-.LFB35
+ 222 00a1 01       		.uleb128 0x1
+ 223 00a2 9C       		.byte	0x9c
+ 224 00a3 C0000000 		.4byte	0xc0
+ 225 00a7 06       		.uleb128 0x6
+ 226 00a8 08000000 		.4byte	.LBB2
+ 227 00ac 20000000 		.4byte	.LBE2-.LBB2
+ 228 00b0 07       		.uleb128 0x7
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccHMayWl.s 			page 6
+
+
+ 229 00b1 20000000 		.4byte	.LASF13
+ 230 00b5 01       		.byte	0x1
+ 231 00b6 12       		.byte	0x12
+ 232 00b7 84000000 		.4byte	0x84
+ 233 00bb 02       		.uleb128 0x2
+ 234 00bc 91       		.byte	0x91
+ 235 00bd 6F       		.sleb128 -17
+ 236 00be 00       		.byte	0
+ 237 00bf 00       		.byte	0
+ 238 00c0 08       		.uleb128 0x8
+ 239 00c1 1B000000 		.4byte	.LASF20
+ 240 00c5 01       		.byte	0x1
+ 241 00c6 1B       		.byte	0x1b
+ 242 00c7 5D000000 		.4byte	0x5d
+ 243 00cb 00000000 		.4byte	.LFB36
+ 244 00cf 44000000 		.4byte	.LFE36-.LFB36
+ 245 00d3 01       		.uleb128 0x1
+ 246 00d4 9C       		.byte	0x9c
+ 247 00d5 07       		.uleb128 0x7
+ 248 00d6 27000000 		.4byte	.LASF14
+ 249 00da 01       		.byte	0x1
+ 250 00db 1E       		.byte	0x1e
+ 251 00dc 6B000000 		.4byte	0x6b
+ 252 00e0 02       		.uleb128 0x2
+ 253 00e1 91       		.byte	0x91
+ 254 00e2 6F       		.sleb128 -17
+ 255 00e3 09       		.uleb128 0x9
+ 256 00e4 DA000000 		.4byte	.LASF21
+ 257 00e8 01       		.byte	0x1
+ 258 00e9 1F       		.byte	0x1f
+ 259 00ea 6B000000 		.4byte	0x6b
+ 260 00ee 00       		.byte	0
+ 261 00ef 00       		.byte	0
+ 262              		.section	.debug_abbrev,"",%progbits
+ 263              	.Ldebug_abbrev0:
+ 264 0000 01       		.uleb128 0x1
+ 265 0001 11       		.uleb128 0x11
+ 266 0002 01       		.byte	0x1
+ 267 0003 25       		.uleb128 0x25
+ 268 0004 0E       		.uleb128 0xe
+ 269 0005 13       		.uleb128 0x13
+ 270 0006 0B       		.uleb128 0xb
+ 271 0007 03       		.uleb128 0x3
+ 272 0008 0E       		.uleb128 0xe
+ 273 0009 1B       		.uleb128 0x1b
+ 274 000a 0E       		.uleb128 0xe
+ 275 000b 55       		.uleb128 0x55
+ 276 000c 17       		.uleb128 0x17
+ 277 000d 11       		.uleb128 0x11
+ 278 000e 01       		.uleb128 0x1
+ 279 000f 10       		.uleb128 0x10
+ 280 0010 17       		.uleb128 0x17
+ 281 0011 00       		.byte	0
+ 282 0012 00       		.byte	0
+ 283 0013 02       		.uleb128 0x2
+ 284 0014 24       		.uleb128 0x24
+ 285 0015 00       		.byte	0
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccHMayWl.s 			page 7
+
+
+ 286 0016 0B       		.uleb128 0xb
+ 287 0017 0B       		.uleb128 0xb
+ 288 0018 3E       		.uleb128 0x3e
+ 289 0019 0B       		.uleb128 0xb
+ 290 001a 03       		.uleb128 0x3
+ 291 001b 0E       		.uleb128 0xe
+ 292 001c 00       		.byte	0
+ 293 001d 00       		.byte	0
+ 294 001e 03       		.uleb128 0x3
+ 295 001f 24       		.uleb128 0x24
+ 296 0020 00       		.byte	0
+ 297 0021 0B       		.uleb128 0xb
+ 298 0022 0B       		.uleb128 0xb
+ 299 0023 3E       		.uleb128 0x3e
+ 300 0024 0B       		.uleb128 0xb
+ 301 0025 03       		.uleb128 0x3
+ 302 0026 08       		.uleb128 0x8
+ 303 0027 00       		.byte	0
+ 304 0028 00       		.byte	0
+ 305 0029 04       		.uleb128 0x4
+ 306 002a 16       		.uleb128 0x16
+ 307 002b 00       		.byte	0
+ 308 002c 03       		.uleb128 0x3
+ 309 002d 0E       		.uleb128 0xe
+ 310 002e 3A       		.uleb128 0x3a
+ 311 002f 0B       		.uleb128 0xb
+ 312 0030 3B       		.uleb128 0x3b
+ 313 0031 0B       		.uleb128 0xb
+ 314 0032 49       		.uleb128 0x49
+ 315 0033 13       		.uleb128 0x13
+ 316 0034 00       		.byte	0
+ 317 0035 00       		.byte	0
+ 318 0036 05       		.uleb128 0x5
+ 319 0037 2E       		.uleb128 0x2e
+ 320 0038 01       		.byte	0x1
+ 321 0039 3F       		.uleb128 0x3f
+ 322 003a 19       		.uleb128 0x19
+ 323 003b 03       		.uleb128 0x3
+ 324 003c 0E       		.uleb128 0xe
+ 325 003d 3A       		.uleb128 0x3a
+ 326 003e 0B       		.uleb128 0xb
+ 327 003f 3B       		.uleb128 0x3b
+ 328 0040 0B       		.uleb128 0xb
+ 329 0041 27       		.uleb128 0x27
+ 330 0042 19       		.uleb128 0x19
+ 331 0043 11       		.uleb128 0x11
+ 332 0044 01       		.uleb128 0x1
+ 333 0045 12       		.uleb128 0x12
+ 334 0046 06       		.uleb128 0x6
+ 335 0047 40       		.uleb128 0x40
+ 336 0048 18       		.uleb128 0x18
+ 337 0049 9642     		.uleb128 0x2116
+ 338 004b 19       		.uleb128 0x19
+ 339 004c 01       		.uleb128 0x1
+ 340 004d 13       		.uleb128 0x13
+ 341 004e 00       		.byte	0
+ 342 004f 00       		.byte	0
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccHMayWl.s 			page 8
+
+
+ 343 0050 06       		.uleb128 0x6
+ 344 0051 0B       		.uleb128 0xb
+ 345 0052 01       		.byte	0x1
+ 346 0053 11       		.uleb128 0x11
+ 347 0054 01       		.uleb128 0x1
+ 348 0055 12       		.uleb128 0x12
+ 349 0056 06       		.uleb128 0x6
+ 350 0057 00       		.byte	0
+ 351 0058 00       		.byte	0
+ 352 0059 07       		.uleb128 0x7
+ 353 005a 34       		.uleb128 0x34
+ 354 005b 00       		.byte	0
+ 355 005c 03       		.uleb128 0x3
+ 356 005d 0E       		.uleb128 0xe
+ 357 005e 3A       		.uleb128 0x3a
+ 358 005f 0B       		.uleb128 0xb
+ 359 0060 3B       		.uleb128 0x3b
+ 360 0061 0B       		.uleb128 0xb
+ 361 0062 49       		.uleb128 0x49
+ 362 0063 13       		.uleb128 0x13
+ 363 0064 02       		.uleb128 0x2
+ 364 0065 18       		.uleb128 0x18
+ 365 0066 00       		.byte	0
+ 366 0067 00       		.byte	0
+ 367 0068 08       		.uleb128 0x8
+ 368 0069 2E       		.uleb128 0x2e
+ 369 006a 01       		.byte	0x1
+ 370 006b 3F       		.uleb128 0x3f
+ 371 006c 19       		.uleb128 0x19
+ 372 006d 03       		.uleb128 0x3
+ 373 006e 0E       		.uleb128 0xe
+ 374 006f 3A       		.uleb128 0x3a
+ 375 0070 0B       		.uleb128 0xb
+ 376 0071 3B       		.uleb128 0x3b
+ 377 0072 0B       		.uleb128 0xb
+ 378 0073 49       		.uleb128 0x49
+ 379 0074 13       		.uleb128 0x13
+ 380 0075 11       		.uleb128 0x11
+ 381 0076 01       		.uleb128 0x1
+ 382 0077 12       		.uleb128 0x12
+ 383 0078 06       		.uleb128 0x6
+ 384 0079 40       		.uleb128 0x40
+ 385 007a 18       		.uleb128 0x18
+ 386 007b 9642     		.uleb128 0x2116
+ 387 007d 19       		.uleb128 0x19
+ 388 007e 00       		.byte	0
+ 389 007f 00       		.byte	0
+ 390 0080 09       		.uleb128 0x9
+ 391 0081 34       		.uleb128 0x34
+ 392 0082 00       		.byte	0
+ 393 0083 03       		.uleb128 0x3
+ 394 0084 0E       		.uleb128 0xe
+ 395 0085 3A       		.uleb128 0x3a
+ 396 0086 0B       		.uleb128 0xb
+ 397 0087 3B       		.uleb128 0x3b
+ 398 0088 0B       		.uleb128 0xb
+ 399 0089 49       		.uleb128 0x49
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccHMayWl.s 			page 9
+
+
+ 400 008a 13       		.uleb128 0x13
+ 401 008b 00       		.byte	0
+ 402 008c 00       		.byte	0
+ 403 008d 00       		.byte	0
+ 404              		.section	.debug_aranges,"",%progbits
+ 405 0000 24000000 		.4byte	0x24
+ 406 0004 0200     		.2byte	0x2
+ 407 0006 00000000 		.4byte	.Ldebug_info0
+ 408 000a 04       		.byte	0x4
+ 409 000b 00       		.byte	0
+ 410 000c 0000     		.2byte	0
+ 411 000e 0000     		.2byte	0
+ 412 0010 00000000 		.4byte	.LFB35
+ 413 0014 38000000 		.4byte	.LFE35-.LFB35
+ 414 0018 00000000 		.4byte	.LFB36
+ 415 001c 44000000 		.4byte	.LFE36-.LFB36
+ 416 0020 00000000 		.4byte	0
+ 417 0024 00000000 		.4byte	0
+ 418              		.section	.debug_ranges,"",%progbits
+ 419              	.Ldebug_ranges0:
+ 420 0000 00000000 		.4byte	.LFB35
+ 421 0004 38000000 		.4byte	.LFE35
+ 422 0008 00000000 		.4byte	.LFB36
+ 423 000c 44000000 		.4byte	.LFE36
+ 424 0010 00000000 		.4byte	0
+ 425 0014 00000000 		.4byte	0
+ 426              		.section	.debug_line,"",%progbits
+ 427              	.Ldebug_line0:
+ 428 0000 80000000 		.section	.debug_str,"MS",%progbits,1
+ 428      02004500 
+ 428      00000201 
+ 428      FB0E0D00 
+ 428      01010101 
+ 429              	.LASF6:
+ 430 0000 6C6F6E67 		.ascii	"long long int\000"
+ 430      206C6F6E 
+ 430      6720696E 
+ 430      7400
+ 431              	.LASF8:
+ 432 000e 756E7369 		.ascii	"unsigned int\000"
+ 432      676E6564 
+ 432      20696E74 
+ 432      00
+ 433              	.LASF20:
+ 434 001b 6D61696E 		.ascii	"main\000"
+ 434      00
+ 435              	.LASF13:
+ 436 0020 6D794368 		.ascii	"myChar\000"
+ 436      617200
+ 437              	.LASF14:
+ 438 0027 72656342 		.ascii	"recByte\000"
+ 438      79746500 
+ 439              	.LASF18:
+ 440 002f 75696E74 		.ascii	"uint8\000"
+ 440      3800
+ 441              	.LASF5:
+ 442 0035 6C6F6E67 		.ascii	"long unsigned int\000"
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccHMayWl.s 			page 10
+
+
+ 442      20756E73 
+ 442      69676E65 
+ 442      6420696E 
+ 442      7400
+ 443              	.LASF7:
+ 444 0047 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 444      206C6F6E 
+ 444      6720756E 
+ 444      7369676E 
+ 444      65642069 
+ 445              	.LASF15:
+ 446 005e 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 446      4320342E 
+ 446      382E3420 
+ 446      32303134 
+ 446      30353236 
+ 447 0091 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 447      20726576 
+ 447      6973696F 
+ 447      6E203231 
+ 447      31333538 
+ 448 00c4 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 448      66756E63 
+ 448      74696F6E 
+ 448      2D736563 
+ 448      74696F6E 
+ 449              	.LASF21:
+ 450 00da 746D7053 		.ascii	"tmpStat\000"
+ 450      74617400 
+ 451              	.LASF19:
+ 452 00e2 6973725F 		.ascii	"isr_UART_1_Int\000"
+ 452      55415254 
+ 452      5F315F49 
+ 452      6E7400
+ 453              	.LASF1:
+ 454 00f1 756E7369 		.ascii	"unsigned char\000"
+ 454      676E6564 
+ 454      20636861 
+ 454      7200
+ 455              	.LASF11:
+ 456 00ff 63686172 		.ascii	"char\000"
+ 456      00
+ 457              	.LASF4:
+ 458 0104 6C6F6E67 		.ascii	"long int\000"
+ 458      20696E74 
+ 458      00
+ 459              	.LASF2:
+ 460 010d 73686F72 		.ascii	"short int\000"
+ 460      7420696E 
+ 460      7400
+ 461              	.LASF17:
+ 462 0117 433A5C55 		.ascii	"C:\\Users\\Matthew Arbesfeld\\Documents\\PSoC Creat"
+ 462      73657273 
+ 462      5C4D6174 
+ 462      74686577 
+ 462      20417262 
+ 463 0146 6F725C42 		.ascii	"or\\BoxesUART\\BoxesBLE.cydsn\000"
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccHMayWl.s 			page 11
+
+
+ 463      6F786573 
+ 463      55415254 
+ 463      5C426F78 
+ 463      6573424C 
+ 464              	.LASF10:
+ 465 0162 646F7562 		.ascii	"double\000"
+ 465      6C6500
+ 466              	.LASF3:
+ 467 0169 73686F72 		.ascii	"short unsigned int\000"
+ 467      7420756E 
+ 467      7369676E 
+ 467      65642069 
+ 467      6E7400
+ 468              	.LASF0:
+ 469 017c 7369676E 		.ascii	"signed char\000"
+ 469      65642063 
+ 469      68617200 
+ 470              	.LASF9:
+ 471 0188 666C6F61 		.ascii	"float\000"
+ 471      7400
+ 472              	.LASF16:
+ 473 018e 2E5C6D61 		.ascii	".\\main.c\000"
+ 473      696E2E63 
+ 473      00
+ 474              	.LASF12:
+ 475 0197 73697A65 		.ascii	"sizetype\000"
+ 475      74797065 
+ 475      00
+ 476              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

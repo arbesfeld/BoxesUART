@@ -1,0 +1,180 @@
+#***************************************************************************
+
+#sjplacer
+
+#Version:            1.1
+
+#Build Date:         Oct 23 2014 13:00:08
+
+#File Generated:     Apr 25 2015 23:26:36
+
+#Purpose:            
+
+#Copyright (C) 2010-2011 by Softjin Technologies Pvt Ltd. All rights reserved.
+
+#***************************************************************************
+
+Executing : C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\bin/sjplacer.exe --proj-name Boxes5 --netlist-vh2 Boxes5_p.vh2 --arch-file C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\dev/psoc3/placer.ark --rrg-file C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\dev/psoc5/psoc5lp/route_arch-rrg.cydata --irq-file C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\dev/psoc5/psoc5lp/irqconn.cydata --drq-file C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\dev/psoc5/psoc5lp/dmaconn.cydata --dsi-conn-file C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\dev/psoc5/psoc5lp/dsiconn.cydata --pins-file pins_100-TQFP.xml --lib-file Boxes5_p.lib --sdc-file Boxes5.sdc --io-pcf Boxes5.pci --outdir .
+
+		Softjin Techologies Placer, Version 1.1
+
+Build Date : Oct 23 2014	13:09:21
+
+D2004: Option and Settings Summary
+=============================================================
+Netlist vh2 file          - Boxes5_p.vh2
+Architecture file         - C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\dev/psoc3/placer.ark
+Package                   - 
+Defparam file             - 
+SDC file                  - Boxes5.sdc
+Output directory          - .
+Timing library            - Boxes5_p.lib
+IO Placement file         - Boxes5.pci
+
+D2050: Starting reading inputs for placer
+=============================================================
+D2065: Reading netlist file : "Boxes5_p.vh2"
+D2065: Reading arch file : "C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\dev/psoc3/placer.ark"
+D2051: Reading of inputs for placer completed successfully
+
+D2053: Starting placement of the design
+=============================================================
+
+Phase 2
+Phase 3
+
+Design Statistics after Packing
+    Number of Combinational MCs 	:	34
+    Number of Sequential MCs    	:	71
+    Number of DPs               	:	8
+    Number of Controls          	:	6
+    Number of Status            	:	13
+    Number of SyncCells         	:	0
+    Number of count7cells       	:	6
+
+Device Utilization Summary after Packing
+    Macrocells                  :	105/192
+    UDBS                        :	19/24
+    IOs                         :	35/72
+
+
+D2088: Phase 3, elapsed time : 0.0 (sec)
+
+Phase 4
+D2088: Phase 4, elapsed time : 0.0 (sec)
+
+Phase 5
+D2088: Phase 5, elapsed time : 0.0 (sec)
+
+Phase 6
+
+######################################################################
+Placement Timing Summary
+
+The timing summary is based on estimated routing delays after
+placement. For final timing report, please carry out the timing
+analysis after routing.
+======================================================================
+
+######################################################################
+                     Clock Summary 
+======================================================================
+Number of clocks: 13
+Clock: Clock_1              | Frequency:  72.8 MHz | Target:  24.0 MHz
+Clock: CyBUS_CLK            | Frequency:  37.4 MHz | Target:  24.0 MHz
+Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
+Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
+Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
+Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
+Clock: Rx_Back_IntClock     | Frequency:  40.3 MHz | Target:   0.9 MHz
+Clock: Rx_Bottom_IntClock   | Frequency:  39.5 MHz | Target:   0.9 MHz
+Clock: Rx_Front_IntClock    | Frequency:  38.9 MHz | Target:   0.9 MHz
+Clock: Rx_Left_IntClock     | Frequency:  38.8 MHz | Target:   0.9 MHz
+Clock: Rx_Right_IntClock    | Frequency:  40.3 MHz | Target:   0.9 MHz
+Clock: Rx_Top_IntClock      | Frequency:  37.4 MHz | Target:   0.9 MHz
+Clock: Tx_IntClock          | Frequency:  41.7 MHz | Target:   0.9 MHz
+
+======================================================================
+                     End of Clock Summary
+######################################################################
+
+D2088: Phase 6, elapsed time : 0.2 (sec)
+
+Phase 7
+######################################################################
+                     Clock Summary 
+======================================================================
+Number of clocks: 13
+Clock: Clock_1              | Frequency:  70.6 MHz | Target:  24.0 MHz
+Clock: CyBUS_CLK            | Frequency:   0.9 MHz | Target:  24.0 MHz
+Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
+Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
+Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
+Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
+Clock: Rx_Back_IntClock     | Frequency:   1.0 MHz | Target:   0.9 MHz
+Clock: Rx_Bottom_IntClock   | Frequency:   0.9 MHz | Target:   0.9 MHz
+Clock: Rx_Front_IntClock    | Frequency:   0.9 MHz | Target:   0.9 MHz
+Clock: Rx_Left_IntClock     | Frequency:   0.9 MHz | Target:   0.9 MHz
+Clock: Rx_Right_IntClock    | Frequency:   0.9 MHz | Target:   0.9 MHz
+Clock: Rx_Top_IntClock      | Frequency:   0.9 MHz | Target:   0.9 MHz
+Clock: Tx_IntClock          | Frequency:  43.8 MHz | Target:   0.9 MHz
+
+======================================================================
+                     End of Clock Summary
+######################################################################
+D2088: Phase 7, elapsed time : 2.1 (sec)
+
+Final Design Statistics
+    Number of Combinational MCs 	:	34
+    Number of Sequential MCs    	:	71
+    Number of DPs               	:	8
+    Number of Controls          	:	6
+    Number of Status            	:	13
+    Number of SyncCells         	:	0
+    Number of count7cells       	:	6
+    Number of IOs       	:	35
+
+Device Utilization Summary
+    Macrocells                  :	105/192
+    IOs                         :	35/72
+
+
+
+######################################################################
+Placement Timing Summary
+
+The timing summary is based on estimated routing delays after
+placement. For final timing report, please carry out the timing
+analysis after routing.
+======================================================================
+
+
+######################################################################
+                     Clock Summary 
+======================================================================
+Number of clocks: 13
+Clock: Clock_1              | Frequency:  76.6 MHz | Target:  24.0 MHz
+Clock: CyBUS_CLK            | Frequency:   0.9 MHz | Target:  24.0 MHz
+Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
+Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
+Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
+Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
+Clock: Rx_Back_IntClock     | Frequency:   1.0 MHz | Target:   0.9 MHz
+Clock: Rx_Bottom_IntClock   | Frequency:   0.9 MHz | Target:   0.9 MHz
+Clock: Rx_Front_IntClock    | Frequency:   0.9 MHz | Target:   0.9 MHz
+Clock: Rx_Left_IntClock     | Frequency:   0.9 MHz | Target:   0.9 MHz
+Clock: Rx_Right_IntClock    | Frequency:   0.9 MHz | Target:   0.9 MHz
+Clock: Rx_Top_IntClock      | Frequency:   0.9 MHz | Target:   0.9 MHz
+Clock: Tx_IntClock          | Frequency:  43.8 MHz | Target:   0.9 MHz
+
+======================================================================
+                     End of Clock Summary
+######################################################################
+
+Phase 8
+D2088: Phase 8, elapsed time : 0.0 (sec)
+
+D2054: Placement of the design completed successfully
+
+I2076: Total run-time: 3.4 sec.
+

@@ -1,0 +1,889 @@
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\cc2xBAiS.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"Rx_Front_PM.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.bss
+  19              		.align	2
+  20              	Rx_Front_backup:
+  21 0000 00       		.space	1
+  22 0001 000000   		.section	.text.Rx_Front_SaveConfig,"ax",%progbits
+  23              		.align	2
+  24              		.global	Rx_Front_SaveConfig
+  25              		.thumb
+  26              		.thumb_func
+  27              		.type	Rx_Front_SaveConfig, %function
+  28              	Rx_Front_SaveConfig:
+  29              	.LFB0:
+  30              		.file 1 ".\\Generated_Source\\PSoC5\\Rx_Front_PM.c"
+   1:.\Generated_Source\PSoC5/Rx_Front_PM.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * File Name: Rx_Front_PM.c
+   3:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * Version 2.40
+   4:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *
+   5:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * Description:
+   6:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  This file provides Sleep/WakeUp APIs functionality.
+   7:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *
+   8:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * Note:
+   9:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *
+  10:.\Generated_Source\PSoC5/Rx_Front_PM.c **** ********************************************************************************
+  11:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  12:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * You may use this file only in accordance with the license, terms, conditions,
+  13:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  14:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * the software package with which this file was provided.
+  15:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *******************************************************************************/
+  16:.\Generated_Source\PSoC5/Rx_Front_PM.c **** 
+  17:.\Generated_Source\PSoC5/Rx_Front_PM.c **** #include "Rx_Front.h"
+  18:.\Generated_Source\PSoC5/Rx_Front_PM.c **** 
+  19:.\Generated_Source\PSoC5/Rx_Front_PM.c **** 
+  20:.\Generated_Source\PSoC5/Rx_Front_PM.c **** /***************************************
+  21:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * Local data allocation
+  22:.\Generated_Source\PSoC5/Rx_Front_PM.c **** ***************************************/
+  23:.\Generated_Source\PSoC5/Rx_Front_PM.c **** 
+  24:.\Generated_Source\PSoC5/Rx_Front_PM.c **** static Rx_Front_BACKUP_STRUCT  Rx_Front_backup =
+  25:.\Generated_Source\PSoC5/Rx_Front_PM.c **** {
+  26:.\Generated_Source\PSoC5/Rx_Front_PM.c ****     /* enableState - disabled */
+  27:.\Generated_Source\PSoC5/Rx_Front_PM.c ****     0u,
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\cc2xBAiS.s 			page 2
+
+
+  28:.\Generated_Source\PSoC5/Rx_Front_PM.c **** };
+  29:.\Generated_Source\PSoC5/Rx_Front_PM.c **** 
+  30:.\Generated_Source\PSoC5/Rx_Front_PM.c **** 
+  31:.\Generated_Source\PSoC5/Rx_Front_PM.c **** 
+  32:.\Generated_Source\PSoC5/Rx_Front_PM.c **** /*******************************************************************************
+  33:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * Function Name: Rx_Front_SaveConfig
+  34:.\Generated_Source\PSoC5/Rx_Front_PM.c **** ********************************************************************************
+  35:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *
+  36:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * Summary:
+  37:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  This function saves the component configuration and nonretention registers.
+  38:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  It also saves the current component parameter values, as defined in the
+  39:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  Configure dialog or as modified by appropriate APIs. This function is called
+  40:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  by the Rx_Front_Sleep() function.
+  41:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *
+  42:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * Parameters:
+  43:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  None.
+  44:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *
+  45:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * Return:
+  46:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  None.
+  47:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *
+  48:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * Global Variables:
+  49:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  Rx_Front_backup - modified when non-retention registers are saved.
+  50:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *
+  51:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * Reentrant:
+  52:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  No.
+  53:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *
+  54:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * Side Effects:
+  55:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  All nonretention registers except FIFO are saved to RAM
+  56:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *
+  57:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *******************************************************************************/
+  58:.\Generated_Source\PSoC5/Rx_Front_PM.c **** void Rx_Front_SaveConfig(void)
+  59:.\Generated_Source\PSoC5/Rx_Front_PM.c **** {
+  31              		.loc 1 59 0
+  32              		.cfi_startproc
+  33              		@ args = 0, pretend = 0, frame = 0
+  34              		@ frame_needed = 1, uses_anonymous_args = 0
+  35              		@ link register save eliminated.
+  36 0000 80B4     		push	{r7}
+  37              		.cfi_def_cfa_offset 4
+  38              		.cfi_offset 7, -4
+  39 0002 00AF     		add	r7, sp, #0
+  40              		.cfi_def_cfa_register 7
+  60:.\Generated_Source\PSoC5/Rx_Front_PM.c ****     #if(Rx_Front_CONTROL_REG_REMOVED == 0u)
+  61:.\Generated_Source\PSoC5/Rx_Front_PM.c ****         Rx_Front_backup.cr = Rx_Front_CONTROL_REG;
+  62:.\Generated_Source\PSoC5/Rx_Front_PM.c ****     #endif /* End Rx_Front_CONTROL_REG_REMOVED */
+  63:.\Generated_Source\PSoC5/Rx_Front_PM.c **** }
+  41              		.loc 1 63 0
+  42 0004 BD46     		mov	sp, r7
+  43              		@ sp needed
+  44 0006 5DF8047B 		ldr	r7, [sp], #4
+  45 000a 7047     		bx	lr
+  46              		.cfi_endproc
+  47              	.LFE0:
+  48              		.size	Rx_Front_SaveConfig, .-Rx_Front_SaveConfig
+  49              		.section	.text.Rx_Front_RestoreConfig,"ax",%progbits
+  50              		.align	2
+  51              		.global	Rx_Front_RestoreConfig
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\cc2xBAiS.s 			page 3
+
+
+  52              		.thumb
+  53              		.thumb_func
+  54              		.type	Rx_Front_RestoreConfig, %function
+  55              	Rx_Front_RestoreConfig:
+  56              	.LFB1:
+  64:.\Generated_Source\PSoC5/Rx_Front_PM.c **** 
+  65:.\Generated_Source\PSoC5/Rx_Front_PM.c **** 
+  66:.\Generated_Source\PSoC5/Rx_Front_PM.c **** /*******************************************************************************
+  67:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * Function Name: Rx_Front_RestoreConfig
+  68:.\Generated_Source\PSoC5/Rx_Front_PM.c **** ********************************************************************************
+  69:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *
+  70:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * Summary:
+  71:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  Restores the user configuration of nonretention registers.
+  72:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *
+  73:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * Parameters:
+  74:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  None.
+  75:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *
+  76:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * Return:
+  77:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  None.
+  78:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *
+  79:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * Global Variables:
+  80:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  Rx_Front_backup - used when non-retention registers are restored.
+  81:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *
+  82:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * Reentrant:
+  83:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  No.
+  84:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *
+  85:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * Side Effects:
+  86:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  All nonretention registers except FIFO loaded from RAM. This function should
+  87:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  be called only after Rx_Front_SaveConfig() is called, otherwise
+  88:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  incorrect data will be loaded into the registers.
+  89:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *
+  90:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *******************************************************************************/
+  91:.\Generated_Source\PSoC5/Rx_Front_PM.c **** void Rx_Front_RestoreConfig(void)
+  92:.\Generated_Source\PSoC5/Rx_Front_PM.c **** {
+  57              		.loc 1 92 0
+  58              		.cfi_startproc
+  59              		@ args = 0, pretend = 0, frame = 0
+  60              		@ frame_needed = 1, uses_anonymous_args = 0
+  61              		@ link register save eliminated.
+  62 0000 80B4     		push	{r7}
+  63              		.cfi_def_cfa_offset 4
+  64              		.cfi_offset 7, -4
+  65 0002 00AF     		add	r7, sp, #0
+  66              		.cfi_def_cfa_register 7
+  93:.\Generated_Source\PSoC5/Rx_Front_PM.c ****     #if(Rx_Front_CONTROL_REG_REMOVED == 0u)
+  94:.\Generated_Source\PSoC5/Rx_Front_PM.c ****         Rx_Front_CONTROL_REG = Rx_Front_backup.cr;
+  95:.\Generated_Source\PSoC5/Rx_Front_PM.c ****     #endif /* End Rx_Front_CONTROL_REG_REMOVED */
+  96:.\Generated_Source\PSoC5/Rx_Front_PM.c **** }
+  67              		.loc 1 96 0
+  68 0004 BD46     		mov	sp, r7
+  69              		@ sp needed
+  70 0006 5DF8047B 		ldr	r7, [sp], #4
+  71 000a 7047     		bx	lr
+  72              		.cfi_endproc
+  73              	.LFE1:
+  74              		.size	Rx_Front_RestoreConfig, .-Rx_Front_RestoreConfig
+  75              		.section	.text.Rx_Front_Sleep,"ax",%progbits
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\cc2xBAiS.s 			page 4
+
+
+  76              		.align	2
+  77              		.global	Rx_Front_Sleep
+  78              		.thumb
+  79              		.thumb_func
+  80              		.type	Rx_Front_Sleep, %function
+  81              	Rx_Front_Sleep:
+  82              	.LFB2:
+  97:.\Generated_Source\PSoC5/Rx_Front_PM.c **** 
+  98:.\Generated_Source\PSoC5/Rx_Front_PM.c **** 
+  99:.\Generated_Source\PSoC5/Rx_Front_PM.c **** /*******************************************************************************
+ 100:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * Function Name: Rx_Front_Sleep
+ 101:.\Generated_Source\PSoC5/Rx_Front_PM.c **** ********************************************************************************
+ 102:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *
+ 103:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * Summary:
+ 104:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  This is the preferred API to prepare the component for sleep. 
+ 105:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  The Rx_Front_Sleep() API saves the current component state. Then it
+ 106:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  calls the Rx_Front_Stop() function and calls 
+ 107:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  Rx_Front_SaveConfig() to save the hardware configuration.
+ 108:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  Call the Rx_Front_Sleep() function before calling the CyPmSleep() 
+ 109:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  or the CyPmHibernate() function. 
+ 110:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *
+ 111:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * Parameters:
+ 112:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  None.
+ 113:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *
+ 114:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * Return:
+ 115:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  None.
+ 116:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *
+ 117:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * Global Variables:
+ 118:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  Rx_Front_backup - modified when non-retention registers are saved.
+ 119:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *
+ 120:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * Reentrant:
+ 121:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  No.
+ 122:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *
+ 123:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *******************************************************************************/
+ 124:.\Generated_Source\PSoC5/Rx_Front_PM.c **** void Rx_Front_Sleep(void)
+ 125:.\Generated_Source\PSoC5/Rx_Front_PM.c **** {
+  83              		.loc 1 125 0
+  84              		.cfi_startproc
+  85              		@ args = 0, pretend = 0, frame = 0
+  86              		@ frame_needed = 1, uses_anonymous_args = 0
+  87 0000 80B5     		push	{r7, lr}
+  88              		.cfi_def_cfa_offset 8
+  89              		.cfi_offset 7, -8
+  90              		.cfi_offset 14, -4
+  91 0002 00AF     		add	r7, sp, #0
+  92              		.cfi_def_cfa_register 7
+ 126:.\Generated_Source\PSoC5/Rx_Front_PM.c ****     #if(Rx_Front_RX_ENABLED || Rx_Front_HD_ENABLED)
+ 127:.\Generated_Source\PSoC5/Rx_Front_PM.c ****         if((Rx_Front_RXSTATUS_ACTL_REG  & Rx_Front_INT_ENABLE) != 0u)
+  93              		.loc 1 127 0
+  94 0004 094B     		ldr	r3, .L6
+  95 0006 1B78     		ldrb	r3, [r3]
+  96 0008 DBB2     		uxtb	r3, r3
+  97 000a 03F01003 		and	r3, r3, #16
+  98 000e 002B     		cmp	r3, #0
+  99 0010 03D0     		beq	.L4
+ 128:.\Generated_Source\PSoC5/Rx_Front_PM.c ****         {
+ 129:.\Generated_Source\PSoC5/Rx_Front_PM.c ****             Rx_Front_backup.enableState = 1u;
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\cc2xBAiS.s 			page 5
+
+
+ 100              		.loc 1 129 0
+ 101 0012 074B     		ldr	r3, .L6+4
+ 102 0014 0122     		movs	r2, #1
+ 103 0016 1A70     		strb	r2, [r3]
+ 104 0018 02E0     		b	.L5
+ 105              	.L4:
+ 130:.\Generated_Source\PSoC5/Rx_Front_PM.c ****         }
+ 131:.\Generated_Source\PSoC5/Rx_Front_PM.c ****         else
+ 132:.\Generated_Source\PSoC5/Rx_Front_PM.c ****         {
+ 133:.\Generated_Source\PSoC5/Rx_Front_PM.c ****             Rx_Front_backup.enableState = 0u;
+ 106              		.loc 1 133 0
+ 107 001a 054B     		ldr	r3, .L6+4
+ 108 001c 0022     		movs	r2, #0
+ 109 001e 1A70     		strb	r2, [r3]
+ 110              	.L5:
+ 134:.\Generated_Source\PSoC5/Rx_Front_PM.c ****         }
+ 135:.\Generated_Source\PSoC5/Rx_Front_PM.c ****     #else
+ 136:.\Generated_Source\PSoC5/Rx_Front_PM.c ****         if((Rx_Front_TXSTATUS_ACTL_REG  & Rx_Front_INT_ENABLE) !=0u)
+ 137:.\Generated_Source\PSoC5/Rx_Front_PM.c ****         {
+ 138:.\Generated_Source\PSoC5/Rx_Front_PM.c ****             Rx_Front_backup.enableState = 1u;
+ 139:.\Generated_Source\PSoC5/Rx_Front_PM.c ****         }
+ 140:.\Generated_Source\PSoC5/Rx_Front_PM.c ****         else
+ 141:.\Generated_Source\PSoC5/Rx_Front_PM.c ****         {
+ 142:.\Generated_Source\PSoC5/Rx_Front_PM.c ****             Rx_Front_backup.enableState = 0u;
+ 143:.\Generated_Source\PSoC5/Rx_Front_PM.c ****         }
+ 144:.\Generated_Source\PSoC5/Rx_Front_PM.c ****     #endif /* End Rx_Front_RX_ENABLED || Rx_Front_HD_ENABLED*/
+ 145:.\Generated_Source\PSoC5/Rx_Front_PM.c **** 
+ 146:.\Generated_Source\PSoC5/Rx_Front_PM.c ****     Rx_Front_Stop();
+ 111              		.loc 1 146 0
+ 112 0020 FFF7FEFF 		bl	Rx_Front_Stop
+ 147:.\Generated_Source\PSoC5/Rx_Front_PM.c ****     Rx_Front_SaveConfig();
+ 113              		.loc 1 147 0
+ 114 0024 FFF7FEFF 		bl	Rx_Front_SaveConfig
+ 148:.\Generated_Source\PSoC5/Rx_Front_PM.c **** }
+ 115              		.loc 1 148 0
+ 116 0028 80BD     		pop	{r7, pc}
+ 117              	.L7:
+ 118 002a 00BF     		.align	2
+ 119              	.L6:
+ 120 002c 95640040 		.word	1073767573
+ 121 0030 00000000 		.word	Rx_Front_backup
+ 122              		.cfi_endproc
+ 123              	.LFE2:
+ 124              		.size	Rx_Front_Sleep, .-Rx_Front_Sleep
+ 125              		.section	.text.Rx_Front_Wakeup,"ax",%progbits
+ 126              		.align	2
+ 127              		.global	Rx_Front_Wakeup
+ 128              		.thumb
+ 129              		.thumb_func
+ 130              		.type	Rx_Front_Wakeup, %function
+ 131              	Rx_Front_Wakeup:
+ 132              	.LFB3:
+ 149:.\Generated_Source\PSoC5/Rx_Front_PM.c **** 
+ 150:.\Generated_Source\PSoC5/Rx_Front_PM.c **** 
+ 151:.\Generated_Source\PSoC5/Rx_Front_PM.c **** /*******************************************************************************
+ 152:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * Function Name: Rx_Front_Wakeup
+ 153:.\Generated_Source\PSoC5/Rx_Front_PM.c **** ********************************************************************************
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\cc2xBAiS.s 			page 6
+
+
+ 154:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *
+ 155:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * Summary:
+ 156:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  This is the preferred API to restore the component to the state when 
+ 157:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  Rx_Front_Sleep() was called. The Rx_Front_Wakeup() function
+ 158:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  calls the Rx_Front_RestoreConfig() function to restore the 
+ 159:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  configuration. If the component was enabled before the 
+ 160:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  Rx_Front_Sleep() function was called, the Rx_Front_Wakeup()
+ 161:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  function will also re-enable the component.
+ 162:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *
+ 163:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * Parameters:
+ 164:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  None.
+ 165:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *
+ 166:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * Return:
+ 167:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  None.
+ 168:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *
+ 169:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * Global Variables:
+ 170:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  Rx_Front_backup - used when non-retention registers are restored.
+ 171:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *
+ 172:.\Generated_Source\PSoC5/Rx_Front_PM.c **** * Reentrant:
+ 173:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *  No.
+ 174:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *
+ 175:.\Generated_Source\PSoC5/Rx_Front_PM.c **** *******************************************************************************/
+ 176:.\Generated_Source\PSoC5/Rx_Front_PM.c **** void Rx_Front_Wakeup(void)
+ 177:.\Generated_Source\PSoC5/Rx_Front_PM.c **** {
+ 133              		.loc 1 177 0
+ 134              		.cfi_startproc
+ 135              		@ args = 0, pretend = 0, frame = 0
+ 136              		@ frame_needed = 1, uses_anonymous_args = 0
+ 137 0000 80B5     		push	{r7, lr}
+ 138              		.cfi_def_cfa_offset 8
+ 139              		.cfi_offset 7, -8
+ 140              		.cfi_offset 14, -4
+ 141 0002 00AF     		add	r7, sp, #0
+ 142              		.cfi_def_cfa_register 7
+ 178:.\Generated_Source\PSoC5/Rx_Front_PM.c ****     Rx_Front_RestoreConfig();
+ 143              		.loc 1 178 0
+ 144 0004 FFF7FEFF 		bl	Rx_Front_RestoreConfig
+ 179:.\Generated_Source\PSoC5/Rx_Front_PM.c ****     #if( (Rx_Front_RX_ENABLED) || (Rx_Front_HD_ENABLED) )
+ 180:.\Generated_Source\PSoC5/Rx_Front_PM.c ****         Rx_Front_ClearRxBuffer();
+ 145              		.loc 1 180 0
+ 146 0008 FFF7FEFF 		bl	Rx_Front_ClearRxBuffer
+ 181:.\Generated_Source\PSoC5/Rx_Front_PM.c ****     #endif /* End (Rx_Front_RX_ENABLED) || (Rx_Front_HD_ENABLED) */
+ 182:.\Generated_Source\PSoC5/Rx_Front_PM.c ****     #if(Rx_Front_TX_ENABLED || Rx_Front_HD_ENABLED)
+ 183:.\Generated_Source\PSoC5/Rx_Front_PM.c ****         Rx_Front_ClearTxBuffer();
+ 184:.\Generated_Source\PSoC5/Rx_Front_PM.c ****     #endif /* End Rx_Front_TX_ENABLED || Rx_Front_HD_ENABLED */
+ 185:.\Generated_Source\PSoC5/Rx_Front_PM.c **** 
+ 186:.\Generated_Source\PSoC5/Rx_Front_PM.c ****     if(Rx_Front_backup.enableState != 0u)
+ 147              		.loc 1 186 0
+ 148 000c 034B     		ldr	r3, .L10
+ 149 000e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 150 0010 002B     		cmp	r3, #0
+ 151 0012 01D0     		beq	.L8
+ 187:.\Generated_Source\PSoC5/Rx_Front_PM.c ****     {
+ 188:.\Generated_Source\PSoC5/Rx_Front_PM.c ****         Rx_Front_Enable();
+ 152              		.loc 1 188 0
+ 153 0014 FFF7FEFF 		bl	Rx_Front_Enable
+ 154              	.L8:
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\cc2xBAiS.s 			page 7
+
+
+ 189:.\Generated_Source\PSoC5/Rx_Front_PM.c ****     }
+ 190:.\Generated_Source\PSoC5/Rx_Front_PM.c **** }
+ 155              		.loc 1 190 0
+ 156 0018 80BD     		pop	{r7, pc}
+ 157              	.L11:
+ 158 001a 00BF     		.align	2
+ 159              	.L10:
+ 160 001c 00000000 		.word	Rx_Front_backup
+ 161              		.cfi_endproc
+ 162              	.LFE3:
+ 163              		.size	Rx_Front_Wakeup, .-Rx_Front_Wakeup
+ 164              		.text
+ 165              	.Letext0:
+ 166              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 167              		.file 3 ".\\Generated_Source\\PSoC5\\Rx_Front.h"
+ 168              		.section	.debug_info,"",%progbits
+ 169              	.Ldebug_info0:
+ 170 0000 19010000 		.4byte	0x119
+ 171 0004 0400     		.2byte	0x4
+ 172 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 173 000a 04       		.byte	0x4
+ 174 000b 01       		.uleb128 0x1
+ 175 000c 7E010000 		.4byte	.LASF20
+ 176 0010 01       		.byte	0x1
+ 177 0011 FA010000 		.4byte	.LASF21
+ 178 0015 A9000000 		.4byte	.LASF22
+ 179 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 180 001d 00000000 		.4byte	0
+ 181 0021 00000000 		.4byte	.Ldebug_line0
+ 182 0025 02       		.uleb128 0x2
+ 183 0026 01       		.byte	0x1
+ 184 0027 06       		.byte	0x6
+ 185 0028 36010000 		.4byte	.LASF0
+ 186 002c 02       		.uleb128 0x2
+ 187 002d 01       		.byte	0x1
+ 188 002e 08       		.byte	0x8
+ 189 002f 96000000 		.4byte	.LASF1
+ 190 0033 02       		.uleb128 0x2
+ 191 0034 02       		.byte	0x2
+ 192 0035 05       		.byte	0x5
+ 193 0036 FB000000 		.4byte	.LASF2
+ 194 003a 02       		.uleb128 0x2
+ 195 003b 02       		.byte	0x2
+ 196 003c 07       		.byte	0x7
+ 197 003d 23010000 		.4byte	.LASF3
+ 198 0041 02       		.uleb128 0x2
+ 199 0042 04       		.byte	0x4
+ 200 0043 05       		.byte	0x5
+ 201 0044 F2000000 		.4byte	.LASF4
+ 202 0048 02       		.uleb128 0x2
+ 203 0049 04       		.byte	0x4
+ 204 004a 07       		.byte	0x7
+ 205 004b 56000000 		.4byte	.LASF5
+ 206 004f 02       		.uleb128 0x2
+ 207 0050 08       		.byte	0x8
+ 208 0051 05       		.byte	0x5
+ 209 0052 00000000 		.4byte	.LASF6
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\cc2xBAiS.s 			page 8
+
+
+ 210 0056 02       		.uleb128 0x2
+ 211 0057 08       		.byte	0x8
+ 212 0058 07       		.byte	0x7
+ 213 0059 68000000 		.4byte	.LASF7
+ 214 005d 03       		.uleb128 0x3
+ 215 005e 04       		.byte	0x4
+ 216 005f 05       		.byte	0x5
+ 217 0060 696E7400 		.ascii	"int\000"
+ 218 0064 02       		.uleb128 0x2
+ 219 0065 04       		.byte	0x4
+ 220 0066 07       		.byte	0x7
+ 221 0067 1A000000 		.4byte	.LASF8
+ 222 006b 04       		.uleb128 0x4
+ 223 006c 50000000 		.4byte	.LASF12
+ 224 0070 02       		.byte	0x2
+ 225 0071 A1       		.byte	0xa1
+ 226 0072 2C000000 		.4byte	0x2c
+ 227 0076 02       		.uleb128 0x2
+ 228 0077 04       		.byte	0x4
+ 229 0078 04       		.byte	0x4
+ 230 0079 59010000 		.4byte	.LASF9
+ 231 007d 02       		.uleb128 0x2
+ 232 007e 08       		.byte	0x8
+ 233 007f 04       		.byte	0x4
+ 234 0080 05010000 		.4byte	.LASF10
+ 235 0084 02       		.uleb128 0x2
+ 236 0085 01       		.byte	0x1
+ 237 0086 08       		.byte	0x8
+ 238 0087 A4000000 		.4byte	.LASF11
+ 239 008b 05       		.uleb128 0x5
+ 240 008c 4B000000 		.4byte	.LASF13
+ 241 0090 02       		.byte	0x2
+ 242 0091 4B01     		.2byte	0x14b
+ 243 0093 97000000 		.4byte	0x97
+ 244 0097 06       		.uleb128 0x6
+ 245 0098 6B000000 		.4byte	0x6b
+ 246 009c 02       		.uleb128 0x2
+ 247 009d 04       		.byte	0x4
+ 248 009e 07       		.byte	0x7
+ 249 009f 21020000 		.4byte	.LASF14
+ 250 00a3 07       		.uleb128 0x7
+ 251 00a4 7F000000 		.4byte	.LASF23
+ 252 00a8 01       		.byte	0x1
+ 253 00a9 03       		.byte	0x3
+ 254 00aa 45       		.byte	0x45
+ 255 00ab BC000000 		.4byte	0xbc
+ 256 00af 08       		.uleb128 0x8
+ 257 00b0 0E000000 		.4byte	.LASF24
+ 258 00b4 03       		.byte	0x3
+ 259 00b5 47       		.byte	0x47
+ 260 00b6 6B000000 		.4byte	0x6b
+ 261 00ba 00       		.byte	0
+ 262 00bb 00       		.byte	0
+ 263 00bc 04       		.uleb128 0x4
+ 264 00bd 42010000 		.4byte	.LASF15
+ 265 00c1 03       		.byte	0x3
+ 266 00c2 4D       		.byte	0x4d
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\cc2xBAiS.s 			page 9
+
+
+ 267 00c3 A3000000 		.4byte	0xa3
+ 268 00c7 09       		.uleb128 0x9
+ 269 00c8 27000000 		.4byte	.LASF16
+ 270 00cc 01       		.byte	0x1
+ 271 00cd 3A       		.byte	0x3a
+ 272 00ce 00000000 		.4byte	.LFB0
+ 273 00d2 0C000000 		.4byte	.LFE0-.LFB0
+ 274 00d6 01       		.uleb128 0x1
+ 275 00d7 9C       		.byte	0x9c
+ 276 00d8 09       		.uleb128 0x9
+ 277 00d9 0C010000 		.4byte	.LASF17
+ 278 00dd 01       		.byte	0x1
+ 279 00de 5B       		.byte	0x5b
+ 280 00df 00000000 		.4byte	.LFB1
+ 281 00e3 0C000000 		.4byte	.LFE1-.LFB1
+ 282 00e7 01       		.uleb128 0x1
+ 283 00e8 9C       		.byte	0x9c
+ 284 00e9 0A       		.uleb128 0xa
+ 285 00ea 5F010000 		.4byte	.LASF18
+ 286 00ee 01       		.byte	0x1
+ 287 00ef 7C       		.byte	0x7c
+ 288 00f0 00000000 		.4byte	.LFB2
+ 289 00f4 34000000 		.4byte	.LFE2-.LFB2
+ 290 00f8 01       		.uleb128 0x1
+ 291 00f9 9C       		.byte	0x9c
+ 292 00fa 0A       		.uleb128 0xa
+ 293 00fb 3B000000 		.4byte	.LASF19
+ 294 00ff 01       		.byte	0x1
+ 295 0100 B0       		.byte	0xb0
+ 296 0101 00000000 		.4byte	.LFB3
+ 297 0105 20000000 		.4byte	.LFE3-.LFB3
+ 298 0109 01       		.uleb128 0x1
+ 299 010a 9C       		.byte	0x9c
+ 300 010b 0B       		.uleb128 0xb
+ 301 010c 6E010000 		.4byte	.LASF25
+ 302 0110 01       		.byte	0x1
+ 303 0111 18       		.byte	0x18
+ 304 0112 BC000000 		.4byte	0xbc
+ 305 0116 05       		.uleb128 0x5
+ 306 0117 03       		.byte	0x3
+ 307 0118 00000000 		.4byte	Rx_Front_backup
+ 308 011c 00       		.byte	0
+ 309              		.section	.debug_abbrev,"",%progbits
+ 310              	.Ldebug_abbrev0:
+ 311 0000 01       		.uleb128 0x1
+ 312 0001 11       		.uleb128 0x11
+ 313 0002 01       		.byte	0x1
+ 314 0003 25       		.uleb128 0x25
+ 315 0004 0E       		.uleb128 0xe
+ 316 0005 13       		.uleb128 0x13
+ 317 0006 0B       		.uleb128 0xb
+ 318 0007 03       		.uleb128 0x3
+ 319 0008 0E       		.uleb128 0xe
+ 320 0009 1B       		.uleb128 0x1b
+ 321 000a 0E       		.uleb128 0xe
+ 322 000b 55       		.uleb128 0x55
+ 323 000c 17       		.uleb128 0x17
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\cc2xBAiS.s 			page 10
+
+
+ 324 000d 11       		.uleb128 0x11
+ 325 000e 01       		.uleb128 0x1
+ 326 000f 10       		.uleb128 0x10
+ 327 0010 17       		.uleb128 0x17
+ 328 0011 00       		.byte	0
+ 329 0012 00       		.byte	0
+ 330 0013 02       		.uleb128 0x2
+ 331 0014 24       		.uleb128 0x24
+ 332 0015 00       		.byte	0
+ 333 0016 0B       		.uleb128 0xb
+ 334 0017 0B       		.uleb128 0xb
+ 335 0018 3E       		.uleb128 0x3e
+ 336 0019 0B       		.uleb128 0xb
+ 337 001a 03       		.uleb128 0x3
+ 338 001b 0E       		.uleb128 0xe
+ 339 001c 00       		.byte	0
+ 340 001d 00       		.byte	0
+ 341 001e 03       		.uleb128 0x3
+ 342 001f 24       		.uleb128 0x24
+ 343 0020 00       		.byte	0
+ 344 0021 0B       		.uleb128 0xb
+ 345 0022 0B       		.uleb128 0xb
+ 346 0023 3E       		.uleb128 0x3e
+ 347 0024 0B       		.uleb128 0xb
+ 348 0025 03       		.uleb128 0x3
+ 349 0026 08       		.uleb128 0x8
+ 350 0027 00       		.byte	0
+ 351 0028 00       		.byte	0
+ 352 0029 04       		.uleb128 0x4
+ 353 002a 16       		.uleb128 0x16
+ 354 002b 00       		.byte	0
+ 355 002c 03       		.uleb128 0x3
+ 356 002d 0E       		.uleb128 0xe
+ 357 002e 3A       		.uleb128 0x3a
+ 358 002f 0B       		.uleb128 0xb
+ 359 0030 3B       		.uleb128 0x3b
+ 360 0031 0B       		.uleb128 0xb
+ 361 0032 49       		.uleb128 0x49
+ 362 0033 13       		.uleb128 0x13
+ 363 0034 00       		.byte	0
+ 364 0035 00       		.byte	0
+ 365 0036 05       		.uleb128 0x5
+ 366 0037 16       		.uleb128 0x16
+ 367 0038 00       		.byte	0
+ 368 0039 03       		.uleb128 0x3
+ 369 003a 0E       		.uleb128 0xe
+ 370 003b 3A       		.uleb128 0x3a
+ 371 003c 0B       		.uleb128 0xb
+ 372 003d 3B       		.uleb128 0x3b
+ 373 003e 05       		.uleb128 0x5
+ 374 003f 49       		.uleb128 0x49
+ 375 0040 13       		.uleb128 0x13
+ 376 0041 00       		.byte	0
+ 377 0042 00       		.byte	0
+ 378 0043 06       		.uleb128 0x6
+ 379 0044 35       		.uleb128 0x35
+ 380 0045 00       		.byte	0
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\cc2xBAiS.s 			page 11
+
+
+ 381 0046 49       		.uleb128 0x49
+ 382 0047 13       		.uleb128 0x13
+ 383 0048 00       		.byte	0
+ 384 0049 00       		.byte	0
+ 385 004a 07       		.uleb128 0x7
+ 386 004b 13       		.uleb128 0x13
+ 387 004c 01       		.byte	0x1
+ 388 004d 03       		.uleb128 0x3
+ 389 004e 0E       		.uleb128 0xe
+ 390 004f 0B       		.uleb128 0xb
+ 391 0050 0B       		.uleb128 0xb
+ 392 0051 3A       		.uleb128 0x3a
+ 393 0052 0B       		.uleb128 0xb
+ 394 0053 3B       		.uleb128 0x3b
+ 395 0054 0B       		.uleb128 0xb
+ 396 0055 01       		.uleb128 0x1
+ 397 0056 13       		.uleb128 0x13
+ 398 0057 00       		.byte	0
+ 399 0058 00       		.byte	0
+ 400 0059 08       		.uleb128 0x8
+ 401 005a 0D       		.uleb128 0xd
+ 402 005b 00       		.byte	0
+ 403 005c 03       		.uleb128 0x3
+ 404 005d 0E       		.uleb128 0xe
+ 405 005e 3A       		.uleb128 0x3a
+ 406 005f 0B       		.uleb128 0xb
+ 407 0060 3B       		.uleb128 0x3b
+ 408 0061 0B       		.uleb128 0xb
+ 409 0062 49       		.uleb128 0x49
+ 410 0063 13       		.uleb128 0x13
+ 411 0064 38       		.uleb128 0x38
+ 412 0065 0B       		.uleb128 0xb
+ 413 0066 00       		.byte	0
+ 414 0067 00       		.byte	0
+ 415 0068 09       		.uleb128 0x9
+ 416 0069 2E       		.uleb128 0x2e
+ 417 006a 00       		.byte	0
+ 418 006b 3F       		.uleb128 0x3f
+ 419 006c 19       		.uleb128 0x19
+ 420 006d 03       		.uleb128 0x3
+ 421 006e 0E       		.uleb128 0xe
+ 422 006f 3A       		.uleb128 0x3a
+ 423 0070 0B       		.uleb128 0xb
+ 424 0071 3B       		.uleb128 0x3b
+ 425 0072 0B       		.uleb128 0xb
+ 426 0073 27       		.uleb128 0x27
+ 427 0074 19       		.uleb128 0x19
+ 428 0075 11       		.uleb128 0x11
+ 429 0076 01       		.uleb128 0x1
+ 430 0077 12       		.uleb128 0x12
+ 431 0078 06       		.uleb128 0x6
+ 432 0079 40       		.uleb128 0x40
+ 433 007a 18       		.uleb128 0x18
+ 434 007b 9742     		.uleb128 0x2117
+ 435 007d 19       		.uleb128 0x19
+ 436 007e 00       		.byte	0
+ 437 007f 00       		.byte	0
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\cc2xBAiS.s 			page 12
+
+
+ 438 0080 0A       		.uleb128 0xa
+ 439 0081 2E       		.uleb128 0x2e
+ 440 0082 00       		.byte	0
+ 441 0083 3F       		.uleb128 0x3f
+ 442 0084 19       		.uleb128 0x19
+ 443 0085 03       		.uleb128 0x3
+ 444 0086 0E       		.uleb128 0xe
+ 445 0087 3A       		.uleb128 0x3a
+ 446 0088 0B       		.uleb128 0xb
+ 447 0089 3B       		.uleb128 0x3b
+ 448 008a 0B       		.uleb128 0xb
+ 449 008b 27       		.uleb128 0x27
+ 450 008c 19       		.uleb128 0x19
+ 451 008d 11       		.uleb128 0x11
+ 452 008e 01       		.uleb128 0x1
+ 453 008f 12       		.uleb128 0x12
+ 454 0090 06       		.uleb128 0x6
+ 455 0091 40       		.uleb128 0x40
+ 456 0092 18       		.uleb128 0x18
+ 457 0093 9642     		.uleb128 0x2116
+ 458 0095 19       		.uleb128 0x19
+ 459 0096 00       		.byte	0
+ 460 0097 00       		.byte	0
+ 461 0098 0B       		.uleb128 0xb
+ 462 0099 34       		.uleb128 0x34
+ 463 009a 00       		.byte	0
+ 464 009b 03       		.uleb128 0x3
+ 465 009c 0E       		.uleb128 0xe
+ 466 009d 3A       		.uleb128 0x3a
+ 467 009e 0B       		.uleb128 0xb
+ 468 009f 3B       		.uleb128 0x3b
+ 469 00a0 0B       		.uleb128 0xb
+ 470 00a1 49       		.uleb128 0x49
+ 471 00a2 13       		.uleb128 0x13
+ 472 00a3 02       		.uleb128 0x2
+ 473 00a4 18       		.uleb128 0x18
+ 474 00a5 00       		.byte	0
+ 475 00a6 00       		.byte	0
+ 476 00a7 00       		.byte	0
+ 477              		.section	.debug_aranges,"",%progbits
+ 478 0000 34000000 		.4byte	0x34
+ 479 0004 0200     		.2byte	0x2
+ 480 0006 00000000 		.4byte	.Ldebug_info0
+ 481 000a 04       		.byte	0x4
+ 482 000b 00       		.byte	0
+ 483 000c 0000     		.2byte	0
+ 484 000e 0000     		.2byte	0
+ 485 0010 00000000 		.4byte	.LFB0
+ 486 0014 0C000000 		.4byte	.LFE0-.LFB0
+ 487 0018 00000000 		.4byte	.LFB1
+ 488 001c 0C000000 		.4byte	.LFE1-.LFB1
+ 489 0020 00000000 		.4byte	.LFB2
+ 490 0024 34000000 		.4byte	.LFE2-.LFB2
+ 491 0028 00000000 		.4byte	.LFB3
+ 492 002c 20000000 		.4byte	.LFE3-.LFB3
+ 493 0030 00000000 		.4byte	0
+ 494 0034 00000000 		.4byte	0
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\cc2xBAiS.s 			page 13
+
+
+ 495              		.section	.debug_ranges,"",%progbits
+ 496              	.Ldebug_ranges0:
+ 497 0000 00000000 		.4byte	.LFB0
+ 498 0004 0C000000 		.4byte	.LFE0
+ 499 0008 00000000 		.4byte	.LFB1
+ 500 000c 0C000000 		.4byte	.LFE1
+ 501 0010 00000000 		.4byte	.LFB2
+ 502 0014 34000000 		.4byte	.LFE2
+ 503 0018 00000000 		.4byte	.LFB3
+ 504 001c 20000000 		.4byte	.LFE3
+ 505 0020 00000000 		.4byte	0
+ 506 0024 00000000 		.4byte	0
+ 507              		.section	.debug_line,"",%progbits
+ 508              	.Ldebug_line0:
+ 509 0000 AC000000 		.section	.debug_str,"MS",%progbits,1
+ 509      02005800 
+ 509      00000201 
+ 509      FB0E0D00 
+ 509      01010101 
+ 510              	.LASF6:
+ 511 0000 6C6F6E67 		.ascii	"long long int\000"
+ 511      206C6F6E 
+ 511      6720696E 
+ 511      7400
+ 512              	.LASF24:
+ 513 000e 656E6162 		.ascii	"enableState\000"
+ 513      6C655374 
+ 513      61746500 
+ 514              	.LASF8:
+ 515 001a 756E7369 		.ascii	"unsigned int\000"
+ 515      676E6564 
+ 515      20696E74 
+ 515      00
+ 516              	.LASF16:
+ 517 0027 52785F46 		.ascii	"Rx_Front_SaveConfig\000"
+ 517      726F6E74 
+ 517      5F536176 
+ 517      65436F6E 
+ 517      66696700 
+ 518              	.LASF19:
+ 519 003b 52785F46 		.ascii	"Rx_Front_Wakeup\000"
+ 519      726F6E74 
+ 519      5F57616B 
+ 519      65757000 
+ 520              	.LASF13:
+ 521 004b 72656738 		.ascii	"reg8\000"
+ 521      00
+ 522              	.LASF12:
+ 523 0050 75696E74 		.ascii	"uint8\000"
+ 523      3800
+ 524              	.LASF5:
+ 525 0056 6C6F6E67 		.ascii	"long unsigned int\000"
+ 525      20756E73 
+ 525      69676E65 
+ 525      6420696E 
+ 525      7400
+ 526              	.LASF7:
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\cc2xBAiS.s 			page 14
+
+
+ 527 0068 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 527      206C6F6E 
+ 527      6720756E 
+ 527      7369676E 
+ 527      65642069 
+ 528              	.LASF23:
+ 529 007f 52785F46 		.ascii	"Rx_Front_backupStruct_\000"
+ 529      726F6E74 
+ 529      5F626163 
+ 529      6B757053 
+ 529      74727563 
+ 530              	.LASF1:
+ 531 0096 756E7369 		.ascii	"unsigned char\000"
+ 531      676E6564 
+ 531      20636861 
+ 531      7200
+ 532              	.LASF11:
+ 533 00a4 63686172 		.ascii	"char\000"
+ 533      00
+ 534              	.LASF22:
+ 535 00a9 433A5C55 		.ascii	"C:\\Users\\Matthew Arbesfeld\\Documents\\PSoC Creat"
+ 535      73657273 
+ 535      5C4D6174 
+ 535      74686577 
+ 535      20417262 
+ 536 00d8 6F725C42 		.ascii	"or\\BoxesUART\\Boxes5.cydsn\000"
+ 536      6F786573 
+ 536      55415254 
+ 536      5C426F78 
+ 536      6573352E 
+ 537              	.LASF4:
+ 538 00f2 6C6F6E67 		.ascii	"long int\000"
+ 538      20696E74 
+ 538      00
+ 539              	.LASF2:
+ 540 00fb 73686F72 		.ascii	"short int\000"
+ 540      7420696E 
+ 540      7400
+ 541              	.LASF10:
+ 542 0105 646F7562 		.ascii	"double\000"
+ 542      6C6500
+ 543              	.LASF17:
+ 544 010c 52785F46 		.ascii	"Rx_Front_RestoreConfig\000"
+ 544      726F6E74 
+ 544      5F526573 
+ 544      746F7265 
+ 544      436F6E66 
+ 545              	.LASF3:
+ 546 0123 73686F72 		.ascii	"short unsigned int\000"
+ 546      7420756E 
+ 546      7369676E 
+ 546      65642069 
+ 546      6E7400
+ 547              	.LASF0:
+ 548 0136 7369676E 		.ascii	"signed char\000"
+ 548      65642063 
+ 548      68617200 
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\cc2xBAiS.s 			page 15
+
+
+ 549              	.LASF15:
+ 550 0142 52785F46 		.ascii	"Rx_Front_BACKUP_STRUCT\000"
+ 550      726F6E74 
+ 550      5F424143 
+ 550      4B55505F 
+ 550      53545255 
+ 551              	.LASF9:
+ 552 0159 666C6F61 		.ascii	"float\000"
+ 552      7400
+ 553              	.LASF18:
+ 554 015f 52785F46 		.ascii	"Rx_Front_Sleep\000"
+ 554      726F6E74 
+ 554      5F536C65 
+ 554      657000
+ 555              	.LASF25:
+ 556 016e 52785F46 		.ascii	"Rx_Front_backup\000"
+ 556      726F6E74 
+ 556      5F626163 
+ 556      6B757000 
+ 557              	.LASF20:
+ 558 017e 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 558      4320342E 
+ 558      382E3420 
+ 558      32303134 
+ 558      30353236 
+ 559 01b1 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m3 -mthumb -g -O"
+ 559      20726576 
+ 559      6973696F 
+ 559      6E203231 
+ 559      31333538 
+ 560 01e4 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 560      66756E63 
+ 560      74696F6E 
+ 560      2D736563 
+ 560      74696F6E 
+ 561              	.LASF21:
+ 562 01fa 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\Rx_Front_PM.c\000"
+ 562      6E657261 
+ 562      7465645F 
+ 562      536F7572 
+ 562      63655C50 
+ 563              	.LASF14:
+ 564 0221 73697A65 		.ascii	"sizetype\000"
+ 564      74797065 
+ 564      00
+ 565              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

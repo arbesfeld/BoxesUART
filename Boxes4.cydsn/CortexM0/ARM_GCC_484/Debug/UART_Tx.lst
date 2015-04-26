@@ -1,0 +1,1385 @@
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccE43Ycc.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"UART_Tx.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	UART_Tx_pinNumber
+  18              		.data
+  19              		.align	2
+  20              		.type	UART_Tx_pinNumber, %object
+  21              		.size	UART_Tx_pinNumber, 4
+  22              	UART_Tx_pinNumber:
+  23 0000 01000000 		.word	1
+  24              		.global	UART_Tx_pinPortNumber
+  25              		.align	2
+  26              		.type	UART_Tx_pinPortNumber, %object
+  27              		.size	UART_Tx_pinPortNumber, 4
+  28              	UART_Tx_pinPortNumber:
+  29 0004 04000000 		.word	4
+  30              		.global	UART_Tx_pinDrAdress
+  31              		.align	2
+  32              		.type	UART_Tx_pinDrAdress, %object
+  33              		.size	UART_Tx_pinDrAdress, 4
+  34              	UART_Tx_pinDrAdress:
+  35 0008 00040440 		.word	1074004992
+  36              		.section	.text.UART_Tx_Start,"ax",%progbits
+  37              		.align	2
+  38              		.global	UART_Tx_Start
+  39              		.code	16
+  40              		.thumb_func
+  41              		.type	UART_Tx_Start, %function
+  42              	UART_Tx_Start:
+  43              	.LFB0:
+  44              		.file 1 ".\\Generated_Source\\PSoC4\\UART_Tx.c"
+   1:.\Generated_Source\PSoC4/UART_Tx.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC4/UART_Tx.c **** * File Name: UART_Tx.c
+   3:.\Generated_Source\PSoC4/UART_Tx.c **** * Version 1.30
+   4:.\Generated_Source\PSoC4/UART_Tx.c **** *
+   5:.\Generated_Source\PSoC4/UART_Tx.c **** * Description:
+   6:.\Generated_Source\PSoC4/UART_Tx.c **** *  This file provides the source code to the API for the Software Transmit UART.
+   7:.\Generated_Source\PSoC4/UART_Tx.c **** *
+   8:.\Generated_Source\PSoC4/UART_Tx.c **** ********************************************************************************
+   9:.\Generated_Source\PSoC4/UART_Tx.c **** * Copyright 2013-2014, Cypress Semiconductor Corporation.  All rights reserved.
+  10:.\Generated_Source\PSoC4/UART_Tx.c **** * You may use this file only in accordance with the license, terms, conditions,
+  11:.\Generated_Source\PSoC4/UART_Tx.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  12:.\Generated_Source\PSoC4/UART_Tx.c **** * the software package with which this file was provided.
+  13:.\Generated_Source\PSoC4/UART_Tx.c **** *******************************************************************************/
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccE43Ycc.s 			page 2
+
+
+  14:.\Generated_Source\PSoC4/UART_Tx.c **** 
+  15:.\Generated_Source\PSoC4/UART_Tx.c **** #include "UART_Tx_PVT.h"
+  16:.\Generated_Source\PSoC4/UART_Tx.c **** 
+  17:.\Generated_Source\PSoC4/UART_Tx.c **** #if(UART_Tx_PIN_STATIC_MODE == 1u)
+  18:.\Generated_Source\PSoC4/UART_Tx.c ****     uint32 UART_Tx_pinNumber = UART_Tx_PIN_NUMBER;
+  19:.\Generated_Source\PSoC4/UART_Tx.c ****     uint32 UART_Tx_pinPortNumber = UART_Tx_PIN_PORT_NUMBER;
+  20:.\Generated_Source\PSoC4/UART_Tx.c ****     #if(CY_PSOC3)
+  21:.\Generated_Source\PSoC4/UART_Tx.c ****         uint32 pdata UART_Tx_pinDrAdress = UART_Tx_PIN_DR;
+  22:.\Generated_Source\PSoC4/UART_Tx.c ****     #else
+  23:.\Generated_Source\PSoC4/UART_Tx.c ****         uint32 UART_Tx_pinDrAdress = UART_Tx_PIN_DR;
+  24:.\Generated_Source\PSoC4/UART_Tx.c ****     #endif /* (CY_PSOC3) */
+  25:.\Generated_Source\PSoC4/UART_Tx.c **** #else
+  26:.\Generated_Source\PSoC4/UART_Tx.c ****     uint32 UART_Tx_pinNumber;
+  27:.\Generated_Source\PSoC4/UART_Tx.c ****     uint32 UART_Tx_pinPortNumber;
+  28:.\Generated_Source\PSoC4/UART_Tx.c ****     #if(CY_PSOC3)
+  29:.\Generated_Source\PSoC4/UART_Tx.c ****         uint32 pdata UART_Tx_pinDrAdress;
+  30:.\Generated_Source\PSoC4/UART_Tx.c ****     #else
+  31:.\Generated_Source\PSoC4/UART_Tx.c ****         uint32 UART_Tx_pinDrAdress;
+  32:.\Generated_Source\PSoC4/UART_Tx.c ****     #endif /* (CY_PSOC3) */
+  33:.\Generated_Source\PSoC4/UART_Tx.c **** #endif /* (UART_Tx_PIN_STATIC_MODE == 1u) */
+  34:.\Generated_Source\PSoC4/UART_Tx.c **** 
+  35:.\Generated_Source\PSoC4/UART_Tx.c **** 
+  36:.\Generated_Source\PSoC4/UART_Tx.c **** #if(UART_Tx_PIN_STATIC_MODE == 1u)
+  37:.\Generated_Source\PSoC4/UART_Tx.c ****     /*******************************************************************************
+  38:.\Generated_Source\PSoC4/UART_Tx.c ****     * Function Name: UART_Tx_Start
+  39:.\Generated_Source\PSoC4/UART_Tx.c ****     ********************************************************************************
+  40:.\Generated_Source\PSoC4/UART_Tx.c ****     *
+  41:.\Generated_Source\PSoC4/UART_Tx.c ****     * Summary:
+  42:.\Generated_Source\PSoC4/UART_Tx.c ****     *  Empty function. Included for consistency with other
+  43:.\Generated_Source\PSoC4/UART_Tx.c ****     *  components. This API is not available when PinAssignmentMethod
+  44:.\Generated_Source\PSoC4/UART_Tx.c ****     *  is set to Dynamic.
+  45:.\Generated_Source\PSoC4/UART_Tx.c ****     *
+  46:.\Generated_Source\PSoC4/UART_Tx.c ****     * Parameters:
+  47:.\Generated_Source\PSoC4/UART_Tx.c ****     *  None
+  48:.\Generated_Source\PSoC4/UART_Tx.c ****     *
+  49:.\Generated_Source\PSoC4/UART_Tx.c ****     * Return:
+  50:.\Generated_Source\PSoC4/UART_Tx.c ****     *  None
+  51:.\Generated_Source\PSoC4/UART_Tx.c ****     *
+  52:.\Generated_Source\PSoC4/UART_Tx.c ****     *******************************************************************************/
+  53:.\Generated_Source\PSoC4/UART_Tx.c ****     void UART_Tx_Start(void) 
+  54:.\Generated_Source\PSoC4/UART_Tx.c ****     {
+  45              		.loc 1 54 0
+  46              		.cfi_startproc
+  47 0000 80B5     		push	{r7, lr}
+  48              		.cfi_def_cfa_offset 8
+  49              		.cfi_offset 7, -8
+  50              		.cfi_offset 14, -4
+  51 0002 00AF     		add	r7, sp, #0
+  52              		.cfi_def_cfa_register 7
+  55:.\Generated_Source\PSoC4/UART_Tx.c **** 
+  56:.\Generated_Source\PSoC4/UART_Tx.c ****     }
+  53              		.loc 1 56 0
+  54 0004 BD46     		mov	sp, r7
+  55              		@ sp needed
+  56 0006 80BD     		pop	{r7, pc}
+  57              		.cfi_endproc
+  58              	.LFE0:
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccE43Ycc.s 			page 3
+
+
+  59              		.size	UART_Tx_Start, .-UART_Tx_Start
+  60              		.section	.text.UART_Tx_Stop,"ax",%progbits
+  61              		.align	2
+  62              		.global	UART_Tx_Stop
+  63              		.code	16
+  64              		.thumb_func
+  65              		.type	UART_Tx_Stop, %function
+  66              	UART_Tx_Stop:
+  67              	.LFB1:
+  57:.\Generated_Source\PSoC4/UART_Tx.c **** #else
+  58:.\Generated_Source\PSoC4/UART_Tx.c ****     /*******************************************************************************
+  59:.\Generated_Source\PSoC4/UART_Tx.c ****     * Function Name: UART_Tx_StartEx
+  60:.\Generated_Source\PSoC4/UART_Tx.c ****     ********************************************************************************
+  61:.\Generated_Source\PSoC4/UART_Tx.c ****     *
+  62:.\Generated_Source\PSoC4/UART_Tx.c ****     * Summary:
+  63:.\Generated_Source\PSoC4/UART_Tx.c ****     *  Configures the SW Tx UART to use the pin specified
+  64:.\Generated_Source\PSoC4/UART_Tx.c ****     *  by the parameters. This API is only available when
+  65:.\Generated_Source\PSoC4/UART_Tx.c ****     *  PinAssignmentMethod is set to Dynamic.
+  66:.\Generated_Source\PSoC4/UART_Tx.c ****     *
+  67:.\Generated_Source\PSoC4/UART_Tx.c ****     * Parameters:
+  68:.\Generated_Source\PSoC4/UART_Tx.c ****     *  port:  Port number for dynamic pin assignment
+  69:.\Generated_Source\PSoC4/UART_Tx.c ****     *  pin:   Pin number for dynamic pin assignment
+  70:.\Generated_Source\PSoC4/UART_Tx.c ****     *
+  71:.\Generated_Source\PSoC4/UART_Tx.c ****     * Return:
+  72:.\Generated_Source\PSoC4/UART_Tx.c ****     *  None
+  73:.\Generated_Source\PSoC4/UART_Tx.c ****     *
+  74:.\Generated_Source\PSoC4/UART_Tx.c ****     *******************************************************************************/
+  75:.\Generated_Source\PSoC4/UART_Tx.c ****     void UART_Tx_StartEx(uint8 port, uint8 pin) 
+  76:.\Generated_Source\PSoC4/UART_Tx.c ****     {
+  77:.\Generated_Source\PSoC4/UART_Tx.c ****         uint32 portConfigAddr;
+  78:.\Generated_Source\PSoC4/UART_Tx.c **** 
+  79:.\Generated_Source\PSoC4/UART_Tx.c ****         #if (CY_PSOC4)
+  80:.\Generated_Source\PSoC4/UART_Tx.c ****             uint32 portDataRegAddr;
+  81:.\Generated_Source\PSoC4/UART_Tx.c ****         #endif /* (CY_PSOC4) */
+  82:.\Generated_Source\PSoC4/UART_Tx.c **** 
+  83:.\Generated_Source\PSoC4/UART_Tx.c ****         if ((pin <= UART_Tx_MAX_PIN_NUMBER) && (port <= UART_Tx_MAX_PORT_NUMBER))
+  84:.\Generated_Source\PSoC4/UART_Tx.c ****         {
+  85:.\Generated_Source\PSoC4/UART_Tx.c ****             #if (!CY_PSOC4)
+  86:.\Generated_Source\PSoC4/UART_Tx.c ****                 portConfigAddr = UART_Tx_PORT_CNF_BASE;
+  87:.\Generated_Source\PSoC4/UART_Tx.c ****                 portConfigAddr += ((uint32)port * (UART_Tx_MAX_PIN_NUMBER + 1u)) + pin;
+  88:.\Generated_Source\PSoC4/UART_Tx.c ****                 CyPins_SetPinDriveMode(portConfigAddr, CY_PINS_DM_STRONG);
+  89:.\Generated_Source\PSoC4/UART_Tx.c ****                 CyPins_SetPin(portConfigAddr);
+  90:.\Generated_Source\PSoC4/UART_Tx.c ****                 UART_Tx_pinDrAdress = portConfigAddr;
+  91:.\Generated_Source\PSoC4/UART_Tx.c ****             #else
+  92:.\Generated_Source\PSoC4/UART_Tx.c ****                 portConfigAddr = UART_Tx_PORT_CNF_BASE + (UART_Tx_PORT_CNF_SIZE * port) +
+  93:.\Generated_Source\PSoC4/UART_Tx.c ****                                                                                 UART_Tx_PORT_CNF_MO
+  94:.\Generated_Source\PSoC4/UART_Tx.c ****                 CY_SYS_PINS_SET_DRIVE_MODE(portConfigAddr, pin, CY_SYS_PINS_DM_STRONG);
+  95:.\Generated_Source\PSoC4/UART_Tx.c ****                 portDataRegAddr = UART_Tx_PORT_CNF_BASE + (UART_Tx_PORT_CNF_SIZE * port) +
+  96:.\Generated_Source\PSoC4/UART_Tx.c ****                                                                                 UART_Tx_PORT_CNF_DR
+  97:.\Generated_Source\PSoC4/UART_Tx.c ****                 CY_SYS_PINS_SET_PIN(portDataRegAddr, pin);
+  98:.\Generated_Source\PSoC4/UART_Tx.c ****                 UART_Tx_pinDrAdress = portDataRegAddr;
+  99:.\Generated_Source\PSoC4/UART_Tx.c ****             #endif /* (!CY_PSOC4) */
+ 100:.\Generated_Source\PSoC4/UART_Tx.c ****             UART_Tx_pinNumber = pin;
+ 101:.\Generated_Source\PSoC4/UART_Tx.c ****             UART_Tx_pinPortNumber = port;
+ 102:.\Generated_Source\PSoC4/UART_Tx.c ****         }
+ 103:.\Generated_Source\PSoC4/UART_Tx.c ****     }
+ 104:.\Generated_Source\PSoC4/UART_Tx.c **** #endif /* (UART_Tx_PIN_STATIC_MODE == 1u) */
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccE43Ycc.s 			page 4
+
+
+ 105:.\Generated_Source\PSoC4/UART_Tx.c **** 
+ 106:.\Generated_Source\PSoC4/UART_Tx.c **** 
+ 107:.\Generated_Source\PSoC4/UART_Tx.c **** /*******************************************************************************
+ 108:.\Generated_Source\PSoC4/UART_Tx.c **** * Function Name: UART_Tx_Stop
+ 109:.\Generated_Source\PSoC4/UART_Tx.c **** ********************************************************************************
+ 110:.\Generated_Source\PSoC4/UART_Tx.c **** *
+ 111:.\Generated_Source\PSoC4/UART_Tx.c **** * Summary:
+ 112:.\Generated_Source\PSoC4/UART_Tx.c **** *  Empty function. Included for consistency with other components.
+ 113:.\Generated_Source\PSoC4/UART_Tx.c **** *
+ 114:.\Generated_Source\PSoC4/UART_Tx.c **** * Parameters:
+ 115:.\Generated_Source\PSoC4/UART_Tx.c **** *  None
+ 116:.\Generated_Source\PSoC4/UART_Tx.c **** *
+ 117:.\Generated_Source\PSoC4/UART_Tx.c **** * Return:
+ 118:.\Generated_Source\PSoC4/UART_Tx.c **** *  None
+ 119:.\Generated_Source\PSoC4/UART_Tx.c **** *
+ 120:.\Generated_Source\PSoC4/UART_Tx.c **** *******************************************************************************/
+ 121:.\Generated_Source\PSoC4/UART_Tx.c **** void UART_Tx_Stop(void) 
+ 122:.\Generated_Source\PSoC4/UART_Tx.c **** {
+  68              		.loc 1 122 0
+  69              		.cfi_startproc
+  70 0000 80B5     		push	{r7, lr}
+  71              		.cfi_def_cfa_offset 8
+  72              		.cfi_offset 7, -8
+  73              		.cfi_offset 14, -4
+  74 0002 00AF     		add	r7, sp, #0
+  75              		.cfi_def_cfa_register 7
+ 123:.\Generated_Source\PSoC4/UART_Tx.c **** 
+ 124:.\Generated_Source\PSoC4/UART_Tx.c **** }
+  76              		.loc 1 124 0
+  77 0004 BD46     		mov	sp, r7
+  78              		@ sp needed
+  79 0006 80BD     		pop	{r7, pc}
+  80              		.cfi_endproc
+  81              	.LFE1:
+  82              		.size	UART_Tx_Stop, .-UART_Tx_Stop
+  83              		.section	.text.UART_Tx_PutString,"ax",%progbits
+  84              		.align	2
+  85              		.global	UART_Tx_PutString
+  86              		.code	16
+  87              		.thumb_func
+  88              		.type	UART_Tx_PutString, %function
+  89              	UART_Tx_PutString:
+  90              	.LFB2:
+ 125:.\Generated_Source\PSoC4/UART_Tx.c **** 
+ 126:.\Generated_Source\PSoC4/UART_Tx.c **** 
+ 127:.\Generated_Source\PSoC4/UART_Tx.c **** /*******************************************************************************
+ 128:.\Generated_Source\PSoC4/UART_Tx.c **** * Function Name: UART_Tx_PutString
+ 129:.\Generated_Source\PSoC4/UART_Tx.c **** ********************************************************************************
+ 130:.\Generated_Source\PSoC4/UART_Tx.c **** *
+ 131:.\Generated_Source\PSoC4/UART_Tx.c **** * Summary:
+ 132:.\Generated_Source\PSoC4/UART_Tx.c **** *  Sends a NULL terminated string via the Tx pin.
+ 133:.\Generated_Source\PSoC4/UART_Tx.c **** *
+ 134:.\Generated_Source\PSoC4/UART_Tx.c **** * Parameters:
+ 135:.\Generated_Source\PSoC4/UART_Tx.c **** *  string: Pointer to the null terminated string to send
+ 136:.\Generated_Source\PSoC4/UART_Tx.c **** *
+ 137:.\Generated_Source\PSoC4/UART_Tx.c **** * Return:
+ 138:.\Generated_Source\PSoC4/UART_Tx.c **** *  None
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccE43Ycc.s 			page 5
+
+
+ 139:.\Generated_Source\PSoC4/UART_Tx.c **** *
+ 140:.\Generated_Source\PSoC4/UART_Tx.c **** *******************************************************************************/
+ 141:.\Generated_Source\PSoC4/UART_Tx.c **** void UART_Tx_PutString(const char8 string[]) 
+ 142:.\Generated_Source\PSoC4/UART_Tx.c **** {
+  91              		.loc 1 142 0
+  92              		.cfi_startproc
+  93 0000 80B5     		push	{r7, lr}
+  94              		.cfi_def_cfa_offset 8
+  95              		.cfi_offset 7, -8
+  96              		.cfi_offset 14, -4
+  97 0002 84B0     		sub	sp, sp, #16
+  98              		.cfi_def_cfa_offset 24
+  99 0004 00AF     		add	r7, sp, #0
+ 100              		.cfi_def_cfa_register 7
+ 101 0006 7860     		str	r0, [r7, #4]
+ 143:.\Generated_Source\PSoC4/UART_Tx.c ****     uint8 stringIndex = 1u;
+ 102              		.loc 1 143 0
+ 103 0008 3B1C     		mov	r3, r7
+ 104 000a 0F33     		add	r3, r3, #15
+ 105 000c 0122     		mov	r2, #1
+ 106 000e 1A70     		strb	r2, [r3]
+ 144:.\Generated_Source\PSoC4/UART_Tx.c ****     char8 current = *string;
+ 107              		.loc 1 144 0
+ 108 0010 3B1C     		mov	r3, r7
+ 109 0012 0E33     		add	r3, r3, #14
+ 110 0014 7A68     		ldr	r2, [r7, #4]
+ 111 0016 1278     		ldrb	r2, [r2]
+ 112 0018 1A70     		strb	r2, [r3]
+ 145:.\Generated_Source\PSoC4/UART_Tx.c **** 
+ 146:.\Generated_Source\PSoC4/UART_Tx.c ****     /* Until null is reached, print next character */
+ 147:.\Generated_Source\PSoC4/UART_Tx.c ****     while((char8) '\0' != current)
+ 113              		.loc 1 147 0
+ 114 001a 15E0     		b	.L4
+ 115              	.L5:
+ 148:.\Generated_Source\PSoC4/UART_Tx.c ****     {
+ 149:.\Generated_Source\PSoC4/UART_Tx.c ****         UART_Tx_PutChar((uint8)current);
+ 116              		.loc 1 149 0
+ 117 001c 3B1C     		mov	r3, r7
+ 118 001e 0E33     		add	r3, r3, #14
+ 119 0020 1B78     		ldrb	r3, [r3]
+ 120 0022 181C     		mov	r0, r3
+ 121 0024 FFF7FEFF 		bl	UART_Tx_PutChar
+ 150:.\Generated_Source\PSoC4/UART_Tx.c ****         current = string[stringIndex];
+ 122              		.loc 1 150 0
+ 123 0028 3B1C     		mov	r3, r7
+ 124 002a 0F33     		add	r3, r3, #15
+ 125 002c 1B78     		ldrb	r3, [r3]
+ 126 002e 7A68     		ldr	r2, [r7, #4]
+ 127 0030 D218     		add	r2, r2, r3
+ 128 0032 3B1C     		mov	r3, r7
+ 129 0034 0E33     		add	r3, r3, #14
+ 130 0036 1278     		ldrb	r2, [r2]
+ 131 0038 1A70     		strb	r2, [r3]
+ 151:.\Generated_Source\PSoC4/UART_Tx.c ****         stringIndex++;
+ 132              		.loc 1 151 0
+ 133 003a 3B1C     		mov	r3, r7
+ 134 003c 0F33     		add	r3, r3, #15
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccE43Ycc.s 			page 6
+
+
+ 135 003e 1A78     		ldrb	r2, [r3]
+ 136 0040 3B1C     		mov	r3, r7
+ 137 0042 0F33     		add	r3, r3, #15
+ 138 0044 0132     		add	r2, r2, #1
+ 139 0046 1A70     		strb	r2, [r3]
+ 140              	.L4:
+ 147:.\Generated_Source\PSoC4/UART_Tx.c ****     while((char8) '\0' != current)
+ 141              		.loc 1 147 0 discriminator 1
+ 142 0048 3B1C     		mov	r3, r7
+ 143 004a 0E33     		add	r3, r3, #14
+ 144 004c 1B78     		ldrb	r3, [r3]
+ 145 004e 002B     		cmp	r3, #0
+ 146 0050 E4D1     		bne	.L5
+ 152:.\Generated_Source\PSoC4/UART_Tx.c ****     }
+ 153:.\Generated_Source\PSoC4/UART_Tx.c **** }
+ 147              		.loc 1 153 0
+ 148 0052 BD46     		mov	sp, r7
+ 149 0054 04B0     		add	sp, sp, #16
+ 150              		@ sp needed
+ 151 0056 80BD     		pop	{r7, pc}
+ 152              		.cfi_endproc
+ 153              	.LFE2:
+ 154              		.size	UART_Tx_PutString, .-UART_Tx_PutString
+ 155              		.section	.text.UART_Tx_PutArray,"ax",%progbits
+ 156              		.align	2
+ 157              		.global	UART_Tx_PutArray
+ 158              		.code	16
+ 159              		.thumb_func
+ 160              		.type	UART_Tx_PutArray, %function
+ 161              	UART_Tx_PutArray:
+ 162              	.LFB3:
+ 154:.\Generated_Source\PSoC4/UART_Tx.c **** 
+ 155:.\Generated_Source\PSoC4/UART_Tx.c **** 
+ 156:.\Generated_Source\PSoC4/UART_Tx.c **** /*******************************************************************************
+ 157:.\Generated_Source\PSoC4/UART_Tx.c **** * Function Name: UART_Tx_PutArray
+ 158:.\Generated_Source\PSoC4/UART_Tx.c **** ********************************************************************************
+ 159:.\Generated_Source\PSoC4/UART_Tx.c **** *
+ 160:.\Generated_Source\PSoC4/UART_Tx.c **** * Summary:
+ 161:.\Generated_Source\PSoC4/UART_Tx.c **** *  Sends byteCount bytes from a memory array via the Tx pin.
+ 162:.\Generated_Source\PSoC4/UART_Tx.c **** *
+ 163:.\Generated_Source\PSoC4/UART_Tx.c **** * Parameters:
+ 164:.\Generated_Source\PSoC4/UART_Tx.c **** *  data: Pointer to the memory array
+ 165:.\Generated_Source\PSoC4/UART_Tx.c **** *  byteCount: Number of bytes to be transmitted
+ 166:.\Generated_Source\PSoC4/UART_Tx.c **** *
+ 167:.\Generated_Source\PSoC4/UART_Tx.c **** * Return:
+ 168:.\Generated_Source\PSoC4/UART_Tx.c **** *  None
+ 169:.\Generated_Source\PSoC4/UART_Tx.c **** *
+ 170:.\Generated_Source\PSoC4/UART_Tx.c **** *******************************************************************************/
+ 171:.\Generated_Source\PSoC4/UART_Tx.c **** void UART_Tx_PutArray(const uint8 array[], uint32 byteCount) 
+ 172:.\Generated_Source\PSoC4/UART_Tx.c **** {
+ 163              		.loc 1 172 0
+ 164              		.cfi_startproc
+ 165 0000 80B5     		push	{r7, lr}
+ 166              		.cfi_def_cfa_offset 8
+ 167              		.cfi_offset 7, -8
+ 168              		.cfi_offset 14, -4
+ 169 0002 84B0     		sub	sp, sp, #16
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccE43Ycc.s 			page 7
+
+
+ 170              		.cfi_def_cfa_offset 24
+ 171 0004 00AF     		add	r7, sp, #0
+ 172              		.cfi_def_cfa_register 7
+ 173 0006 7860     		str	r0, [r7, #4]
+ 174 0008 3960     		str	r1, [r7]
+ 173:.\Generated_Source\PSoC4/UART_Tx.c ****     uint32 arrayIndex;
+ 174:.\Generated_Source\PSoC4/UART_Tx.c **** 
+ 175:.\Generated_Source\PSoC4/UART_Tx.c ****     for (arrayIndex = 0u; arrayIndex < byteCount; arrayIndex++)
+ 175              		.loc 1 175 0
+ 176 000a 0023     		mov	r3, #0
+ 177 000c FB60     		str	r3, [r7, #12]
+ 178 000e 09E0     		b	.L7
+ 179              	.L8:
+ 176:.\Generated_Source\PSoC4/UART_Tx.c ****     {
+ 177:.\Generated_Source\PSoC4/UART_Tx.c ****         UART_Tx_PutChar(array[arrayIndex]);
+ 180              		.loc 1 177 0 discriminator 2
+ 181 0010 7A68     		ldr	r2, [r7, #4]
+ 182 0012 FB68     		ldr	r3, [r7, #12]
+ 183 0014 D318     		add	r3, r2, r3
+ 184 0016 1B78     		ldrb	r3, [r3]
+ 185 0018 181C     		mov	r0, r3
+ 186 001a FFF7FEFF 		bl	UART_Tx_PutChar
+ 175:.\Generated_Source\PSoC4/UART_Tx.c ****     for (arrayIndex = 0u; arrayIndex < byteCount; arrayIndex++)
+ 187              		.loc 1 175 0 discriminator 2
+ 188 001e FB68     		ldr	r3, [r7, #12]
+ 189 0020 0133     		add	r3, r3, #1
+ 190 0022 FB60     		str	r3, [r7, #12]
+ 191              	.L7:
+ 175:.\Generated_Source\PSoC4/UART_Tx.c ****     for (arrayIndex = 0u; arrayIndex < byteCount; arrayIndex++)
+ 192              		.loc 1 175 0 is_stmt 0 discriminator 1
+ 193 0024 FA68     		ldr	r2, [r7, #12]
+ 194 0026 3B68     		ldr	r3, [r7]
+ 195 0028 9A42     		cmp	r2, r3
+ 196 002a F1D3     		bcc	.L8
+ 178:.\Generated_Source\PSoC4/UART_Tx.c ****     }
+ 179:.\Generated_Source\PSoC4/UART_Tx.c **** }
+ 197              		.loc 1 179 0 is_stmt 1
+ 198 002c BD46     		mov	sp, r7
+ 199 002e 04B0     		add	sp, sp, #16
+ 200              		@ sp needed
+ 201 0030 80BD     		pop	{r7, pc}
+ 202              		.cfi_endproc
+ 203              	.LFE3:
+ 204              		.size	UART_Tx_PutArray, .-UART_Tx_PutArray
+ 205 0032 C046     		.section	.text.UART_Tx_PutHexByte,"ax",%progbits
+ 206              		.align	2
+ 207              		.global	UART_Tx_PutHexByte
+ 208              		.code	16
+ 209              		.thumb_func
+ 210              		.type	UART_Tx_PutHexByte, %function
+ 211              	UART_Tx_PutHexByte:
+ 212              	.LFB4:
+ 180:.\Generated_Source\PSoC4/UART_Tx.c **** 
+ 181:.\Generated_Source\PSoC4/UART_Tx.c **** 
+ 182:.\Generated_Source\PSoC4/UART_Tx.c **** /*******************************************************************************
+ 183:.\Generated_Source\PSoC4/UART_Tx.c **** * Function Name: UART_Tx_PutHexByte
+ 184:.\Generated_Source\PSoC4/UART_Tx.c **** ********************************************************************************
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccE43Ycc.s 			page 8
+
+
+ 185:.\Generated_Source\PSoC4/UART_Tx.c **** *
+ 186:.\Generated_Source\PSoC4/UART_Tx.c **** * Summary:
+ 187:.\Generated_Source\PSoC4/UART_Tx.c **** *  Sends a byte in Hex representation (two characters, uppercase for A-F) via
+ 188:.\Generated_Source\PSoC4/UART_Tx.c **** *  the Tx pin.
+ 189:.\Generated_Source\PSoC4/UART_Tx.c **** *
+ 190:.\Generated_Source\PSoC4/UART_Tx.c **** * Parameters:
+ 191:.\Generated_Source\PSoC4/UART_Tx.c **** *  TxHexByte: The byte to be converted to ASCII characters and
+ 192:.\Generated_Source\PSoC4/UART_Tx.c **** *             sent via the Tx pin.
+ 193:.\Generated_Source\PSoC4/UART_Tx.c **** *
+ 194:.\Generated_Source\PSoC4/UART_Tx.c **** * Return:
+ 195:.\Generated_Source\PSoC4/UART_Tx.c **** *  None
+ 196:.\Generated_Source\PSoC4/UART_Tx.c **** *
+ 197:.\Generated_Source\PSoC4/UART_Tx.c **** *******************************************************************************/
+ 198:.\Generated_Source\PSoC4/UART_Tx.c **** void UART_Tx_PutHexByte(uint8 txHexByte) 
+ 199:.\Generated_Source\PSoC4/UART_Tx.c **** {
+ 213              		.loc 1 199 0
+ 214              		.cfi_startproc
+ 215 0000 80B5     		push	{r7, lr}
+ 216              		.cfi_def_cfa_offset 8
+ 217              		.cfi_offset 7, -8
+ 218              		.cfi_offset 14, -4
+ 219 0002 82B0     		sub	sp, sp, #8
+ 220              		.cfi_def_cfa_offset 16
+ 221 0004 00AF     		add	r7, sp, #0
+ 222              		.cfi_def_cfa_register 7
+ 223 0006 021C     		mov	r2, r0
+ 224 0008 FB1D     		add	r3, r7, #7
+ 225 000a 1A70     		strb	r2, [r3]
+ 200:.\Generated_Source\PSoC4/UART_Tx.c ****     static char8 const CYCODE UART_Tx_hex[] = "0123456789ABCDEF";
+ 201:.\Generated_Source\PSoC4/UART_Tx.c **** 
+ 202:.\Generated_Source\PSoC4/UART_Tx.c ****     UART_Tx_PutChar((uint8) UART_Tx_hex[txHexByte >> UART_Tx_BYTE_UPPER_NIBBLE_SHIFT]);
+ 226              		.loc 1 202 0
+ 227 000c FB1D     		add	r3, r7, #7
+ 228 000e 1B78     		ldrb	r3, [r3]
+ 229 0010 1B09     		lsr	r3, r3, #4
+ 230 0012 DBB2     		uxtb	r3, r3
+ 231 0014 084A     		ldr	r2, .L10
+ 232 0016 D35C     		ldrb	r3, [r2, r3]
+ 233 0018 181C     		mov	r0, r3
+ 234 001a FFF7FEFF 		bl	UART_Tx_PutChar
+ 203:.\Generated_Source\PSoC4/UART_Tx.c ****     UART_Tx_PutChar((uint8) UART_Tx_hex[txHexByte & UART_Tx_BYTE_LOWER_NIBBLE_MASK]);
+ 235              		.loc 1 203 0
+ 236 001e FB1D     		add	r3, r7, #7
+ 237 0020 1A78     		ldrb	r2, [r3]
+ 238 0022 0F23     		mov	r3, #15
+ 239 0024 1340     		and	r3, r2
+ 240 0026 044A     		ldr	r2, .L10
+ 241 0028 D35C     		ldrb	r3, [r2, r3]
+ 242 002a 181C     		mov	r0, r3
+ 243 002c FFF7FEFF 		bl	UART_Tx_PutChar
+ 204:.\Generated_Source\PSoC4/UART_Tx.c **** }
+ 244              		.loc 1 204 0
+ 245 0030 BD46     		mov	sp, r7
+ 246 0032 02B0     		add	sp, sp, #8
+ 247              		@ sp needed
+ 248 0034 80BD     		pop	{r7, pc}
+ 249              	.L11:
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccE43Ycc.s 			page 9
+
+
+ 250 0036 C046     		.align	2
+ 251              	.L10:
+ 252 0038 00000000 		.word	UART_Tx_hex.4173
+ 253              		.cfi_endproc
+ 254              	.LFE4:
+ 255              		.size	UART_Tx_PutHexByte, .-UART_Tx_PutHexByte
+ 256              		.section	.text.UART_Tx_PutHexInt,"ax",%progbits
+ 257              		.align	2
+ 258              		.global	UART_Tx_PutHexInt
+ 259              		.code	16
+ 260              		.thumb_func
+ 261              		.type	UART_Tx_PutHexInt, %function
+ 262              	UART_Tx_PutHexInt:
+ 263              	.LFB5:
+ 205:.\Generated_Source\PSoC4/UART_Tx.c **** 
+ 206:.\Generated_Source\PSoC4/UART_Tx.c **** 
+ 207:.\Generated_Source\PSoC4/UART_Tx.c **** /*******************************************************************************
+ 208:.\Generated_Source\PSoC4/UART_Tx.c **** * Function Name: UART_Tx_PutHexInt
+ 209:.\Generated_Source\PSoC4/UART_Tx.c **** ********************************************************************************
+ 210:.\Generated_Source\PSoC4/UART_Tx.c **** *
+ 211:.\Generated_Source\PSoC4/UART_Tx.c **** * Summary:
+ 212:.\Generated_Source\PSoC4/UART_Tx.c **** *  Sends a 16-bit unsigned integer in Hex representation (four characters,
+ 213:.\Generated_Source\PSoC4/UART_Tx.c **** *  uppercase for A-F) via the Tx pin.
+ 214:.\Generated_Source\PSoC4/UART_Tx.c **** *
+ 215:.\Generated_Source\PSoC4/UART_Tx.c **** * Parameters:
+ 216:.\Generated_Source\PSoC4/UART_Tx.c **** *  TxHexInt: The uint16 to be converted to ASCII characters and sent via
+ 217:.\Generated_Source\PSoC4/UART_Tx.c **** *            the Tx pin.
+ 218:.\Generated_Source\PSoC4/UART_Tx.c **** *
+ 219:.\Generated_Source\PSoC4/UART_Tx.c **** * Return:
+ 220:.\Generated_Source\PSoC4/UART_Tx.c **** *  None
+ 221:.\Generated_Source\PSoC4/UART_Tx.c **** *
+ 222:.\Generated_Source\PSoC4/UART_Tx.c **** *******************************************************************************/
+ 223:.\Generated_Source\PSoC4/UART_Tx.c **** void UART_Tx_PutHexInt(uint16 txHexInt) 
+ 224:.\Generated_Source\PSoC4/UART_Tx.c **** {
+ 264              		.loc 1 224 0
+ 265              		.cfi_startproc
+ 266 0000 80B5     		push	{r7, lr}
+ 267              		.cfi_def_cfa_offset 8
+ 268              		.cfi_offset 7, -8
+ 269              		.cfi_offset 14, -4
+ 270 0002 82B0     		sub	sp, sp, #8
+ 271              		.cfi_def_cfa_offset 16
+ 272 0004 00AF     		add	r7, sp, #0
+ 273              		.cfi_def_cfa_register 7
+ 274 0006 021C     		mov	r2, r0
+ 275 0008 BB1D     		add	r3, r7, #6
+ 276 000a 1A80     		strh	r2, [r3]
+ 225:.\Generated_Source\PSoC4/UART_Tx.c ****     UART_Tx_PutHexByte((uint8)(txHexInt >> UART_Tx_U16_UPPER_BYTE_SHIFT));
+ 277              		.loc 1 225 0
+ 278 000c BB1D     		add	r3, r7, #6
+ 279 000e 1B88     		ldrh	r3, [r3]
+ 280 0010 1B0A     		lsr	r3, r3, #8
+ 281 0012 9BB2     		uxth	r3, r3
+ 282 0014 DBB2     		uxtb	r3, r3
+ 283 0016 181C     		mov	r0, r3
+ 284 0018 FFF7FEFF 		bl	UART_Tx_PutHexByte
+ 226:.\Generated_Source\PSoC4/UART_Tx.c ****     UART_Tx_PutHexByte((uint8)(txHexInt & UART_Tx_U16_LOWER_BYTE_MASK));
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccE43Ycc.s 			page 10
+
+
+ 285              		.loc 1 226 0
+ 286 001c BB1D     		add	r3, r7, #6
+ 287 001e 1B88     		ldrh	r3, [r3]
+ 288 0020 DBB2     		uxtb	r3, r3
+ 289 0022 181C     		mov	r0, r3
+ 290 0024 FFF7FEFF 		bl	UART_Tx_PutHexByte
+ 227:.\Generated_Source\PSoC4/UART_Tx.c **** }
+ 291              		.loc 1 227 0
+ 292 0028 BD46     		mov	sp, r7
+ 293 002a 02B0     		add	sp, sp, #8
+ 294              		@ sp needed
+ 295 002c 80BD     		pop	{r7, pc}
+ 296              		.cfi_endproc
+ 297              	.LFE5:
+ 298              		.size	UART_Tx_PutHexInt, .-UART_Tx_PutHexInt
+ 299 002e C046     		.section	.text.UART_Tx_PutCRLF,"ax",%progbits
+ 300              		.align	2
+ 301              		.global	UART_Tx_PutCRLF
+ 302              		.code	16
+ 303              		.thumb_func
+ 304              		.type	UART_Tx_PutCRLF, %function
+ 305              	UART_Tx_PutCRLF:
+ 306              	.LFB6:
+ 228:.\Generated_Source\PSoC4/UART_Tx.c **** 
+ 229:.\Generated_Source\PSoC4/UART_Tx.c **** 
+ 230:.\Generated_Source\PSoC4/UART_Tx.c **** /*******************************************************************************
+ 231:.\Generated_Source\PSoC4/UART_Tx.c **** * Function Name: UART_Tx_PutCRLF
+ 232:.\Generated_Source\PSoC4/UART_Tx.c **** ********************************************************************************
+ 233:.\Generated_Source\PSoC4/UART_Tx.c **** *
+ 234:.\Generated_Source\PSoC4/UART_Tx.c **** * Summary:
+ 235:.\Generated_Source\PSoC4/UART_Tx.c **** *  Sends a carriage return (0x0D) and a line feed (0x0A) via the Tx pin.
+ 236:.\Generated_Source\PSoC4/UART_Tx.c **** *
+ 237:.\Generated_Source\PSoC4/UART_Tx.c **** * Parameters:
+ 238:.\Generated_Source\PSoC4/UART_Tx.c **** *  None
+ 239:.\Generated_Source\PSoC4/UART_Tx.c **** *
+ 240:.\Generated_Source\PSoC4/UART_Tx.c **** * Return:
+ 241:.\Generated_Source\PSoC4/UART_Tx.c **** *  None
+ 242:.\Generated_Source\PSoC4/UART_Tx.c **** *
+ 243:.\Generated_Source\PSoC4/UART_Tx.c **** *******************************************************************************/
+ 244:.\Generated_Source\PSoC4/UART_Tx.c **** void UART_Tx_PutCRLF(void) 
+ 245:.\Generated_Source\PSoC4/UART_Tx.c **** {
+ 307              		.loc 1 245 0
+ 308              		.cfi_startproc
+ 309 0000 80B5     		push	{r7, lr}
+ 310              		.cfi_def_cfa_offset 8
+ 311              		.cfi_offset 7, -8
+ 312              		.cfi_offset 14, -4
+ 313 0002 00AF     		add	r7, sp, #0
+ 314              		.cfi_def_cfa_register 7
+ 246:.\Generated_Source\PSoC4/UART_Tx.c ****     UART_Tx_PutChar(0x0Du);
+ 315              		.loc 1 246 0
+ 316 0004 0D20     		mov	r0, #13
+ 317 0006 FFF7FEFF 		bl	UART_Tx_PutChar
+ 247:.\Generated_Source\PSoC4/UART_Tx.c ****     UART_Tx_PutChar(0x0Au);
+ 318              		.loc 1 247 0
+ 319 000a 0A20     		mov	r0, #10
+ 320 000c FFF7FEFF 		bl	UART_Tx_PutChar
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccE43Ycc.s 			page 11
+
+
+ 248:.\Generated_Source\PSoC4/UART_Tx.c **** }
+ 321              		.loc 1 248 0
+ 322 0010 BD46     		mov	sp, r7
+ 323              		@ sp needed
+ 324 0012 80BD     		pop	{r7, pc}
+ 325              		.cfi_endproc
+ 326              	.LFE6:
+ 327              		.size	UART_Tx_PutCRLF, .-UART_Tx_PutCRLF
+ 328              		.section	.rodata
+ 329              		.align	2
+ 330              		.type	UART_Tx_hex.4173, %object
+ 331              		.size	UART_Tx_hex.4173, 17
+ 332              	UART_Tx_hex.4173:
+ 333 0000 30313233 		.ascii	"0123456789ABCDEF\000"
+ 333      34353637 
+ 333      38394142 
+ 333      43444546 
+ 333      00
+ 334 0011 000000   		.text
+ 335              	.Letext0:
+ 336              		.file 2 ".\\Generated_Source\\PSoC4\\cytypes.h"
+ 337              		.section	.debug_info,"",%progbits
+ 338              	.Ldebug_info0:
+ 339 0000 1A020000 		.4byte	0x21a
+ 340 0004 0400     		.2byte	0x4
+ 341 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 342 000a 04       		.byte	0x4
+ 343 000b 01       		.uleb128 0x1
+ 344 000c 19020000 		.4byte	.LASF36
+ 345 0010 01       		.byte	0x1
+ 346 0011 13000000 		.4byte	.LASF37
+ 347 0015 3C000000 		.4byte	.LASF38
+ 348 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 349 001d 00000000 		.4byte	0
+ 350 0021 00000000 		.4byte	.Ldebug_line0
+ 351 0025 02       		.uleb128 0x2
+ 352 0026 01       		.byte	0x1
+ 353 0027 06       		.byte	0x6
+ 354 0028 5E010000 		.4byte	.LASF0
+ 355 002c 02       		.uleb128 0x2
+ 356 002d 01       		.byte	0x1
+ 357 002e 08       		.byte	0x8
+ 358 002f 44010000 		.4byte	.LASF1
+ 359 0033 02       		.uleb128 0x2
+ 360 0034 02       		.byte	0x2
+ 361 0035 05       		.byte	0x5
+ 362 0036 00000000 		.4byte	.LASF2
+ 363 003a 02       		.uleb128 0x2
+ 364 003b 02       		.byte	0x2
+ 365 003c 07       		.byte	0x7
+ 366 003d 9F010000 		.4byte	.LASF3
+ 367 0041 02       		.uleb128 0x2
+ 368 0042 04       		.byte	0x4
+ 369 0043 05       		.byte	0x5
+ 370 0044 D8000000 		.4byte	.LASF4
+ 371 0048 02       		.uleb128 0x2
+ 372 0049 04       		.byte	0x4
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccE43Ycc.s 			page 12
+
+
+ 373 004a 07       		.byte	0x7
+ 374 004b DA010000 		.4byte	.LASF5
+ 375 004f 02       		.uleb128 0x2
+ 376 0050 08       		.byte	0x8
+ 377 0051 05       		.byte	0x5
+ 378 0052 B7000000 		.4byte	.LASF6
+ 379 0056 02       		.uleb128 0x2
+ 380 0057 08       		.byte	0x8
+ 381 0058 07       		.byte	0x7
+ 382 0059 6A010000 		.4byte	.LASF7
+ 383 005d 03       		.uleb128 0x3
+ 384 005e 04       		.byte	0x4
+ 385 005f 05       		.byte	0x5
+ 386 0060 696E7400 		.ascii	"int\000"
+ 387 0064 02       		.uleb128 0x2
+ 388 0065 04       		.byte	0x4
+ 389 0066 07       		.byte	0x7
+ 390 0067 8A010000 		.4byte	.LASF8
+ 391 006b 04       		.uleb128 0x4
+ 392 006c 8C000000 		.4byte	.LASF9
+ 393 0070 02       		.byte	0x2
+ 394 0071 A1       		.byte	0xa1
+ 395 0072 2C000000 		.4byte	0x2c
+ 396 0076 04       		.uleb128 0x4
+ 397 0077 85000000 		.4byte	.LASF10
+ 398 007b 02       		.byte	0x2
+ 399 007c A2       		.byte	0xa2
+ 400 007d 3A000000 		.4byte	0x3a
+ 401 0081 04       		.uleb128 0x4
+ 402 0082 D3010000 		.4byte	.LASF11
+ 403 0086 02       		.byte	0x2
+ 404 0087 A3       		.byte	0xa3
+ 405 0088 48000000 		.4byte	0x48
+ 406 008c 02       		.uleb128 0x2
+ 407 008d 04       		.byte	0x4
+ 408 008e 04       		.byte	0x4
+ 409 008f B1000000 		.4byte	.LASF12
+ 410 0093 02       		.uleb128 0x2
+ 411 0094 08       		.byte	0x8
+ 412 0095 04       		.byte	0x4
+ 413 0096 EC010000 		.4byte	.LASF13
+ 414 009a 04       		.uleb128 0x4
+ 415 009b 36000000 		.4byte	.LASF14
+ 416 009f 02       		.byte	0x2
+ 417 00a0 B2       		.byte	0xb2
+ 418 00a1 A5000000 		.4byte	0xa5
+ 419 00a5 02       		.uleb128 0x2
+ 420 00a6 01       		.byte	0x1
+ 421 00a7 08       		.byte	0x8
+ 422 00a8 B2010000 		.4byte	.LASF15
+ 423 00ac 05       		.uleb128 0x5
+ 424 00ad 06010000 		.4byte	.LASF16
+ 425 00b1 01       		.byte	0x1
+ 426 00b2 35       		.byte	0x35
+ 427 00b3 00000000 		.4byte	.LFB0
+ 428 00b7 08000000 		.4byte	.LFE0-.LFB0
+ 429 00bb 01       		.uleb128 0x1
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccE43Ycc.s 			page 13
+
+
+ 430 00bc 9C       		.byte	0x9c
+ 431 00bd 05       		.uleb128 0x5
+ 432 00be 92000000 		.4byte	.LASF17
+ 433 00c2 01       		.byte	0x1
+ 434 00c3 79       		.byte	0x79
+ 435 00c4 00000000 		.4byte	.LFB1
+ 436 00c8 08000000 		.4byte	.LFE1-.LFB1
+ 437 00cc 01       		.uleb128 0x1
+ 438 00cd 9C       		.byte	0x9c
+ 439 00ce 06       		.uleb128 0x6
+ 440 00cf 32010000 		.4byte	.LASF20
+ 441 00d3 01       		.byte	0x1
+ 442 00d4 8D       		.byte	0x8d
+ 443 00d5 00000000 		.4byte	.LFB2
+ 444 00d9 58000000 		.4byte	.LFE2-.LFB2
+ 445 00dd 01       		.uleb128 0x1
+ 446 00de 9C       		.byte	0x9c
+ 447 00df 0E010000 		.4byte	0x10e
+ 448 00e3 07       		.uleb128 0x7
+ 449 00e4 E1000000 		.4byte	.LASF22
+ 450 00e8 01       		.byte	0x1
+ 451 00e9 8D       		.byte	0x8d
+ 452 00ea 0E010000 		.4byte	0x10e
+ 453 00ee 02       		.uleb128 0x2
+ 454 00ef 91       		.byte	0x91
+ 455 00f0 6C       		.sleb128 -20
+ 456 00f1 08       		.uleb128 0x8
+ 457 00f2 52010000 		.4byte	.LASF18
+ 458 00f6 01       		.byte	0x1
+ 459 00f7 8F       		.byte	0x8f
+ 460 00f8 6B000000 		.4byte	0x6b
+ 461 00fc 02       		.uleb128 0x2
+ 462 00fd 91       		.byte	0x91
+ 463 00fe 77       		.sleb128 -9
+ 464 00ff 08       		.uleb128 0x8
+ 465 0100 97010000 		.4byte	.LASF19
+ 466 0104 01       		.byte	0x1
+ 467 0105 90       		.byte	0x90
+ 468 0106 9A000000 		.4byte	0x9a
+ 469 010a 02       		.uleb128 0x2
+ 470 010b 91       		.byte	0x91
+ 471 010c 76       		.sleb128 -10
+ 472 010d 00       		.byte	0
+ 473 010e 09       		.uleb128 0x9
+ 474 010f 04       		.byte	0x4
+ 475 0110 14010000 		.4byte	0x114
+ 476 0114 0A       		.uleb128 0xa
+ 477 0115 9A000000 		.4byte	0x9a
+ 478 0119 06       		.uleb128 0x6
+ 479 011a C2010000 		.4byte	.LASF21
+ 480 011e 01       		.byte	0x1
+ 481 011f AB       		.byte	0xab
+ 482 0120 00000000 		.4byte	.LFB3
+ 483 0124 32000000 		.4byte	.LFE3-.LFB3
+ 484 0128 01       		.uleb128 0x1
+ 485 0129 9C       		.byte	0x9c
+ 486 012a 59010000 		.4byte	0x159
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccE43Ycc.s 			page 14
+
+
+ 487 012e 07       		.uleb128 0x7
+ 488 012f F3010000 		.4byte	.LASF23
+ 489 0133 01       		.byte	0x1
+ 490 0134 AB       		.byte	0xab
+ 491 0135 59010000 		.4byte	0x159
+ 492 0139 02       		.uleb128 0x2
+ 493 013a 91       		.byte	0x91
+ 494 013b 6C       		.sleb128 -20
+ 495 013c 07       		.uleb128 0x7
+ 496 013d F9010000 		.4byte	.LASF24
+ 497 0141 01       		.byte	0x1
+ 498 0142 AB       		.byte	0xab
+ 499 0143 81000000 		.4byte	0x81
+ 500 0147 02       		.uleb128 0x2
+ 501 0148 91       		.byte	0x91
+ 502 0149 68       		.sleb128 -24
+ 503 014a 08       		.uleb128 0x8
+ 504 014b B7010000 		.4byte	.LASF25
+ 505 014f 01       		.byte	0x1
+ 506 0150 AD       		.byte	0xad
+ 507 0151 81000000 		.4byte	0x81
+ 508 0155 02       		.uleb128 0x2
+ 509 0156 91       		.byte	0x91
+ 510 0157 74       		.sleb128 -12
+ 511 0158 00       		.byte	0
+ 512 0159 09       		.uleb128 0x9
+ 513 015a 04       		.byte	0x4
+ 514 015b 5F010000 		.4byte	0x15f
+ 515 015f 0A       		.uleb128 0xa
+ 516 0160 6B000000 		.4byte	0x6b
+ 517 0164 06       		.uleb128 0x6
+ 518 0165 C5000000 		.4byte	.LASF26
+ 519 0169 01       		.byte	0x1
+ 520 016a C6       		.byte	0xc6
+ 521 016b 00000000 		.4byte	.LFB4
+ 522 016f 3C000000 		.4byte	.LFE4-.LFB4
+ 523 0173 01       		.uleb128 0x1
+ 524 0174 9C       		.byte	0x9c
+ 525 0175 99010000 		.4byte	0x199
+ 526 0179 07       		.uleb128 0x7
+ 527 017a 14010000 		.4byte	.LASF27
+ 528 017e 01       		.byte	0x1
+ 529 017f C6       		.byte	0xc6
+ 530 0180 6B000000 		.4byte	0x6b
+ 531 0184 02       		.uleb128 0x2
+ 532 0185 91       		.byte	0x91
+ 533 0186 77       		.sleb128 -9
+ 534 0187 08       		.uleb128 0x8
+ 535 0188 E8000000 		.4byte	.LASF28
+ 536 018c 01       		.byte	0x1
+ 537 018d C8       		.byte	0xc8
+ 538 018e B0010000 		.4byte	0x1b0
+ 539 0192 05       		.uleb128 0x5
+ 540 0193 03       		.byte	0x3
+ 541 0194 00000000 		.4byte	UART_Tx_hex.4173
+ 542 0198 00       		.byte	0
+ 543 0199 0B       		.uleb128 0xb
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccE43Ycc.s 			page 15
+
+
+ 544 019a 9A000000 		.4byte	0x9a
+ 545 019e A9010000 		.4byte	0x1a9
+ 546 01a2 0C       		.uleb128 0xc
+ 547 01a3 A9010000 		.4byte	0x1a9
+ 548 01a7 10       		.byte	0x10
+ 549 01a8 00       		.byte	0
+ 550 01a9 02       		.uleb128 0x2
+ 551 01aa 04       		.byte	0x4
+ 552 01ab 07       		.byte	0x7
+ 553 01ac 0A000000 		.4byte	.LASF29
+ 554 01b0 0A       		.uleb128 0xa
+ 555 01b1 99010000 		.4byte	0x199
+ 556 01b5 06       		.uleb128 0x6
+ 557 01b6 F4000000 		.4byte	.LASF30
+ 558 01ba 01       		.byte	0x1
+ 559 01bb DF       		.byte	0xdf
+ 560 01bc 00000000 		.4byte	.LFB5
+ 561 01c0 2E000000 		.4byte	.LFE5-.LFB5
+ 562 01c4 01       		.uleb128 0x1
+ 563 01c5 9C       		.byte	0x9c
+ 564 01c6 D9010000 		.4byte	0x1d9
+ 565 01ca 07       		.uleb128 0x7
+ 566 01cb 81010000 		.4byte	.LASF31
+ 567 01cf 01       		.byte	0x1
+ 568 01d0 DF       		.byte	0xdf
+ 569 01d1 76000000 		.4byte	0x76
+ 570 01d5 02       		.uleb128 0x2
+ 571 01d6 91       		.byte	0x91
+ 572 01d7 76       		.sleb128 -10
+ 573 01d8 00       		.byte	0
+ 574 01d9 0D       		.uleb128 0xd
+ 575 01da 95020000 		.4byte	.LASF32
+ 576 01de 01       		.byte	0x1
+ 577 01df F4       		.byte	0xf4
+ 578 01e0 00000000 		.4byte	.LFB6
+ 579 01e4 14000000 		.4byte	.LFE6-.LFB6
+ 580 01e8 01       		.uleb128 0x1
+ 581 01e9 9C       		.byte	0x9c
+ 582 01ea 0E       		.uleb128 0xe
+ 583 01eb 9F000000 		.4byte	.LASF33
+ 584 01ef 01       		.byte	0x1
+ 585 01f0 12       		.byte	0x12
+ 586 01f1 81000000 		.4byte	0x81
+ 587 01f5 05       		.uleb128 0x5
+ 588 01f6 03       		.byte	0x3
+ 589 01f7 00000000 		.4byte	UART_Tx_pinNumber
+ 590 01fb 0E       		.uleb128 0xe
+ 591 01fc 03020000 		.4byte	.LASF34
+ 592 0200 01       		.byte	0x1
+ 593 0201 13       		.byte	0x13
+ 594 0202 81000000 		.4byte	0x81
+ 595 0206 05       		.uleb128 0x5
+ 596 0207 03       		.byte	0x3
+ 597 0208 00000000 		.4byte	UART_Tx_pinPortNumber
+ 598 020c 0E       		.uleb128 0xe
+ 599 020d 1E010000 		.4byte	.LASF35
+ 600 0211 01       		.byte	0x1
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccE43Ycc.s 			page 16
+
+
+ 601 0212 17       		.byte	0x17
+ 602 0213 81000000 		.4byte	0x81
+ 603 0217 05       		.uleb128 0x5
+ 604 0218 03       		.byte	0x3
+ 605 0219 00000000 		.4byte	UART_Tx_pinDrAdress
+ 606 021d 00       		.byte	0
+ 607              		.section	.debug_abbrev,"",%progbits
+ 608              	.Ldebug_abbrev0:
+ 609 0000 01       		.uleb128 0x1
+ 610 0001 11       		.uleb128 0x11
+ 611 0002 01       		.byte	0x1
+ 612 0003 25       		.uleb128 0x25
+ 613 0004 0E       		.uleb128 0xe
+ 614 0005 13       		.uleb128 0x13
+ 615 0006 0B       		.uleb128 0xb
+ 616 0007 03       		.uleb128 0x3
+ 617 0008 0E       		.uleb128 0xe
+ 618 0009 1B       		.uleb128 0x1b
+ 619 000a 0E       		.uleb128 0xe
+ 620 000b 55       		.uleb128 0x55
+ 621 000c 17       		.uleb128 0x17
+ 622 000d 11       		.uleb128 0x11
+ 623 000e 01       		.uleb128 0x1
+ 624 000f 10       		.uleb128 0x10
+ 625 0010 17       		.uleb128 0x17
+ 626 0011 00       		.byte	0
+ 627 0012 00       		.byte	0
+ 628 0013 02       		.uleb128 0x2
+ 629 0014 24       		.uleb128 0x24
+ 630 0015 00       		.byte	0
+ 631 0016 0B       		.uleb128 0xb
+ 632 0017 0B       		.uleb128 0xb
+ 633 0018 3E       		.uleb128 0x3e
+ 634 0019 0B       		.uleb128 0xb
+ 635 001a 03       		.uleb128 0x3
+ 636 001b 0E       		.uleb128 0xe
+ 637 001c 00       		.byte	0
+ 638 001d 00       		.byte	0
+ 639 001e 03       		.uleb128 0x3
+ 640 001f 24       		.uleb128 0x24
+ 641 0020 00       		.byte	0
+ 642 0021 0B       		.uleb128 0xb
+ 643 0022 0B       		.uleb128 0xb
+ 644 0023 3E       		.uleb128 0x3e
+ 645 0024 0B       		.uleb128 0xb
+ 646 0025 03       		.uleb128 0x3
+ 647 0026 08       		.uleb128 0x8
+ 648 0027 00       		.byte	0
+ 649 0028 00       		.byte	0
+ 650 0029 04       		.uleb128 0x4
+ 651 002a 16       		.uleb128 0x16
+ 652 002b 00       		.byte	0
+ 653 002c 03       		.uleb128 0x3
+ 654 002d 0E       		.uleb128 0xe
+ 655 002e 3A       		.uleb128 0x3a
+ 656 002f 0B       		.uleb128 0xb
+ 657 0030 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccE43Ycc.s 			page 17
+
+
+ 658 0031 0B       		.uleb128 0xb
+ 659 0032 49       		.uleb128 0x49
+ 660 0033 13       		.uleb128 0x13
+ 661 0034 00       		.byte	0
+ 662 0035 00       		.byte	0
+ 663 0036 05       		.uleb128 0x5
+ 664 0037 2E       		.uleb128 0x2e
+ 665 0038 00       		.byte	0
+ 666 0039 3F       		.uleb128 0x3f
+ 667 003a 19       		.uleb128 0x19
+ 668 003b 03       		.uleb128 0x3
+ 669 003c 0E       		.uleb128 0xe
+ 670 003d 3A       		.uleb128 0x3a
+ 671 003e 0B       		.uleb128 0xb
+ 672 003f 3B       		.uleb128 0x3b
+ 673 0040 0B       		.uleb128 0xb
+ 674 0041 27       		.uleb128 0x27
+ 675 0042 19       		.uleb128 0x19
+ 676 0043 11       		.uleb128 0x11
+ 677 0044 01       		.uleb128 0x1
+ 678 0045 12       		.uleb128 0x12
+ 679 0046 06       		.uleb128 0x6
+ 680 0047 40       		.uleb128 0x40
+ 681 0048 18       		.uleb128 0x18
+ 682 0049 9742     		.uleb128 0x2117
+ 683 004b 19       		.uleb128 0x19
+ 684 004c 00       		.byte	0
+ 685 004d 00       		.byte	0
+ 686 004e 06       		.uleb128 0x6
+ 687 004f 2E       		.uleb128 0x2e
+ 688 0050 01       		.byte	0x1
+ 689 0051 3F       		.uleb128 0x3f
+ 690 0052 19       		.uleb128 0x19
+ 691 0053 03       		.uleb128 0x3
+ 692 0054 0E       		.uleb128 0xe
+ 693 0055 3A       		.uleb128 0x3a
+ 694 0056 0B       		.uleb128 0xb
+ 695 0057 3B       		.uleb128 0x3b
+ 696 0058 0B       		.uleb128 0xb
+ 697 0059 27       		.uleb128 0x27
+ 698 005a 19       		.uleb128 0x19
+ 699 005b 11       		.uleb128 0x11
+ 700 005c 01       		.uleb128 0x1
+ 701 005d 12       		.uleb128 0x12
+ 702 005e 06       		.uleb128 0x6
+ 703 005f 40       		.uleb128 0x40
+ 704 0060 18       		.uleb128 0x18
+ 705 0061 9642     		.uleb128 0x2116
+ 706 0063 19       		.uleb128 0x19
+ 707 0064 01       		.uleb128 0x1
+ 708 0065 13       		.uleb128 0x13
+ 709 0066 00       		.byte	0
+ 710 0067 00       		.byte	0
+ 711 0068 07       		.uleb128 0x7
+ 712 0069 05       		.uleb128 0x5
+ 713 006a 00       		.byte	0
+ 714 006b 03       		.uleb128 0x3
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccE43Ycc.s 			page 18
+
+
+ 715 006c 0E       		.uleb128 0xe
+ 716 006d 3A       		.uleb128 0x3a
+ 717 006e 0B       		.uleb128 0xb
+ 718 006f 3B       		.uleb128 0x3b
+ 719 0070 0B       		.uleb128 0xb
+ 720 0071 49       		.uleb128 0x49
+ 721 0072 13       		.uleb128 0x13
+ 722 0073 02       		.uleb128 0x2
+ 723 0074 18       		.uleb128 0x18
+ 724 0075 00       		.byte	0
+ 725 0076 00       		.byte	0
+ 726 0077 08       		.uleb128 0x8
+ 727 0078 34       		.uleb128 0x34
+ 728 0079 00       		.byte	0
+ 729 007a 03       		.uleb128 0x3
+ 730 007b 0E       		.uleb128 0xe
+ 731 007c 3A       		.uleb128 0x3a
+ 732 007d 0B       		.uleb128 0xb
+ 733 007e 3B       		.uleb128 0x3b
+ 734 007f 0B       		.uleb128 0xb
+ 735 0080 49       		.uleb128 0x49
+ 736 0081 13       		.uleb128 0x13
+ 737 0082 02       		.uleb128 0x2
+ 738 0083 18       		.uleb128 0x18
+ 739 0084 00       		.byte	0
+ 740 0085 00       		.byte	0
+ 741 0086 09       		.uleb128 0x9
+ 742 0087 0F       		.uleb128 0xf
+ 743 0088 00       		.byte	0
+ 744 0089 0B       		.uleb128 0xb
+ 745 008a 0B       		.uleb128 0xb
+ 746 008b 49       		.uleb128 0x49
+ 747 008c 13       		.uleb128 0x13
+ 748 008d 00       		.byte	0
+ 749 008e 00       		.byte	0
+ 750 008f 0A       		.uleb128 0xa
+ 751 0090 26       		.uleb128 0x26
+ 752 0091 00       		.byte	0
+ 753 0092 49       		.uleb128 0x49
+ 754 0093 13       		.uleb128 0x13
+ 755 0094 00       		.byte	0
+ 756 0095 00       		.byte	0
+ 757 0096 0B       		.uleb128 0xb
+ 758 0097 01       		.uleb128 0x1
+ 759 0098 01       		.byte	0x1
+ 760 0099 49       		.uleb128 0x49
+ 761 009a 13       		.uleb128 0x13
+ 762 009b 01       		.uleb128 0x1
+ 763 009c 13       		.uleb128 0x13
+ 764 009d 00       		.byte	0
+ 765 009e 00       		.byte	0
+ 766 009f 0C       		.uleb128 0xc
+ 767 00a0 21       		.uleb128 0x21
+ 768 00a1 00       		.byte	0
+ 769 00a2 49       		.uleb128 0x49
+ 770 00a3 13       		.uleb128 0x13
+ 771 00a4 2F       		.uleb128 0x2f
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccE43Ycc.s 			page 19
+
+
+ 772 00a5 0B       		.uleb128 0xb
+ 773 00a6 00       		.byte	0
+ 774 00a7 00       		.byte	0
+ 775 00a8 0D       		.uleb128 0xd
+ 776 00a9 2E       		.uleb128 0x2e
+ 777 00aa 00       		.byte	0
+ 778 00ab 3F       		.uleb128 0x3f
+ 779 00ac 19       		.uleb128 0x19
+ 780 00ad 03       		.uleb128 0x3
+ 781 00ae 0E       		.uleb128 0xe
+ 782 00af 3A       		.uleb128 0x3a
+ 783 00b0 0B       		.uleb128 0xb
+ 784 00b1 3B       		.uleb128 0x3b
+ 785 00b2 0B       		.uleb128 0xb
+ 786 00b3 27       		.uleb128 0x27
+ 787 00b4 19       		.uleb128 0x19
+ 788 00b5 11       		.uleb128 0x11
+ 789 00b6 01       		.uleb128 0x1
+ 790 00b7 12       		.uleb128 0x12
+ 791 00b8 06       		.uleb128 0x6
+ 792 00b9 40       		.uleb128 0x40
+ 793 00ba 18       		.uleb128 0x18
+ 794 00bb 9642     		.uleb128 0x2116
+ 795 00bd 19       		.uleb128 0x19
+ 796 00be 00       		.byte	0
+ 797 00bf 00       		.byte	0
+ 798 00c0 0E       		.uleb128 0xe
+ 799 00c1 34       		.uleb128 0x34
+ 800 00c2 00       		.byte	0
+ 801 00c3 03       		.uleb128 0x3
+ 802 00c4 0E       		.uleb128 0xe
+ 803 00c5 3A       		.uleb128 0x3a
+ 804 00c6 0B       		.uleb128 0xb
+ 805 00c7 3B       		.uleb128 0x3b
+ 806 00c8 0B       		.uleb128 0xb
+ 807 00c9 49       		.uleb128 0x49
+ 808 00ca 13       		.uleb128 0x13
+ 809 00cb 3F       		.uleb128 0x3f
+ 810 00cc 19       		.uleb128 0x19
+ 811 00cd 02       		.uleb128 0x2
+ 812 00ce 18       		.uleb128 0x18
+ 813 00cf 00       		.byte	0
+ 814 00d0 00       		.byte	0
+ 815 00d1 00       		.byte	0
+ 816              		.section	.debug_aranges,"",%progbits
+ 817 0000 4C000000 		.4byte	0x4c
+ 818 0004 0200     		.2byte	0x2
+ 819 0006 00000000 		.4byte	.Ldebug_info0
+ 820 000a 04       		.byte	0x4
+ 821 000b 00       		.byte	0
+ 822 000c 0000     		.2byte	0
+ 823 000e 0000     		.2byte	0
+ 824 0010 00000000 		.4byte	.LFB0
+ 825 0014 08000000 		.4byte	.LFE0-.LFB0
+ 826 0018 00000000 		.4byte	.LFB1
+ 827 001c 08000000 		.4byte	.LFE1-.LFB1
+ 828 0020 00000000 		.4byte	.LFB2
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccE43Ycc.s 			page 20
+
+
+ 829 0024 58000000 		.4byte	.LFE2-.LFB2
+ 830 0028 00000000 		.4byte	.LFB3
+ 831 002c 32000000 		.4byte	.LFE3-.LFB3
+ 832 0030 00000000 		.4byte	.LFB4
+ 833 0034 3C000000 		.4byte	.LFE4-.LFB4
+ 834 0038 00000000 		.4byte	.LFB5
+ 835 003c 2E000000 		.4byte	.LFE5-.LFB5
+ 836 0040 00000000 		.4byte	.LFB6
+ 837 0044 14000000 		.4byte	.LFE6-.LFB6
+ 838 0048 00000000 		.4byte	0
+ 839 004c 00000000 		.4byte	0
+ 840              		.section	.debug_ranges,"",%progbits
+ 841              	.Ldebug_ranges0:
+ 842 0000 00000000 		.4byte	.LFB0
+ 843 0004 08000000 		.4byte	.LFE0
+ 844 0008 00000000 		.4byte	.LFB1
+ 845 000c 08000000 		.4byte	.LFE1
+ 846 0010 00000000 		.4byte	.LFB2
+ 847 0014 58000000 		.4byte	.LFE2
+ 848 0018 00000000 		.4byte	.LFB3
+ 849 001c 32000000 		.4byte	.LFE3
+ 850 0020 00000000 		.4byte	.LFB4
+ 851 0024 3C000000 		.4byte	.LFE4
+ 852 0028 00000000 		.4byte	.LFB5
+ 853 002c 2E000000 		.4byte	.LFE5
+ 854 0030 00000000 		.4byte	.LFB6
+ 855 0034 14000000 		.4byte	.LFE6
+ 856 0038 00000000 		.4byte	0
+ 857 003c 00000000 		.4byte	0
+ 858              		.section	.debug_line,"",%progbits
+ 859              	.Ldebug_line0:
+ 860 0000 E5000000 		.section	.debug_str,"MS",%progbits,1
+ 860      02004600 
+ 860      00000201 
+ 860      FB0E0D00 
+ 860      01010101 
+ 861              	.LASF2:
+ 862 0000 73686F72 		.ascii	"short int\000"
+ 862      7420696E 
+ 862      7400
+ 863              	.LASF29:
+ 864 000a 73697A65 		.ascii	"sizetype\000"
+ 864      74797065 
+ 864      00
+ 865              	.LASF37:
+ 866 0013 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\UART_Tx.c\000"
+ 866      6E657261 
+ 866      7465645F 
+ 866      536F7572 
+ 866      63655C50 
+ 867              	.LASF14:
+ 868 0036 63686172 		.ascii	"char8\000"
+ 868      3800
+ 869              	.LASF38:
+ 870 003c 433A5C55 		.ascii	"C:\\Users\\Matthew Arbesfeld\\Documents\\PSoC Creat"
+ 870      73657273 
+ 870      5C4D6174 
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccE43Ycc.s 			page 21
+
+
+ 870      74686577 
+ 870      20417262 
+ 871 006b 6F725C42 		.ascii	"or\\BoxesUART\\Boxes4.cydsn\000"
+ 871      6F786573 
+ 871      55415254 
+ 871      5C426F78 
+ 871      6573342E 
+ 872              	.LASF10:
+ 873 0085 75696E74 		.ascii	"uint16\000"
+ 873      313600
+ 874              	.LASF9:
+ 875 008c 75696E74 		.ascii	"uint8\000"
+ 875      3800
+ 876              	.LASF17:
+ 877 0092 55415254 		.ascii	"UART_Tx_Stop\000"
+ 877      5F54785F 
+ 877      53746F70 
+ 877      00
+ 878              	.LASF33:
+ 879 009f 55415254 		.ascii	"UART_Tx_pinNumber\000"
+ 879      5F54785F 
+ 879      70696E4E 
+ 879      756D6265 
+ 879      7200
+ 880              	.LASF12:
+ 881 00b1 666C6F61 		.ascii	"float\000"
+ 881      7400
+ 882              	.LASF6:
+ 883 00b7 6C6F6E67 		.ascii	"long long int\000"
+ 883      206C6F6E 
+ 883      6720696E 
+ 883      7400
+ 884              	.LASF26:
+ 885 00c5 55415254 		.ascii	"UART_Tx_PutHexByte\000"
+ 885      5F54785F 
+ 885      50757448 
+ 885      65784279 
+ 885      746500
+ 886              	.LASF4:
+ 887 00d8 6C6F6E67 		.ascii	"long int\000"
+ 887      20696E74 
+ 887      00
+ 888              	.LASF22:
+ 889 00e1 73747269 		.ascii	"string\000"
+ 889      6E6700
+ 890              	.LASF28:
+ 891 00e8 55415254 		.ascii	"UART_Tx_hex\000"
+ 891      5F54785F 
+ 891      68657800 
+ 892              	.LASF30:
+ 893 00f4 55415254 		.ascii	"UART_Tx_PutHexInt\000"
+ 893      5F54785F 
+ 893      50757448 
+ 893      6578496E 
+ 893      7400
+ 894              	.LASF16:
+ 895 0106 55415254 		.ascii	"UART_Tx_Start\000"
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccE43Ycc.s 			page 22
+
+
+ 895      5F54785F 
+ 895      53746172 
+ 895      7400
+ 896              	.LASF27:
+ 897 0114 74784865 		.ascii	"txHexByte\000"
+ 897      78427974 
+ 897      6500
+ 898              	.LASF35:
+ 899 011e 55415254 		.ascii	"UART_Tx_pinDrAdress\000"
+ 899      5F54785F 
+ 899      70696E44 
+ 899      72416472 
+ 899      65737300 
+ 900              	.LASF20:
+ 901 0132 55415254 		.ascii	"UART_Tx_PutString\000"
+ 901      5F54785F 
+ 901      50757453 
+ 901      7472696E 
+ 901      6700
+ 902              	.LASF1:
+ 903 0144 756E7369 		.ascii	"unsigned char\000"
+ 903      676E6564 
+ 903      20636861 
+ 903      7200
+ 904              	.LASF18:
+ 905 0152 73747269 		.ascii	"stringIndex\000"
+ 905      6E67496E 
+ 905      64657800 
+ 906              	.LASF0:
+ 907 015e 7369676E 		.ascii	"signed char\000"
+ 907      65642063 
+ 907      68617200 
+ 908              	.LASF7:
+ 909 016a 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 909      206C6F6E 
+ 909      6720756E 
+ 909      7369676E 
+ 909      65642069 
+ 910              	.LASF31:
+ 911 0181 74784865 		.ascii	"txHexInt\000"
+ 911      78496E74 
+ 911      00
+ 912              	.LASF8:
+ 913 018a 756E7369 		.ascii	"unsigned int\000"
+ 913      676E6564 
+ 913      20696E74 
+ 913      00
+ 914              	.LASF19:
+ 915 0197 63757272 		.ascii	"current\000"
+ 915      656E7400 
+ 916              	.LASF3:
+ 917 019f 73686F72 		.ascii	"short unsigned int\000"
+ 917      7420756E 
+ 917      7369676E 
+ 917      65642069 
+ 917      6E7400
+ 918              	.LASF15:
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccE43Ycc.s 			page 23
+
+
+ 919 01b2 63686172 		.ascii	"char\000"
+ 919      00
+ 920              	.LASF25:
+ 921 01b7 61727261 		.ascii	"arrayIndex\000"
+ 921      79496E64 
+ 921      657800
+ 922              	.LASF21:
+ 923 01c2 55415254 		.ascii	"UART_Tx_PutArray\000"
+ 923      5F54785F 
+ 923      50757441 
+ 923      72726179 
+ 923      00
+ 924              	.LASF11:
+ 925 01d3 75696E74 		.ascii	"uint32\000"
+ 925      333200
+ 926              	.LASF5:
+ 927 01da 6C6F6E67 		.ascii	"long unsigned int\000"
+ 927      20756E73 
+ 927      69676E65 
+ 927      6420696E 
+ 927      7400
+ 928              	.LASF13:
+ 929 01ec 646F7562 		.ascii	"double\000"
+ 929      6C6500
+ 930              	.LASF23:
+ 931 01f3 61727261 		.ascii	"array\000"
+ 931      7900
+ 932              	.LASF24:
+ 933 01f9 62797465 		.ascii	"byteCount\000"
+ 933      436F756E 
+ 933      7400
+ 934              	.LASF34:
+ 935 0203 55415254 		.ascii	"UART_Tx_pinPortNumber\000"
+ 935      5F54785F 
+ 935      70696E50 
+ 935      6F72744E 
+ 935      756D6265 
+ 936              	.LASF36:
+ 937 0219 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 937      4320342E 
+ 937      382E3420 
+ 937      32303134 
+ 937      30353236 
+ 938 024c 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 938      20726576 
+ 938      6973696F 
+ 938      6E203231 
+ 938      31333538 
+ 939 027f 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 939      66756E63 
+ 939      74696F6E 
+ 939      2D736563 
+ 939      74696F6E 
+ 940              	.LASF32:
+ 941 0295 55415254 		.ascii	"UART_Tx_PutCRLF\000"
+ 941      5F54785F 
+ 941      50757443 
+ARM GAS  C:\Users\MATTHE~1\AppData\Local\Temp\ccE43Ycc.s 			page 24
+
+
+ 941      524C4600 
+ 942              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br
